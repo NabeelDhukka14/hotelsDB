@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=world
       - POSTGRES_DB=hotelsDb
     ports:
-      - '5432:5432'
+      - '8001:5432'
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql #init db
       - ./hotelsDataVolume/:/var/lib/postgresql/data/ #pesistant storage for local db
@@ -18,6 +18,8 @@ services:
       dockerfile: ./DockerFile 
       context: .
     restart: always
+    depends_on:
+      - myDB
     ports: 
       - 8080:8080
 
