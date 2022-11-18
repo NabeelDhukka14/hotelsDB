@@ -1,7 +1,7 @@
 version: '3.7'
 name: hotel
 services:
-  postgres:
+  myDB:
     image: postgres:14.5
     restart: always
     environment:
@@ -9,8 +9,16 @@ services:
       - POSTGRES_PASSWORD=world
       - POSTGRES_DB=hotelsDb
     ports:
-      - 5432:5432
+      - '5432:5432'
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql #init db
       - ./hotelsDataVolume/:/var/lib/postgresql/data/ #pesistant storage for local db
+  restwrapper: 
+    build: 
+      dockerfile: ./DockerFile 
+      context: .
+    restart: always
+    ports: 
+      - 8080:8080
+
 

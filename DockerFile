@@ -1,0 +1,13 @@
+# use latest node image
+FROM node:19-alpine3.15 
+# create base directory for REST wrapper
+WORKDIR /usr/src/app
+# Install dependencys defined in package.json and package-lock.json
+COPY ./package*.json /usr/src/app/
+RUN npm install 
+#copy source code into docker container
+COPY . /usr/src/app/
+#define which port will be used by REST API 
+EXPOSE 8080
+#run this command to start server
+CMD ["node", "dbms.js"]
