@@ -13,6 +13,10 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql #init db
       - ./hotelsDataVolume/:/var/lib/postgresql/data/ #pesistant storage for local db
+      - ./csv_files/USERS.csv:/csv_files/USERS.csv
+      - ./csv_files/PROPERTIES.csv:/csv_files/PROPERTIES.csv
+      - ./csv_files/RESERVATIONS.csv:/csv_files/RESERVATIONS.csv
+
   restwrapper: 
     build: 
       dockerfile: ./DockerFile 

@@ -1,0 +1,803 @@
+listingId,listingName,hostName,hostId,city,state,price,numBeds,minimumNights,maxPeople,roomSize
+38585,Charming Victorian home - twin beds + breakfast,Jay,1231244,Marble Falls,TX,$1508.07,3,2,4,LARGE
+80905,French Chic Loft,BonPaul,4185538,Overgaard,AZ,$2760.11,3,1,7,LARGE
+108061,Walk to stores/parks/downtown. Fenced yard/Pets OK,Mikael,1264831,Onalaska,WI,$2318.22,3,5,7,SMALL
+155305,Cottage! BonPaul + Sharky's Hostel,Guy,5126047,Muncie,IN,$4487.4,1,4,4,LARGE
+160594,Historic Grove Park,Guy,5126047,Woonsocket,RI,$4794.9,4,5,4,MEDIUM
+209068,Terrace Cottage,Guy,5126047,East Earl,PA,$2627.42,4,4,8,MEDIUM
+213006,Blue Gate West,Guy,5126047,Hawks,MI,$2154.42,4,3,6,SMALL
+246315,Asheville Dreamer's Cabin,Guy,5126047,Newland,NC,$277.09,1,2,7,LARGE
+259576,"Private, peaceful, and free goat therapy",Kingsley,5638520,Little Compton,RI,$2198.89,4,1,6,LARGE
+295496,The Fern Street Apt near Biltmore,Kingsley,5638520,Kipton,OH,$1735.48,1,2,7,MEDIUM
+304379,Refocus Cottage - paradise,Yasmin,6801045,Clintwood,VA,$3144.15,4,4,4,SMALL
+353092,Athena's Loft:  Find yourself here!,Yasmin,6801045,Florida,PR,$4952.74,2,5,8,LARGE
+427497,Luxurious Mountain Guest Suite Apartment,Lynn,1250632,Saint Peter,IL,$3176.42,2,3,5,MEDIUM
+436476,"8 min Walk to DT AVL! Hip, Chic, CLEAN & Charming.",Lynn,1250632,Cut Off,LA,$1461.11,1,4,5,MEDIUM
+483384,"Romantic, Moroccan-Influenced Cottage",Lynn,1250632,Roscoe,PA,$3810.37,3,3,4,MEDIUM
+495111,Walk Downtown private bath peaceful,Lynn,1250632,Carolina,PR,$399.96,3,5,4,SMALL
+498089,Urban Getaway - Perfect Location,Lou,5707989,Lake Wilson,MN,$4899.86,3,3,5,MEDIUM
+528535,Dwntwn Studio w/ lots of character,Melanie,1416143,Atlanta,GA,$218.03,4,3,6,LARGE
+539020,Comfy/quiet West Asheville getaway,Melanie,1416143,Taylorstown,PA,$1326.04,3,1,4,LARGE
+621243,The birdhouse.Sweet suite! Downtown Roof top deck!,Melanie,1416143,Red Ash,VA,$3408.74,2,4,4,SMALL
+634319,Private Asheville Cabin Apartment,Melanie,1416143,Smilax,KY,$401.06,4,5,8,LARGE
+660702,Private Home 1 mile to downtown,Ranse,1609212,New Ringgold,PA,$232.98,1,1,5,MEDIUM
+674894,Lovely mountain home with a view!,Ranse,1609212,Jackson,MS,$3485.57,4,5,6,SMALL
+695196,"Private, Downtown & River Arts",Ranse,1609212,Green Sea,SC,$4582.0,4,2,6,MEDIUM
+720609,City Vibe Loft,Ranse,1609212,Kensett,IA,$4941.9,1,1,4,SMALL
+723349,#2 Blue Ridge Room at Oakland Cottage B&B,Elizabeth,2486775,Castro Valley,CA,$334.13,2,2,6,SMALL
+723410,Asheville Mountain Vista 3mi to Downtown Asheville,Lydia And Victor,4017311,Jayuya,PR,$4147.22,4,3,5,LARGE
+751963,Come Home in West Asheville!,Lydia And Victor,4017311,Sterling,AK,$3242.76,3,3,5,MEDIUM
+840696,‚ù§VIEWS! Luxury home near DOWNTOWN close 2 Biltmore,Lydia And Victor,4017311,Durkee,OR,$4595.93,2,1,4,MEDIUM
+846221,Town and Mountain Peaceful Retreat,Lydia And Victor,4017311,Marine City,MI,$1793.57,3,1,4,LARGE
+874008,"Sunset Cottage - year round views, 3 mi to DT AVL",Lydia And Victor,4017311,North Hoosick,NY,$3817.29,1,3,7,SMALL
+875735,Asheville artist  bungalow. 3 minutes to downtown,Bob,6493381,Studio City,CA,$804.09,3,3,7,MEDIUM
+881707,West A'ville sanctuary in the trees,Angela With Darin And Ella,7177199,Ordway,CO,$4591.21,1,4,8,SMALL
+910737,Comfy Home in W.AVL - Last minute booking 10% OFF,Angela With Darin And Ella,7177199,Wood River,NE,$191.85,2,3,4,LARGE
+942934,"""ZenShe"" Private Guest Quarters and Entrance",Angela With Darin And Ella,7177199,Buffalo,NY,$4897.69,4,4,6,MEDIUM
+943832,"Asheville Cottage, Walk To Town, 30 Days",Gayle,2875248,Shattuck,OK,$717.17,1,1,4,MEDIUM
+971003,Montford Home 1.5 mi to DownTown,Gayle,2875248,Punta Santiago,PR,$3416.24,3,1,6,LARGE
+976034,Urban Peace 5 ml from Downtown AVL,Gayle,2875248,Milton Mills,NH,$1702.93,2,2,4,LARGE
+977054,The Cottage In Asheville,Janae,6581326,Eastpoint,FL,$3512.43,1,5,6,SMALL
+990426,Vibe of Asheville,Janae,6581326,Nerinx,KY,$3883.32,2,2,5,MEDIUM
+1039028,The Cottage on Parkway Loop,Janae,6581326,Amelia Court House,VA,$3786.68,2,5,4,SMALL
+1066156,Blend City and Country at Lucky W Cottage,Janae,6581326,Summerville,SC,$143.41,1,3,6,LARGE
+1127777,"Modern Meets Zen, Rest & Restore - West Asheville",Becky,3070351,Denton,NC,$289.97,4,1,8,LARGE
+1198090,"Sunny, Walkable W.AVL - 5  min drive to downtown",Emily,4832446,Prescott,WI,$3644.98,3,2,7,MEDIUM
+1212352,Downtown Get Around #1,Emily,4832446,Telluride,CO,$804.61,2,3,8,LARGE
+1219374,"Kickback, Relax in a Private Suite with a Simple Breakfast",Linda,1724783,Jersey City,NJ,$1969.8,3,5,6,LARGE
+1223655,Handsome Chic Loft Downtown,Linda,1724783,Port Trevorton,PA,$1909.87,2,4,4,MEDIUM
+1223683,xo Loft,Erin,3805589,Whitley City,KY,$1116.2,1,4,7,LARGE
+1243512,Multiple Neighboring Downtown Lofts,Erin,3805589,Fredericksburg,VA,$2587.91,2,5,6,SMALL
+1297717,"Lovely, peaceful mountain retreat",Erin,3805589,Arecibo,PR,$3510.85,1,4,8,MEDIUM
+1312301,Mid Century Modern Basement Apt..,Mike,1850895,Florence,AL,$2108.5,3,5,6,SMALL
+1392363,Explorers Retreat Near Downtown Asheville,Mike,1850895,Ludlow,VT,$4217.26,3,1,7,SMALL
+1393012,HUGE SUITE (king bed) & huge bath-PRIVATE ACCESS,Mike,1850895,San Juan,PR,$2936.05,4,4,4,LARGE
+1421061,Garden studio between Asheville +  Biltmore Estate,Mike,1850895,Braintree,MA,$3885.95,4,4,4,SMALL
+1475299,Refocus Five - Pristine and close to everything,Mike,1850895,Elizabethport,NJ,$2977.25,1,1,6,LARGE
+1563004,Sunny Sublet in Intentional Community,Anne,1231664,Mifflinburg,PA,$794.66,4,5,8,MEDIUM
+1569954,Charming cottage bordered by stream,Anne,1231664,Deerfield,KS,$170.35,4,3,4,MEDIUM
+1571095,Perfectly Located Studio Apartment In Asheville,Anne,1231664,Seco,KY,$1984.34,2,2,6,MEDIUM
+1574329,#7 Rose Room - Oakland Cottage B&B,Anne,1231664,Crescent,OK,$3943.79,1,4,8,SMALL
+1577750,accepting guests Not going to bars/ breweries.,Anne,1231664,Beaver Dam,KY,$258.89,2,1,7,SMALL
+1578831,Downtown Get Around  # 2,Kathryn,6641350,Drury,MO,$1795.16,3,5,4,SMALL
+1586906,"Hidden treasure near Downtown, UNCA",Steve,1729374,Bertrand,MO,$2861.06,1,4,5,LARGE
+1684109,10 Minutes to Downtown  Epic Views!,Steve,1729374,Cedar Run,PA,$2904.86,3,1,6,LARGE
+1728187,"Welcoming walkable North Asheville, Pets OK",Erin,3805589,Dennysville,ME,$1779.9,3,2,6,MEDIUM
+1768955,Furnished Apartment Walk to Downtown 30 day min,Erin,3805589,Venice,FL,$4582.13,2,5,6,MEDIUM
+1785262,Bright Efficiency in West Asheville,Erin,3805589,Yauco,PR,$2251.46,1,1,8,SMALL
+1827412,Downtown Asheville Classic Style - Great Value!-#9,Erin,3805589,Ringoes,NJ,$1729.87,1,2,8,MEDIUM
+1843828,"HOME, INDOOR POOL, NEAR IT ALL",Megan,4654758,Edinburg,TX,$1545.08,4,1,4,SMALL
+1851921,"Guest suite - private entrance , hot tub, walkable",Megan,4654758,Mertztown,PA,$3543.32,3,5,7,MEDIUM
+1852818,5 Star Garden Cottage Retreat,Megan,4654758,Republic,MI,$271.17,1,3,4,LARGE
+1956037,"Updated Bungalow, Asheville -  2+ Bdrm",Megan,4654758,Oakville,IA,$4096.51,2,3,6,SMALL
+2072026,"2.5 mile 2 dntwn Suite: Sunny, Big, Clean, Pets OK",Celeste & Esiris,6677558,Memphis,TN,$3797.91,3,3,5,SMALL
+2108335,Bodacious Downtown Bungalow,Ellie,1196939,Blue Mountain,MS,$3146.83,1,1,5,SMALL
+2176375,Guest House & Private Patio,Ellie,1196939,Cleo Springs,OK,$3065.78,3,4,5,MEDIUM
+2209375,Location~Location 2/1 Bungalow walk to everything!,Ellie,1196939,Cascade,WI,$1296.06,3,3,8,SMALL
+2213748,LUX VILLA SUNSET SUITE ~ HOT-TUB ~ DWTN 2M ~ RURAL,Ellie,1196939,Kingsley,MI,$4855.24,1,2,8,SMALL
+2222067,Sassy Blue Room in Southslope,Ellie,1196939,Carolina,PR,$2707.05,2,2,4,SMALL
+2254521,The Mimosa Room/private entrance/private bath.,Patty And Jim,1891111,Louisville,KY,$2750.74,3,5,5,MEDIUM
+2283071,"Serene Cozy Getaway, Walk to West Avl.",Patty And Jim,1891111,East Mc Keesport,PA,$4805.76,2,1,8,LARGE
+2295996,Charming Downtown,Patty And Jim,1891111,Corinne,UT,$2468.57,1,1,7,LARGE
+2296152,Victorian Cottage Downtown Green Rm,Natalie,6243165,Bishopville,SC,$2160.14,4,5,8,MEDIUM
+2326086,Downtown Artist Loft,Natalie,6243165,Warrenton,MO,$2460.45,1,2,6,LARGE
+2411109,Victorian Cottage Downtown Blue Rm,Susan,2618005,Mottville,NY,$1100.63,3,5,5,LARGE
+2432326,Heaven Zen (guest house),Susan,2618005,Franklin,OH,$3890.05,2,3,6,MEDIUM
+2432333,Laurelwood,Susan,2618005,Ledbetter,TX,$1683.62,3,1,8,SMALL
+2454666,"The Hideaway, W. Asheville.  2 BR Apt w/ Hot Tub!",Susan,2618005,Whitehall,NY,$2727.48,3,4,8,SMALL
+2477628,River Arts Eco-Cottage - Close to Downtown/Mission,Susan,2618005,Germantown,NY,$4776.02,4,3,5,LARGE
+2569529,Downtown Asheville 2 bed/2bath unit for rent,Debbie,4132434,Terre Haute,IN,$4520.85,4,3,6,MEDIUM
+2607570,New Cozy Garage Apt/ Great Location,Debbie,4132434,Reston,VA,$4079.89,2,2,7,LARGE
+2761044,Angel 6 Miles To Down Town,Debbie,4132434,Edmond,WV,$3894.56,1,5,8,SMALL
+2925486,Private&charming 1-bdrm apt on golfcourse-hot tub,Debbie,4132434,Charlotte,IA,$4276.4,2,1,7,MEDIUM
+2943116,Beautiful W.Asheville Apartment 12 min to downtown,Bill,8610459,Marengo,IA,$2326.63,2,1,8,LARGE
+2949571,Happy Haven ART Studio 2 Bdrms No Cleaning Fee :),Bill,8610459,Terre Haute,IN,$905.19,4,1,5,LARGE
+3040444,Private Suite. 10 min walk to Town,Bill,8610459,Poland,IN,$1804.03,2,2,7,LARGE
+3066648,Cozy Downtown Cottage - Close to Mission Hospital,Jay,1231244,Saint Elmo,IL,$358.34,3,4,5,LARGE
+3084395,Modern Tree Top Bungalow  - Longer Term Welcome,Tara,3265305,Kylertown,PA,$4194.5,2,3,4,LARGE
+3095136,Spivey Mountain Cabin w/Hot Tub!!,Tara,3265305,Boyne City,MI,$4754.91,3,5,6,MEDIUM
+3116699,Asheville Modern Round House,Tara,3265305,Phoenix,AZ,$1500.46,3,5,8,MEDIUM
+3220474,Guest Room: Mountainside Private Room & Pvt. Bath,Jana,6390557,Boone,NC,$3715.4,2,1,4,SMALL
+3225871,Little forest 5 mins from airport,Jana,6390557,Yarmouth,ME,$2743.47,4,2,4,SMALL
+3244166,"Princess Anne, Free Breakfast & Happy Hour",Jana,6390557,Fort George G Meade,MD,$989.11,4,3,5,SMALL
+3268055,Cedar Springs Farm Apartment,Jana,6390557,Virginia City,NV,$3568.11,3,3,4,LARGE
+3314819,Basement: Mountainside Private Room & Private Bath,Jana,6390557,Green,KS,$2811.58,1,5,8,LARGE
+3369973,Nana's Place is minutes from everything!,Narendra,1168173,Chariton,IA,$101.93,1,3,6,MEDIUM
+3405282,The Cabin In Grove Park,Narendra,1168173,Glen Haven,CO,$1358.79,1,3,5,LARGE
+3454237,Asheville Mtn. Retreat,Narendra,1168173,Dorado,PR,$685.71,1,2,6,SMALL
+3522134,West Asheville 3 BR/2BA with great outdoor space,Terra,5977598,Jonesville,LA,$3510.31,2,2,5,LARGE
+3529241,"Walk to Downtown, Mid-Century Modern",Terra,5977598,Wasola,MO,$86.52,4,1,7,MEDIUM
+3563156,"Sweet Room and Porch ,Own Entrance And Bath",Terra,5977598,Oakman,AL,$460.53,2,5,5,SMALL
+3569949,"Dog Friendly, 5 Minutes to Downtown, Walk to Yoga",Terra,5977598,Guaynabo,PR,$2732.36,3,3,8,SMALL
+3590634,Cozy Cabin by Mountain Stream,Jennifer,1501765,Irondale,MO,$788.64,4,4,6,SMALL
+3649639,Cheerful Home In Historic Downtown Asheville,Jill,7044305,Hermann,MO,$1628.77,4,5,4,MEDIUM
+3654375,Sassy Purple Cottage!,Jill,7044305,Cayey,PR,$3817.82,4,3,6,SMALL
+3741771,Urban Oasis- walk to Haywood road,Jill,7044305,Arecibo,PR,$3106.43,4,3,6,MEDIUM
+3812545,"Peaceful, Spacious Mountain Retreat",Jill,7044305,Goldthwaite,TX,$3493.3,3,1,7,SMALL
+3868452,Peaceful Log Home with Long Range Views,Nicholas,5543828,Mayslick,KY,$4179.24,1,1,4,LARGE
+3868910,The Henhouse,Nicholas,5543828,Aibonito,PR,$870.29,4,2,7,LARGE
+3888845,THE MASTER ~ 50 SHADES OF 5* ~ POOL ~ HOT-TUB,Nicholas,5543828,Tularosa,NM,$4600.7,3,5,7,SMALL
+3889212,Garage apartment close to downtown,Suzanne,1633872,Elcho,WI,$3002.33,3,1,6,MEDIUM
+3945733,"Romantic Vintage Studio‚Äî Clean, Near Downtown!",Suzanne,1633872,Landisburg,PA,$3054.12,2,1,7,LARGE
+3968877,Fabulous Studio 7 min to downtown!,Suzanne,1633872,Coral Springs,FL,$1831.95,1,1,6,MEDIUM
+3990524,Private suite in W. Asheville - 30 day minimum,Suzanne,1633872,Waucoma,IA,$1955.88,2,3,7,MEDIUM
+4045013,Bittersweet Cottage - It's All About The View!,Suzanne,1633872,Pomona,MO,$1475.19,4,4,5,SMALL
+4108784,Everything Zen Asheville,Benjamin,3704539,Lewistown,PA,$2396.83,1,5,6,SMALL
+4124504,Forest Hill Bungalow,Jacqueline,1509594,Bristol,PA,$2836.22,4,2,6,MEDIUM
+4129119,Bungalow and BBQ,Jacqueline,1509594,New Harmony,UT,$2784.29,4,2,7,LARGE
+4173713,The Suite at Bittersweet,Amanda,4852112,Oakville,IN,$4365.95,2,1,5,MEDIUM
+4241484,Charming Cozy Home near Biltmore and Parkway,Amanda,4852112,San Antonio,TX,$2857.92,1,5,6,SMALL
+4285157,Nana's Nest,Amanda,4852112,Orient,ME,$2592.61,2,5,6,SMALL
+4304358,Nana's nest 3,Amanda,4852112,San German,PR,$4512.23,2,2,8,MEDIUM
+4362574,"Asheville, Private Suite 750 Sq/Ft",Amanda,4852112,Davisboro,GA,$2061.65,3,3,5,MEDIUM
+4375081,Funky Log Cabin close in,Elizabeth,4997955,Louann,AR,$4739.63,1,5,7,SMALL
+4394670,Sweet Suite,Elizabeth,4997955,Saint Bernard,LA,$2230.77,1,1,5,LARGE
+4394761,"Bohemian Retreat: Clean, Deck, Near Downtown!",Elizabeth,4997955,Centralia,IL,$2329.71,2,3,8,SMALL
+4429169,Cozy Bedroom/Bath Near Downtown!,Elizabeth,4997955,Hamburg,AR,$2374.56,1,2,8,SMALL
+4448604,"LG Private Rm, Mini Kitchen and Bathroom!",Kirk,5390962,Daggett,MI,$2466.34,2,5,4,MEDIUM
+4515772,Views of Downtown and Mountains,Kirk,5390962,Brighton,MA,$616.71,1,1,6,SMALL
+4583056,2BR; Walk Downtown! 30 day minimum,Kirk,5390962,Birmingham,AL,$2232.79,3,2,8,LARGE
+4587394,Urbane Retreat Cabin In town Asheville 90 DAYS,Kirk,5390962,Pulaski,NY,$3413.98,3,4,8,MEDIUM
+4764715,West Asheville Green and Clean Getaway,Kirk,5390962,Buckhorn,NM,$919.36,2,1,8,SMALL
+4811980,Asheville Mountain Home ON RIVER! Rooms for Rent.,Elizabeth,4997955,Millerstown,PA,$675.33,2,1,6,LARGE
+4846733,"Chalet at Winghaven, Sunny Log Home",Elizabeth,4997955,Leland,NC,$2947.23,3,4,5,LARGE
+4875054,River Arts Studio,Elizabeth,4997955,Savoy,IL,$2116.79,3,5,6,LARGE
+4895765,Beautiful Kenilworth Jewel,Elizabeth,4997955,Cordova,MD,$2299.21,3,5,8,LARGE
+4994407,Amazing Asheville Location VIEWS!,Scott & Catherine,6169663,Richmond,VA,$3971.55,1,3,4,MEDIUM
+5144212,Heart of downtown studio apt- No Cleaning Fees,Haywood,2087212,Bayamon,PR,$2086.45,1,5,5,MEDIUM
+5151226,Convenient to Everything! Private,Haywood,2087212,Fairplay,MD,$2798.94,3,5,7,LARGE
+5213038,Strawbridge House,Haywood,2087212,Port Isabel,TX,$2847.58,4,3,8,MEDIUM
+5333015,"Griffin's Lair  Biltmore Village, NC 28803",BonPaul,6782169,Oswego,NY,$3095.27,2,4,7,LARGE
+5336187,Parklike Setting,BonPaul,6782169,Clifton,NJ,$4869.15,2,4,5,MEDIUM
+5405078,Log Cabin Apartment Close To Asheville,BonPaul,6782169,Saint Helen,MI,$775.13,2,1,5,SMALL
+5464591,Artsy/Zen Bungalow in W. Asheville!,BonPaul,6782169,Woodworth,LA,$2587.81,2,2,4,MEDIUM
+5481195,"Asheville's Famous ""Pink House""",BonPaul,6782169,Rockport,IN,$2307.27,1,3,8,SMALL
+5506704,Large West Asheville Studio,Emily,4832446,Beaver Dam,KY,$937.6,3,3,6,SMALL
+5696919,Hidden getaway close to downtown!,Emily,4832446,Lucan,MN,$1708.74,2,2,8,LARGE
+5716399,The AshVilla- Prime West Asheville location,Emily,4832446,Effingham,IL,$2608.18,2,2,5,LARGE
+5839119,Sleeps 10! - Historic Montford -  Walk to town!,Emily,4832446,Monkton,VT,$669.54,3,3,7,MEDIUM
+5850649,Explore the Woods from a Quiet Apartment near Sierra Nevada,Sharon,4121427,Perkins,MO,$4294.72,2,4,8,MEDIUM
+5851392,Charming Historic Montford Bungalow ~Walk Downtown,Sharon,4121427,Santa Fe Springs,CA,$4543.85,3,5,5,MEDIUM
+5868695,Buried in Woods- Full of Art/ Style,Sharon,4121427,Cockeysville,MD,$1989.94,1,1,7,MEDIUM
+5947797,Private Entrance/10 Min to DT,Sharon,4121427,La Barge,WY,$3577.08,4,3,8,MEDIUM
+6005112,Solar House in South Asheville,Emily,4832446,Evergreen,AL,$1142.52,2,4,7,SMALL
+6054250,The Rad Pad‚ÄîQuiet Modern Nest 2 Blocks off Haywood Road,Jakub & Maria,1402093,Fort Worth,TX,$2942.25,4,1,4,LARGE
+6056098,Mountain Beauty/City Convenience,Jakub & Maria,1402093,Corozal,PR,$3348.98,3,1,8,MEDIUM
+6079982,Graceful Heart Cottage,Jakub & Maria,1402093,Hermitage,AR,$4905.32,2,5,7,MEDIUM
+6145162,"Downtown Asheville, Small Single - Best Value! -#7",Jakub & Maria,1402093,Wilmington,DE,$1267.13,1,4,4,MEDIUM
+6170347,"Charm n Comfort: 1 mi to Biltmore Estate, 4 to DT!",Kathryn,6641350,De Kalb Junction,NY,$1566.24,3,2,8,MEDIUM
+6180513,"Sunny, Modern Apartment in Vibrant Downtown Asheville",Kathryn,6641350,Lone Oak,TX,$3124.77,3,4,4,LARGE
+6197585,Sunny West Asheville Studio Apt.,Darcy,7104123,Daufuskie Island,SC,$4978.33,2,4,4,SMALL
+6227094,Groove Stone Getaway,Darcy,7104123,Tunnel City,WI,$3056.21,2,5,4,MEDIUM
+6234618,"West Side Loft- Cozy, Clean & Comfortable",Darcy,7104123,Verona,MS,$530.44,2,1,6,LARGE
+6290666,Mountain View Charming Space Five Mins to Downtown,Darcy,7104123,West End,NC,$1087.29,2,1,4,SMALL
+6335114,Charming 1929 home w/ modern touch,Kirstin,4673933,Harvey,ND,$4510.33,4,1,8,LARGE
+6362850,Your Chic Mountain Getaway in the Forest!,Kingsley,5638520,Hummelstown,PA,$2575.96,2,2,7,SMALL
+6363332,"Welcome to ""Cozy Oak Cottage""",Bill,4890667,Windsor,CO,$696.45,4,1,4,MEDIUM
+6399802,Downtown Asheville With a View - Great Value! -#11,Bill,4890667,Rio Grande,PR,$785.14,3,3,6,LARGE
+6452410,Stay in historic downtown suburb,Bill,4890667,North Miami Beach,FL,$4254.83,4,1,8,LARGE
+6503015,Unwind at the Sweet Spot Three Blocks from Town,Bill,4890667,Normandy Beach,NJ,$4112.51,1,5,8,SMALL
+6609327,The Barn At Mountain Meadows,Bill,4890667,Emporia,KS,$4183.8,1,3,6,MEDIUM
+6686924,‚ù§Ô∏è Work-from-Home   2 BEDROOMS 2 FULL BATHROOMS,Jean,4492617,North Conway,NH,$2470.29,1,5,5,MEDIUM
+6698737,"Serene, spacious, cozy and clean!",Jean,4492617,Mayaguez,PR,$4803.08,3,5,8,MEDIUM
+6711659,Hip Downtown Hideaway - Close to Mission Hospital,Jean,4492617,North Easton,MA,$820.01,3,3,5,SMALL
+6715120,Comfy home 10 min to downtown.,Jean,4492617,Cape May,NJ,$3725.1,2,5,7,SMALL
+6724476,"Convenient to Downtown Asheville, BRP & Biltmore!",Rob,2998401,North Tazewell,VA,$3283.95,2,3,7,SMALL
+6760016,"Bright, urban chic apt min from Avl",Brody & Meggan,5318769,Hawk Springs,WY,$3563.2,1,3,5,LARGE
+6765734,"Female Dorm ""Top Bunk #2"" at Sharky's Hostel",Brody & Meggan,5318769,Princeton,ME,$3270.9,1,3,6,LARGE
+6765832,"Private Room ""Hitchcock"" BPS Hostel",Brody & Meggan,5318769,Louisville,KY,$3841.95,4,5,6,MEDIUM
+6775949,Cozy Cottage short walk to Downtown,Brody & Meggan,5318769,Mc Donough,NY,$4037.48,1,5,5,SMALL
+6813265,cozy bedroom in the heart of west asheville,Brody & Meggan,5318769,Winlock,WA,$1701.45,3,3,6,MEDIUM
+6818139,Downtown Asheville Music Lovers- Great Value! -#8,Richie,2447741,Coulterville,IL,$3107.41,3,1,8,SMALL
+6829875,"Sweet, private, detached guest studio",Richie,2447741,Los Angeles,CA,$2696.2,4,4,7,LARGE
+6869894,Beauty & Peace in Asheville,Richie,2447741,Liberty,IN,$2208.46,4,5,7,LARGE
+7001873,Wren's Nest Studio on the West Side,Richie,2447741,La Vernia,TX,$4486.19,3,4,4,MEDIUM
+7045303,Private Basement Suite in Walkable West Asheville,Lee,1987569,Hineston,LA,$2893.45,2,3,5,LARGE
+7063293,Mountaintop Log Cabin w/Pano View,Marta,2192922,Rye Beach,NH,$2086.21,4,3,7,MEDIUM
+7064317,Thistledo - Cozy 1 Bedr. Private Apt,Marta,2192922,Ferndale,WA,$4918.11,3,4,8,LARGE
+7340132,Yurt Nest at Green Oaks Community,Marta,2192922,Lumberport,WV,$4163.12,4,5,8,SMALL
+7341057,Two Bedroom Suite in South Asheville,Marta,2192922,Hillsboro,WI,$1110.93,2,1,8,SMALL
+7418991,"""Studio C""  in Downtown! Private parking.",Matthew,7051999,Indianapolis,IN,$2955.85,1,5,8,SMALL
+7500225,Clean Cozy Cabin Near Blue Ridge Parkway Asheville,Matthew,7051999,Philip,SD,$227.11,1,4,5,SMALL
+7546626,Home away from home 5miles from downtown,Aimee,4246520,Mount Hope,WV,$2602.5,2,1,8,SMALL
+7556089,Private Suite in Contemporary West Asheville Home,Aimee,4246520,Kaneohe,HI,$1670.09,4,3,4,SMALL
+7630648,Sunny Modern Country Apartment with Hot Tub,Aimee,4246520,Roscoe,NY,$75.35,2,1,8,SMALL
+7662484,Vintage Carriage House Apartment,Athena,6015648,Keaau,HI,$423.84,2,2,7,SMALL
+7665386,Location! On West Asheville Strip. Walk everywhere,Athena,6015648,Castle Dale,UT,$1685.84,4,2,6,LARGE
+7674957,"West Asheville, private hot tub and pool!",Athena,6015648,Boissevain,VA,$4677.56,3,5,7,MEDIUM
+7693393,Asheville Beauty,Amy,4668967,Barkhamsted,CT,$185.57,1,4,5,MEDIUM
+7745341,CARRIAGE HOUSE COTTAGE INDUSTRY ~ RURAL ~ 2M DWT,Amy,4668967,Fieldale,VA,$4742.65,4,1,4,SMALL
+7839268,Come vacation in West Asheville!,Amy,4668967,Pascagoula,MS,$4350.14,1,1,4,LARGE
+7859259,Studio at Green Oaks Community,Amy,4668967,Stuart,OK,$3574.09,4,3,6,MEDIUM
+7887572,Charming Bungalow Apartment - Biltmore Area,Amy,4668967,Myrtlewood,AL,$4951.24,1,4,6,SMALL
+7938930,SweetPineHouse monthly rental fully outfitted!,Tom,1552204,Wilmington,CA,$1836.83,4,3,7,LARGE
+7940019,Walk to Mission Hosp 30 day minimum rental  2 bdrm,Elizabeth,4997955,Amberg,WI,$692.7,1,3,8,SMALL
+7947839,Romantic & Bohemian Private Studio,Elizabeth,4997955,Islandia,NY,$3217.63,2,3,4,LARGE
+7966916,West Asheville top floor sleeps 3,Elizabeth,4997955,Brownsville,MN,$1949.24,4,5,5,SMALL
+7967886,Clean Simple Modern Furnished Apartment 60 day min,Lori,1956323,Talbott,TN,$463.8,4,1,8,SMALL
+7995120,Trails End Pisgah Natl Forest 12 min DT Asheville,Lori,1956323,Wenden,AZ,$531.21,4,2,8,MEDIUM
+8051829,mid century look w private entrance | no xtra fees,Lori,1956323,Morris,AL,$2777.56,2,1,8,MEDIUM
+8085716,Country Living in the City Limits,Nicole,2513554,Miles City,MT,$1448.47,4,1,5,MEDIUM
+8089299,Simple Clean and restful,Nicole,2513554,Hazel Green,KY,$3691.34,4,2,5,SMALL
+8173732,DOWNTOWN Asheville Cute 2/1 Great Front Porch Yard,Nicholas,5543828,Pittsburgh,PA,$1185.29,1,2,7,LARGE
+8193368,Cozy AVL Suite Near Everything,Nicholas,5543828,Bridgewater Corners,VT,$3092.05,1,1,7,LARGE
+8211404,Suzies  Asheville HOT TUB   Views Privacy,Nicholas,5543828,Huntsville,AL,$2100.31,4,4,7,SMALL
+8246075,1925 Bungalow in the Heart of West,Nicholas,5543828,Chaffee,MO,$4964.62,4,2,4,MEDIUM
+8265544,5 Star Luxury Near Downtown & Biltmore,Nicholas,5543828,Seguin,TX,$1419.03,2,2,8,MEDIUM
+8266788,5 Mins to Downtown/ 2 MIns-Biltmore,Ted,3106781,Union Point,GA,$2356.66,2,2,4,SMALL
+8310318,Studio apartment in tranquil settin,Ted,3106781,Farmland,IN,$3919.36,1,2,7,MEDIUM
+8362668,"Private floor, stroll to W. AVL",Ted,3106781,Signal Hill,CA,$738.36,1,5,8,LARGE
+8427121,Beautifully appointed apt in mtns,Ted,3106781,Jackson,WY,$4055.33,2,3,6,MEDIUM
+8443279,WALKING DISTANCE TO DOWNTOWN!,Ted,3106781,Ludowici,GA,$2601.67,3,5,7,SMALL
+8576671,Three-Room Suite with Private Entrance,Christal,3927823,Montgomery,LA,$4133.63,3,3,5,SMALL
+8624659,Modern Downtown Loft,Christal,3927823,Marengo,OH,$3541.21,3,3,6,MEDIUM
+8664712,Two Block Walk from Apt to Downtown,Christal,3927823,Winston Salem,NC,$4804.42,1,1,7,LARGE
+8672247,East-West Asheville Beauty,Christal,3927823,Smithfield,UT,$1232.63,2,3,5,SMALL
+8721288,"Entire apt. 2 miles: Biltmore, 5 miles: downtown !",Lou,5707989,South New Berlin,NY,$4730.32,4,4,7,LARGE
+8741844,"Lake view, Children-Friendly Cabins",Lou,5707989,Chester Depot,VT,$1251.5,3,2,5,SMALL
+8782463,Apartment 1 mile from  Downtown Asheville,Lou,5707989,Richmond,ME,$2253.84,1,1,5,LARGE
+9022608,Easy Walk Downtown - Sleeps 5,Lou,5707989,Harrisburg,SD,$880.85,4,5,7,LARGE
+9243493,Log Cabin Near Downtown Asheville,Lou,5707989,Fairbanks,IN,$717.24,3,4,7,SMALL
+9254177,WALK TO DOWNTOWN ASHEVILLE: Garden Homestay Room,Scott & Catherine,6169663,Cincinnati,OH,$359.51,2,3,6,SMALL
+9282426,Downtown  Get Around #3,Scott & Catherine,6169663,Kalskag,AK,$1072.55,2,5,4,MEDIUM
+9344195,"Private Entrance, Top O' The Knob Chalet Suite",Scott & Catherine,6169663,Morrison,OK,$4291.37,2,5,7,LARGE
+9476164,"Walk to cafes, pubs, music",Scott & Catherine,6169663,Sweet Water,AL,$625.34,3,4,8,LARGE
+9661460,Scenic Mountain Retreat,Scott & Catherine,6169663,Iberia,MO,$3239.25,3,2,8,SMALL
+9716129,Asheville One Bedroom Apartment,Brennen & Sheila,3144916,Northfield Falls,VT,$3996.72,4,3,6,MEDIUM
+9794899,Downtown Asheville-Great Location & Free Parking!!,Brennen & Sheila,3144916,Thiells,NY,$347.44,2,4,7,SMALL
+9906491,"Sheriff's Station - Historic House, West Asheville",Brennen & Sheila,3144916,Shamokin,PA,$1060.27,4,3,4,LARGE
+9944111,Serenity Yurt,Brennen & Sheila,3144916,Baldwinsville,NY,$1269.62,2,2,6,LARGE
+10084836,Downtown Asheville Cottage,Brennen & Sheila,3144916,Cayuga,IN,$4936.34,1,4,7,MEDIUM
+10085566,Cozy private furnished basement eff mins to town.,Guy,5126047,Central Point,OR,$2095.56,1,4,5,LARGE
+10089256,"Mountain Views, Private Retreat, 15 min frm dwntwn",Guy,5126047,Drumore,PA,$4113.46,4,5,6,LARGE
+10263107,Corner Cottage,Guy,5126047,Callao,VA,$1627.18,4,5,8,SMALL
+10289755,Apartment with a View,Josie,2805621,North Adams,MA,$1348.39,1,5,6,LARGE
+10335139,"Asheville Cottages...Romantic, Luxurious and CLEAN",Josie,2805621,Columbia,SC,$2610.4,1,4,4,LARGE
+10360188,Perfectly cozy location 1/2 mile to downtown.,Josie,2805621,Greenville,IL,$1774.14,4,2,8,LARGE
+10524188,Luxury Modern Loft in Historic Central Downtown Building,Arni,4479573,Maiden,NC,$2754.8,2,4,4,LARGE
+10524253,Blue  Ridge Cottage w/HOT TUB-Minutes to Downtown,Hun,3191272,Pueblo,CO,$1160.88,4,4,8,LARGE
+10583310,Mountain Views Minutes From Brews,Hun,3191272,Beloit,KS,$4234.18,2,1,5,LARGE
+10632884,Private Suite by downtown/Biltmore/River Arts/more,Hun,3191272,Toast,NC,$3641.58,3,2,8,MEDIUM
+10635789,lovely peaceful room w coffee- central AVL east,Jennifer,1501765,Sanford,NC,$2107.55,4,4,8,SMALL
+10674355,Creekside Home Close to Everything,Jennifer,1501765,Lakebay,WA,$4922.65,2,2,7,LARGE
+10785231,Secluded but convenient cabin,Jennifer,1501765,Minnesota City,MN,$985.51,4,1,7,MEDIUM
+10853381,A Cottage At Willow Pond,Jennifer,1501765,Freedom,CA,$1539.3,1,4,4,SMALL
+10909034,New house! Walk Dtown & River Arts,Jennifer,1501765,Watson,AR,$3397.86,4,3,8,SMALL
+11182596,Ladyhawk Lodge Retreat,Morris,2588297,Isle Of Springs,ME,$2822.66,1,5,6,SMALL
+11242744,"Country feel, city appeal, minutes to Asheville",Morris,2588297,Mc Grath,MN,$2149.2,2,3,8,SMALL
+11259371,Artsy Eclectic Little House,Morris,2588297,San Juan,PR,$1287.41,2,4,5,SMALL
+11283225,Airstream On The River,Will And Marian,1302291,Lake In The Hills,IL,$1064.77,3,5,8,SMALL
+11291801,"Private, secluded cabin-wood/fireplace/hot tub.",Will And Marian,1302291,Cazenovia,NY,$4494.0,4,2,4,LARGE
+11388248,Mountain Top Retro Rental,Will And Marian,1302291,Williamston,SC,$4735.83,2,5,6,SMALL
+11421709,Hazel's Hideaway - Walk Downtown,Amber,6944043,Exeter,NH,$2554.14,1,5,5,SMALL
+11483381,Asheville Mountainside Retreat,Amber,6944043,Cleveland,OH,$2703.35,2,4,5,MEDIUM
+11489172,Our lil' blue house - relax and enjoy AVL,Amber,6944043,Guanica,PR,$3006.36,2,3,4,SMALL
+11510567,Convenient Biltmore/Downtown home,Jonathan,2094857,Thornton,CO,$4010.87,1,2,5,MEDIUM
+11586894,"Best Of Both Worlds, 3,000 ft Mountain Views & 3 miles from Downtown Asheville",Jonathan,2094857,Homer City,PA,$4054.09,2,3,6,LARGE
+11609580,"Spacious, Chic Grove Park Studio - 5 Min Dwntwn",Jonathan,2094857,Winner,SD,$3634.36,1,2,8,SMALL
+11701027,Spacious 700 sq. ft. Suite in South Asheville,Jonathan,2094857,Islandia,NY,$3543.4,4,1,7,SMALL
+11773647,The Hidden Attic-Great for Corporate or Relocation,Gael,6856869,Strawberry Point,IA,$3918.26,4,4,4,MEDIUM
+11811039,N. Asheville Retreat with King Bed and Views,Gael,6856869,Lynn,IN,$4013.31,4,3,4,MEDIUM
+11839089,West Asheville Home,Becky,3070351,Mercedita,PR,$470.15,3,5,5,MEDIUM
+11925721,Chicken Hill Cottage in the River Arts District,Becky,3070351,Walterville,OR,$3356.73,4,5,4,MEDIUM
+11938223,Cabin by the pond,Becky,3070351,Rice,MN,$4347.91,1,1,5,LARGE
+11947108,"Private suite close to Biltmore, Brews & Downtown",Becky,3070351,Leawood,KS,$2097.28,2,2,5,LARGE
+12105828,Historic Grove Park rental - Apt #2,Marc & Fay,6819521,Marion,ND,$3822.2,3,3,8,MEDIUM
+12107874,Sunny Downstairs Apartment,Marc & Fay,6819521,Lakeshore,CA,$3775.04,1,3,8,SMALL
+12144656,Cottage McIntyre Near Downtown! Weddings!,Marc & Fay,6819521,Ottawa,IL,$2040.82,2,1,5,SMALL
+12182918,MONTHLY - Grove Park - Charming Guest House,Mike,1850895,Tomball,TX,$3550.2,4,4,4,SMALL
+12186372,Beer City Boutique,Lisa,4298613,North Buena Vista,IA,$2967.92,4,1,7,MEDIUM
+12188215,Retreat outside gates of Biltmore Estate unit two,Lisa,4298613,Oak Harbor,WA,$318.72,1,5,8,LARGE
+12189623,Historic Grove Park  - Apartment #1,Lori,1956323,Ranburne,AL,$1373.44,4,1,8,MEDIUM
+12222050,Mountaintop Retreat near Downtown Asheville,Lori,1956323,Springfield,WV,$4906.3,4,4,7,SMALL
+12229453,Retreat in Downtown Asheville,Amber,6944043,Keswick,VA,$611.31,4,4,7,SMALL
+12250733,West AVL Urban Retreat (Monthly),Amber,6944043,Redlands,CA,$1293.91,3,3,4,SMALL
+12251952,NEW: Private Room is like a treehouse in the woods,Jill,7044305,Edinburgh,IN,$1515.65,2,4,8,MEDIUM
+12266103,City Lights,Jill,7044305,Sweeny,TX,$3127.52,1,3,7,SMALL
+12281167,Be Well: Walk to Downtown AVL,Jill,7044305,Saint Paul,MN,$3363.46,3,4,8,LARGE
+12286328,Mixed Dorm Lower Bunk #1,Katy,6872550,Novato,CA,$1828.29,1,1,4,SMALL
+12290379,ZEN APARTMENT - feels like ur own little apartment,Katy,6872550,Barnhill,IL,$4754.49,3,2,6,SMALL
+12310425,Haywood House Asheville (West Asheville),Lynn,1250632,NAU,AZ,$3449.88,3,1,5,MEDIUM
+12363894,The best view in Asheville!,Lynn,1250632,Lebam,WA,$4783.78,3,3,8,LARGE
+12377575,Mountain Cabin Near Downtown,Lynn,1250632,RVC,NY,$2082.39,2,4,7,SMALL
+12400514,Beautiful Modern Suite with Hot Tub,Lynn,1250632,Coal Township,PA,$2384.09,3,2,5,SMALL
+12470763,RainbowUnicorn & Paris of the South,Lynn,1250632,Big Rapids,MI,$3589.6,2,5,4,LARGE
+12472966,The Guesthouse at Deer Crossing,Angela With Darin And Ella,7177199,Bradford,IL,$3206.83,1,5,4,SMALL
+12543684,"10 minutes to Downtown & Biltmore, Next to Parkway",Angela With Darin And Ella,7177199,West Oneonta,NY,$4376.41,1,2,7,LARGE
+12587092,"""Tree house"" in South Asheville",The Lion And The Rose,5608811,Jackson,AL,$905.34,3,2,8,LARGE
+12599311,"Lovely, welcoming, walkable",The Lion And The Rose,5608811,Decorah,IA,$1523.69,1,4,8,LARGE
+12600829,Sweet suite for families & friends,The Lion And The Rose,5608811,Custer,MI,$2599.7,1,4,4,SMALL
+12600850,Bunks for family and friends,The Lion And The Rose,5608811,Walnut Ridge,AR,$649.4,2,3,7,LARGE
+12685614,Historic Grove Park - Apartment #4,The Lion And The Rose,5608811,Ukiah,OR,$2086.73,2,5,6,LARGE
+12761982,Urban Farmhouse,Tia,4764055,Keene,NH,$2324.75,3,5,4,LARGE
+12763722,Mountain View Cottage with Hot Tub,Sage,6612751,Haddon Heights,NJ,$1372.44,4,2,8,MEDIUM
+12782770,"Convenient to Breweries, Biltmore, Downtown, River",Sage,6612751,Jber,AK,$1312.24,2,5,7,SMALL
+12809255,Cheryl's W. Asheville Chalet,Sage,6612751,Brooklyn,IA,$1319.64,2,5,7,LARGE
+12810440,Modern in Downtown Walkable West Asheville,Micah,3266271,Cedarbluff,MS,$96.37,4,2,7,MEDIUM
+12835184,NEW studio apartment in Downtown Asheville!,Matt,3583497,Saint George,SC,$2453.98,1,2,7,MEDIUM
+12848084,Mountain Views at S. Asheville Private Apartment!,Matt,3583497,Houston,AL,$4313.61,3,4,5,MEDIUM
+12871394,Retreat outside gates of Biltmore Estate unit one,Matt,3583497,Peoria,IL,$932.2,3,1,8,MEDIUM
+12925044,Charming Arts & Crafts Home-20 min downtown AVL,Matt,3583497,Hanston,KS,$4611.53,4,3,6,LARGE
+12944995,Country Garden Getaway with Hot Tub,Matt,3583497,Cherry Hill,NJ,$4863.77,3,5,6,MEDIUM
+12965736,Mountain Views over the River with Hot Tub,Jacob,5051867,Coarsegold,CA,$4989.76,4,5,7,MEDIUM
+12970301,Clean & Spacious Apartment w/Full Kitchen & W/D,Jacob,5051867,Griggsville,IL,$3707.84,1,5,4,LARGE
+12989718,Female Dorm Bottom Bunk at BPS Hostel,Jacob,5051867,Cockeysville,MD,$3446.02,4,2,6,LARGE
+13017092,Raven's Nest Cottage,Jacob,5051867,Webster,MA,$831.37,2,3,8,LARGE
+13093505,"Heart of Downtown - Bright,Spacious,Historic",Jacob,5051867,Bellevue,KY,$1581.8,1,1,6,LARGE
+13112074,Sam's Cottage,Natalie,6243165,Neon,KY,$105.38,3,2,4,MEDIUM
+13136198,Urban Farm Studio ~ Close to Everything!,Kirk,5390962,Max Meadows,VA,$336.71,3,2,4,SMALL
+13186091,"Bluebird Sanctuary. Mt view, walk downtown, W Ashe",Kirk,5390962,West Mansfield,OH,$465.68,4,1,5,LARGE
+13206560,Downtown Loft with Balcony,Kirk,5390962,Dutch Harbor,AK,$4968.63,1,5,7,LARGE
+13209712,The Red Private Suite + Den and Bathroom Montford,Kirk,5390962,Hamilton,IN,$3070.94,2,4,6,LARGE
+13216889,"Beautiful Quiet Home,  Close to Parkway or Town",Kirk,5390962,Hancock,NY,$4249.77,1,4,6,SMALL
+13231021,"Easy Access to Downtown & Hiking, Sparkling Clean!",Annelise,1333060,Wyaconda,MO,$1392.21,2,4,8,SMALL
+13234214,Mama Dee's Hide Away,Annelise,1333060,Jackhorn,KY,$2440.52,2,5,5,LARGE
+13251709,The Sage Private Suite+Den and Bathroom Montford,Annelise,1333060,Saint Paul,AR,$138.53,4,2,5,MEDIUM
+13258472,STEAMPUNK SUITE@UTOPIA ~ POOL ~ HOT-TUB ~ DWTN 2M,Micah,3266271,Uniontown,AL,$995.95,3,4,8,MEDIUM
+13274313,"Montford Apt w/Deck, Quiet, Private, Walk Downtown",Micah,3266271,Stanchfield,MN,$4026.26,3,3,7,MEDIUM
+13312601,Simple but Sweet Cottage House,Raymond,5829851,Maryland,NY,$1523.72,2,2,4,SMALL
+13326253,Modern  Loft  in the center of West Asheville,Raymond,5829851,East Freetown,MA,$4813.06,1,4,6,MEDIUM
+13333422,Mountain Views in the heart of West Asheville,Raymond,5829851,Nahunta,GA,$4607.15,1,3,4,SMALL
+13340576,"Spacious, Garden Suite w/ Private Porch",Kaye,6421488,Eidson,TN,$4885.03,4,4,4,LARGE
+13348419,Charming Asheville Cottage at Beaver Lake,Kaye,6421488,York,PA,$893.94,4,4,5,LARGE
+13355384,"Large 2 bed loft in W. Avl, bring the whole family",Kaye,6421488,Vanndale,AR,$4239.83,4,3,4,MEDIUM
+13373427,"Studio in the Trees - Quiet, Forest View",Kaye,6421488,Bureau,IL,$2116.32,1,5,5,MEDIUM
+13388627,Explore Asheville at a Bright Pad with Pops of Rich Red,Kaye,6421488,Listie,PA,$1829.04,4,4,7,LARGE
+13426466,Asheville Studio w/ Sleeping Loft - Walk Downtown!,Lynn,3446557,Westville,NJ,$4657.79,3,1,6,LARGE
+13429035,Asheville Cottage With All the Comforts of Home,Lynn,3446557,Erie,PA,$2488.6,1,4,7,MEDIUM
+13514183,Radiant Apartment in Downtown Asheville,Lynn,3446557,Fleetwood,PA,$1858.66,4,5,5,LARGE
+13524286,Explore the Arts District from a Century Building Apartment,Lynn,3446557,New Albany,MS,$1784.33,1,1,6,SMALL
+13556933,Sunporch Suite w/ private entrance,Lynn,3446557,Fulda,MN,$4628.37,3,4,7,MEDIUM
+13582513,On famous West Asheville corridor. Walk everywhere,Jonathan,4421969,CSI,ID,$4143.16,2,1,7,MEDIUM
+13648659,LUX STEEL SUITE@UTOPIA ~ POOL ~ HOT-TUB ~ 2M DTN,Luba,6524924,Groton,NY,$2176.51,3,4,6,LARGE
+13674901,Lovely Space//Private Entrance and Bath,Luba,6524924,Henrico,VA,$4591.63,3,3,5,MEDIUM
+13700790,Cozy Room in South Asheville,Luba,6524924,Sabana Grande,PR,$1911.95,2,1,4,LARGE
+13716891,The Zen Cabin,Luba,6524924,Great Bend,KS,$1719.77,3,4,7,LARGE
+13744589,Whole House just off Haywood Rd.,Kingsley,5638520,Reader,WV,$4020.85,3,1,5,LARGE
+13779774,"Private flat w/ Kitchenette & bathroom, Monthly",Kingsley,5638520,Anton Chico,NM,$3655.96,2,5,5,SMALL
+13819278,Mountain Glow- close to downtown and BR Parkway.,Kingsley,5638520,Coats,KS,$2124.29,1,3,5,MEDIUM
+13877850,Blue Ridge Mountain Home Away from Home,Lexi,6065621,Dowling,MI,$226.85,4,1,4,MEDIUM
+13901952,Historic Grove Park - Apartment #3,Lexi,6065621,Buchanan,VA,$67.1,2,2,7,SMALL
+13942925,~Front Porch Retreat~Sleeps 5~2.5 mi to D/T~,Lexi,6065621,Washington,DC,$2553.39,4,1,7,SMALL
+14011745,Creekside Zen Den near Downtown,Lexi,6065621,Evansville,WY,$596.41,4,3,7,MEDIUM
+14044072,"THE SWEET SPOT- serene hilltop, close to downtown",Nicholas,4277029,Doylesburg,PA,$3222.09,1,5,8,LARGE
+14052114,West Asheville Dream Bungalow Apartment,Nicholas,4277029,Elkhart,KS,$429.5,1,2,5,LARGE
+14076438,Stone Cottage Spa Experience,Nicholas,4277029,Scipio,IN,$535.56,1,3,4,SMALL
+14102422,The Restful Edge - minutes from downtown AVL,David And Melissa,1515695,Virginia City,NV,$3221.62,4,3,6,LARGE
+14110641,Cottage at Green Oaks Community,David And Melissa,1515695,Hebron,NE,$4140.72,2,4,6,MEDIUM
+14125023,Downtown Furnished Studio!! Close to Everything!!!,David And Melissa,1515695,Bosque Farms,NM,$4983.97,4,2,4,LARGE
+14167740,Hidden Gem - Lovely Summer Rental,David And Melissa,1515695,Becket,MA,$4821.07,2,4,5,LARGE
+14168464,"""B Flat"" Downtown! Private parking.",John,4263262,Wells,NV,$3938.73,2,1,6,SMALL
+14184893,Spectacular Views Minutes from Downtown,John,4263262,Powellsville,NC,$4106.01,4,4,8,SMALL
+14203513,World Spirit Guest Suite,John,4263262,Arroyo,PR,$3107.29,3,5,4,MEDIUM
+14236639,CasaLina. Minutes away from downtown,John,4263262,Rhodelia,KY,$4322.84,4,3,6,MEDIUM
+14352724,NEW: Elegant Modern Suite & Short Walk to Downtown,John,4263262,Forest Grove,OR,$2615.53,3,4,6,LARGE
+14355288,3 Bedroom Beauty - Walk to Town!,Pat,5563126,Lake,MS,$1113.82,1,2,6,LARGE
+14357005,Lavender room,Pat,5563126,Granbury,TX,$1326.25,2,1,6,SMALL
+14430828,Sunny West Asheville Retreat,Pat,5563126,Lynnville,IN,$4801.31,4,3,4,LARGE
+14440002,4 Bdrm Rental Close To Downtown & With Tubes!,Pat,5563126,Beason,IL,$3045.09,1,2,5,LARGE
+14466206,West Asheville light-filled home,Pat,5563126,Barrington,IL,$3279.29,3,4,6,SMALL
+14499003,"*Suite,Calm & Comfy Gem*
+Near Biltmore, BRP & AVL",Amory,6417330,Atwater,CA,$1223.51,1,2,4,LARGE
+14514191,Convenient Cozy Cottage near West Asheville,Rob,3940251,Waxahachie,TX,$3682.45,1,2,5,SMALL
+14522467,Le Petit Bleu,Rob,3940251,Watertown,SD,$3579.67,4,5,5,SMALL
+14523242,A mountain escape with city comfort,Rob,3940251,Irvine,PA,$885.21,1,5,5,LARGE
+14547745,"A Peaceful Suite in the Trees, in Asheville",Shawn And Dave,7800300,Spring Church,PA,$1226.45,3,1,7,SMALL
+14561813,"Classy, Comfy Quiet Crash Pad in Downtown Asheville",Shawn And Dave,7800300,Brownstown,IL,$3112.43,1,5,5,MEDIUM
+14632829,Master bedroom in the heart of West Asheville,"Asheville Cottages, Inc.",6396581,Santa Claus,IN,$4955.94,4,5,7,MEDIUM
+14649826,"""East"" West Asheville Studio apt","Asheville Cottages, Inc.",6396581,Louisville,KY,$2465.79,4,1,7,MEDIUM
+14731119,Nestled in the Mountains,"Asheville Cottages, Inc.",6396581,Iowa City,IA,$727.17,4,1,8,LARGE
+14731928,5* BRICKHOUSE SUITE@UTOPIA ~ POOL ~ HOT-TUB ~ DT2M,Celeste,3522133,Vienna,MD,$3308.03,4,1,6,LARGE
+14738243,"CozyCottageWalk2town, yoga3wkJAN/FEB BOOKDiscount",Celeste,3522133,Hendricks,WV,$2650.55,2,3,4,MEDIUM
+14751215,Dog-Friendly Home close to Downtown Asheville,Celeste,3522133,Glenwood,NM,$4102.88,2,2,8,SMALL
+14805266,"""Hops,"" Skip and a Jump to Downtown and River Arts",Celeste,3522133,Alna,ME,$3282.63,2,2,5,MEDIUM
+14816025,Asheville Tiny House,Tammy,4328103,Brownsburg,IN,$4859.39,3,5,5,SMALL
+14857013,Retro Vintage-West Asheville Urban Abode,Tammy,4328103,Hitchcock,TX,$3111.06,2,5,5,SMALL
+14899945,Swensen Home,Kaylen,2944809,Robinson,IL,$3345.69,3,4,5,LARGE
+14934441,Nanny's Place in the Great Smoky Mountains,Kaylen,2944809,Center,MO,$4642.23,1,4,5,SMALL
+14941161,City Serenity,Steve,7140075,Toms River,NJ,$559.55,3,4,6,MEDIUM
+14963589,Cozy Cottage in the Woods Near Biltmore,Steve,7140075,Boyce,LA,$2490.55,2,3,4,LARGE
+14976451,"Sweet 5 Points Bungalow, Just a Walk to Downtown",Steve,7140075,Gardner,CO,$1844.4,4,5,7,LARGE
+15009504,Separate HVAC | CDC Clean | Walk Downtown,Steve,7140075,Mifflinburg,PA,$3845.22,1,4,8,MEDIUM
+15016101,Amazing Views of Downtown and Mountains,JC & Jackson,1116753,Henrieville,UT,$3619.7,4,2,8,LARGE
+15091721,DOWNTOWN! Seconds from it all!,JC & Jackson,1116753,Lakeview,OH,$1162.14,3,5,5,LARGE
+15124397,Modern Mountain Getaway,Jacob,4454983,Lakeside Marblehead,OH,$3373.4,3,3,6,MEDIUM
+15158878,A Step Back in Time - 1901 Estate Guest Cottage,Jacob,4454983,Ringgold,LA,$1620.85,4,5,6,LARGE
+15174633,"Downtown Inn Asheville, NC #1 King",Jacob,4454983,Deville,LA,$3025.88,2,4,4,MEDIUM
+15192947,Historic West Asheville Personal Retreat and Spa,Jacob,4454983,Forrest,IL,$1221.79,2,3,7,SMALL
+15194828,Shenandoah Room,Jacob,4454983,Centralia,IL,$4598.73,2,1,5,LARGE
+15229458,Farmhouse King - MNT Sunsets - HOT TUB -,Trace,5142530,San Juan,PR,$3976.73,4,4,5,SMALL
+15231248,D&D's Dog-friendly West Asheville AirBnb,Emily,4832446,Norwalk,OH,$2374.79,3,3,8,MEDIUM
+15271420,Little Cabin in the Woods,Emily,4832446,Bovina,TX,$706.5,2,2,5,SMALL
+15289199,Cabin-Wood Fireplace-Hot Tub-Pool,Kelsey,4266261,Boston,GA,$4496.45,2,4,5,MEDIUM
+15327549,"A Secret Bungalow -Walkable to Downtown,",Rich,6755675,Leesville,LA,$3561.81,4,3,4,MEDIUM
+15339276,"Historic Montford's Landmark Keyhole House, Suite Two",Rich,6755675,Pittsburgh,PA,$449.52,1,3,7,SMALL
+15343687,@home off Haywood,Rich,6755675,Garden City,UT,$288.19,3,2,5,SMALL
+15345095,"Historic Montford's Landmark Keyhole House, Suite One",Rich,6755675,Pendleton,KY,$3406.22,4,1,7,MEDIUM
+15351409,Quiet Haven Tiny House-Hottub-Pets- Asheville Mtns,Amy,1654724,Schenectady,NY,$4916.79,3,5,5,MEDIUM
+15355010,"5 Points Bungalow, Garden View/Walk to Downtown",Amy,1654724,Centralia,KS,$2438.12,4,1,4,SMALL
+15359380,"5 Points Bungalow, Your Home in Asheville",Ashley,3195501,Orleans,IN,$4550.2,4,4,4,LARGE
+15431178,Pet friendly craftsman in the heart of Asheville,Ashley,3195501,Lake Hamilton,FL,$2351.75,4,5,4,MEDIUM
+15437202,Cozy and Quiet on Hemphill,Celeste,4305851,Farmers,KY,$1862.7,3,4,5,LARGE
+15444450,City Sanctuary,Celeste,4305851,Athol,KS,$714.15,1,5,6,SMALL
+15462269,Brand New Log Cabin...close to downtown Asheville!,Steve,4114041,Pahrump,NV,$3439.81,3,1,6,LARGE
+15476300,Comfortable Home near to WNC Ag Center,Steve,4114041,Westport,CA,$4869.74,4,1,7,LARGE
+15481467,"Guests Love The Location, Best of Asheville At Our Doorstep",Steve,4114041,South China,ME,$3098.38,2,1,7,MEDIUM
+15484732,Holly Hill Apartment,Steve,4114041,Merigold,MS,$2944.02,3,1,5,LARGE
+15510852,Downtown hideaway! Walk everywhere!,Matthew,7051999,Pottsville,PA,$1710.53,3,4,4,MEDIUM
+15530268,Private apartment ~2 mi  from downtown Asheville,Matthew,7051999,Lake Winola,PA,$1390.31,4,3,7,MEDIUM
+15544670,Apt Close to Everything in Asheville- $1600/mo!!,Matthew,7051999,Eckerty,IN,$2440.66,4,4,7,LARGE
+15546661,The Snook Nook ~ A Mountain Retreat In Asheville,Matthew,7051999,Saint Paul,MN,$356.86,3,3,4,SMALL
+15547377,"Willow Haven, near Asheville",Matthew,7051999,Pelham,NC,$3796.07,4,1,7,MEDIUM
+15568000,"Namaste Yurt, best of both worlds",Smithson,7186673,Camden,NY,$831.14,1,3,6,LARGE
+15577790,New Guest House in West Asheville- It's A Retreat!,Smithson,7186673,Warsaw,IL,$3501.04,4,2,7,LARGE
+15647883,West Nest on Haywood Road,Smithson,7186673,Saugerties,NY,$2560.24,4,5,6,SMALL
+15653105,Traveler's Home. Monthly rates.,Christine Michele,5796576,Grayslake,IL,$1260.58,3,3,5,MEDIUM
+15664695,Lovely lower level suite at the Blue Ridge Parkway,Christine Michele,5796576,Airville,PA,$2545.78,4,4,4,MEDIUM
+15685101,"Private studio near downtown, Biltmore & breweries",Christine Michele,5796576,Albion,IN,$3310.71,1,1,5,MEDIUM
+15701324,Mtn Retreat 'Suite'  Dntwn 5 min  Private Entrance,Christine Michele,5796576,Swea City,IA,$2002.87,2,1,7,SMALL
+15706129,"Private, dog friendly, king studio with garage!",Lynn,3916089,Bobtown,PA,$4957.37,1,1,5,LARGE
+15718256,Rancho54oh- Spacious & Convenient!,Lynn,3916089,Apple River,IL,$2770.77,4,1,4,SMALL
+15757654,Heart of Asheville Bright n' Peaceful Apt.,Lynn,3916089,Lenoir,NC,$4325.86,1,2,4,SMALL
+15780601,Artist's Retreat in Hip West Asheville,Lynn,3916089,Walterboro,SC,$2524.71,2,2,6,MEDIUM
+15788106,"Cozy, quiet retreat near Blue Ridge Parkway. 2 bed",Lynn,3916089,Goodfellow AFB,TX,$4294.75,3,2,4,SMALL
+15805048,Carriage House (Monthly),Brian,2432303,Forest City,IL,$743.95,4,1,4,MEDIUM
+15827350,Windsor Forest Inn(Sierra Nevada 3 miles away!),Brian,2432303,Alamogordo,NM,$4795.88,1,2,4,SMALL
+15830900,"Rustic Updated Clean Cabin Asheville, Biltmore",George,7233207,Leechburg,PA,$611.81,1,3,5,SMALL
+15867765,Historic Church in The River Arts District,Han,3452206,Gentry,AR,$4224.13,3,3,8,MEDIUM
+15868200,Awesome Asheville,Han,3452206,Thorn Hill,TN,$4348.57,3,5,5,MEDIUM
+15922343,Perfect apartment and location in perfect town,Han,3452206,Pearsall,TX,$1148.96,4,4,8,MEDIUM
+15929513,Zen Style Oasis in the Mountains,Julie,1610062,Shawsville,VA,$346.64,4,2,6,LARGE
+15936945,Asheville Clouding Around - A Million Dollar View,Julie,1610062,Rockwell,NC,$2140.83,1,4,4,LARGE
+15995355,Vibrant NEW Montford apartment- walk to downtown,Julie,1610062,Childersburg,AL,$1043.22,1,5,4,LARGE
+16003488,Affordable downtown penthouse. The best deal!!!,Julie,1610062,Mifflintown,PA,$2506.8,3,2,4,SMALL
+16024372,New Tiny House near Downtown and Blue Ridge!,Scott & Catherine,6169663,Sherwood,AR,$2546.84,1,3,6,LARGE
+16037508,Home for 6-7 People in South Asheville,Scott & Catherine,6169663,Fort Bragg,CA,$2768.67,3,2,5,LARGE
+16147877,Sandy's Place,Heidi,9829632,Newhall,WV,$1651.97,1,3,4,SMALL
+16155218,Great One Bedroom Get-Away,Heidi,9829632,Fryeburg,ME,$3061.26,2,3,5,SMALL
+16203903,The Parkwood Tree House,Heidi,9829632,Hammond,IL,$4675.35,2,3,6,LARGE
+16267469,"1 BDRM, 2 miles to DWTN. Great for nurse/doc",Heidi,9829632,Stafford,NY,$457.72,1,1,5,LARGE
+16284364,Asheville Travelers' Haven,Heidi,9829632,Monroe,OH,$2429.57,2,1,8,LARGE
+16284468,Downton Shabby,Mike,2991428,Westville,NJ,$2055.23,3,5,6,LARGE
+16294435,"Retro Asheville Ranch - 3 bedrooms, lots of room!",Mike,2991428,Lumberton,NC,$4549.43,3,4,5,MEDIUM
+16350883,The exact location you want to be!,Mike,2991428,Cherry,IL,$2086.07,3,4,8,MEDIUM
+16384751,Comfortable room with queen bed,Darcy,7104123,New Richmond,WI,$4774.17,2,1,5,LARGE
+16446590,MicroLuxe in Heart of Downtown,Darcy,7104123,Fayville,MA,$4193.43,1,2,8,MEDIUM
+16451105,Luxury in an Artist's Loft as Base for Exploring Asheville,Darcy,7104123,Vernon,CO,$1767.31,2,2,4,MEDIUM
+16476358,Private Suite: Walk to Biltmore and Breweries,Susanne,2713423,Ferndale,FL,$3910.72,1,1,6,MEDIUM
+16477857,Live in a Work of Art!,Susanne,2713423,Mayaguez,PR,$817.7,1,1,5,LARGE
+16512718,Quiet North Asheville Retreat,Mary Catherine,5709330,Keene,ND,$3674.39,4,1,4,MEDIUM
+16532936,Cozy 3Bed+2b But yet So convenient,Mary Catherine,5709330,Hardeeville,SC,$2026.97,3,2,4,SMALL
+16533200,Mountain Getaway close to downtown and Grove Park,Mary Catherine,5709330,Madisonville,KY,$1859.33,4,3,5,MEDIUM
+16541497,West Asheville hidden gem,Mary Catherine,5709330,Orchard Park,NY,$4372.15,4,3,8,SMALL
+16566334,Comfy Asheville Cottage with Private Fenced Yard,Kingsley,5638520,De Pere,WI,$3679.0,2,2,6,SMALL
+16566932,West Asheville Carriage House,Kingsley,5638520,Cicero,NY,$3038.88,3,1,7,SMALL
+16587446,Spacious Downtown Asheville Loft,Kingsley,5638520,Missouri City,MO,$1183.26,1,5,5,SMALL
+16603497,Treehouse Chalet above Downtown and Winding Road!,Marc & Fay,2164028,Seminary,MS,$4299.3,4,1,5,MEDIUM
+16603859,Historic 1950s Tiny Home - $6 Uber to Downtown,Marc & Fay,2164028,Washington,NH,$2680.94,4,5,8,LARGE
+16627563,Walking Distance To Downtown-South Slope-River Art,Marc & Fay,2164028,Eureka,MO,$3247.77,2,1,7,SMALL
+16636978,Cozy private apartment minutes from Sierra Nevada,Aimee,4246520,South Boardman,MI,$580.74,3,5,7,SMALL
+16652322,Boho-Chic Downtown Loft,Aimee,4246520,Fayetteville,WV,$4697.05,4,3,5,LARGE
+16660917,"Sweet Cottage With Hot Tub, Near Downtown",Shauna,1520914,Robinson,IL,$870.49,2,5,8,LARGE
+16663252,Walkable West Asheville Home in the Trees,Shauna,1520914,Canovanas,PR,$3654.96,3,5,5,SMALL
+16733596,Boutique Room in Tranquil Surroundings Three Blocks to Town,Shauna,1520914,Monroe,UT,$3040.45,3,5,4,MEDIUM
+16742264,Front Private room w King Bed,Shauna,1520914,Freeburn,KY,$4137.38,2,4,8,SMALL
+16810083,Explore Asheville,Angela,1080843,Carson,ND,$3394.08,4,3,6,LARGE
+16826141,Stunning Barn Loft Just Outside of Asheville,Angela,1080843,Akers,LA,$4753.22,4,3,6,LARGE
+16846899,Oasis close to downtown,Angela,1080843,Ellenburg Depot,NY,$104.74,3,2,5,SMALL
+16868257,Taylor Ranch Retreat - Secluded yet close to Asheville,John,6915301,Prestonsburg,KY,$1629.17,3,3,8,MEDIUM
+16937948,Avery's Creek-Swimming Pool/Hot tub-Close To Asheville & Shopping/Food/Hiking.,John,6915301,Richmond Dale,OH,$1386.77,1,4,8,SMALL
+16937957,Cove Cottage - Charming Cottage Located Right Outside Downtown Asheville; easy access!,John,6915301,Dayville,CT,$1335.48,1,2,6,MEDIUM
+16937995,"Upstream Cottage; Asheville & River Arts-Close to everything! Breweries, eateries, hiking!",John,6915301,Garrison,TX,$3488.99,1,2,7,LARGE
+16977918,Cedar Cabin with Forest Canopy Deck,John,6915301,Ray,ND,$650.6,1,1,7,MEDIUM
+17036413,"Clean, Comfy and Convenient S. Asheville Condo",Richie,2447741,New Freedom,PA,$2347.92,4,3,5,SMALL
+17095670,Downtown Escape!,Richie,2447741,La Porte,IN,$4890.49,1,3,8,MEDIUM
+17116810,Beaucatcher Mountain Retreat,Richie,2447741,Syracuse,NY,$765.61,2,5,7,SMALL
+17155164,Beautiful Mountain Views 5 Minutes to Downtown,Richie,2447741,Powell,WY,$4796.01,1,5,7,MEDIUM
+17157429,"Explore AVL from this Stylish, Cozy Apartment",Justin,6290657,Duncannon,PA,$235.21,2,3,8,SMALL
+17310280,Tiny House - Giant Views,Justin,6290657,Dover,KS,$4546.76,4,4,5,LARGE
+17345566,Skye Haven - Views! Romantic getaway 3 mi. to town,Justin,6290657,Eveleth,MN,$2136.47,4,5,7,MEDIUM
+17364637,Apartment with Private entrance and Private Bath.,Justin,6290657,Marlborough,MA,$2358.11,4,2,6,LARGE
+17395670,Charming Red Roof Home In Tiny Farms,Justin,6290657,Linton,ND,$4803.44,3,3,4,LARGE
+17403585,ADVENTURE LAUNCH PAD,Teresa,6561657,Virginville,PA,$2903.89,2,5,5,LARGE
+17416267,Downtown and Biltmore Just Down the Road!,Teresa,6561657,Hampton,VA,$2155.36,4,3,5,LARGE
+17446056,Front Porch Charm,Teresa,6561657,Goldston,NC,$172.83,3,2,7,MEDIUM
+17464124,Tiny House - Must Love Dogs,Lynn,1250632,Honey Grove,PA,$3527.39,3,5,4,MEDIUM
+17529983,Garden Apt in Historic Neighborhood of Asheville,Lynn,1250632,Campbell,MO,$379.46,3,4,4,SMALL
+17552287,Family Friendly Apartment in Beautiful North Asheville,Lynn,1250632,Front Royal,VA,$3334.11,3,2,8,LARGE
+17591050,Historic Home Near Downtown Asheville Pvt Bed/Bath,Lynn,1250632,Money,MS,$3062.57,3,4,7,LARGE
+17606368,"Hidden Cove on the doorstep of Downtown Asheville; HOT TUB, Game Rm, LUXURY!",Matthew,9859661,Farmersville,OH,$1657.29,4,2,8,MEDIUM
+17618702,Mountain Chalet close to Biltmore,Bill,1990627,Beaufort,SC,$2735.31,4,1,5,LARGE
+17634705,"Warm, Relaxed Home in West Asheville",Bill,1990627,Tilton,NH,$1988.8,3,4,8,LARGE
+17638102,True Asheville B&B- Wall Street Room- 2nd Floor,Amy,4668967,Arvonia,VA,$1894.95,2,1,8,LARGE
+17648416,Private Bungalow Ten Minute Walk to Downtown Asheville,Amy,4668967,West Barnstable,MA,$4428.81,4,4,7,SMALL
+17649947,Getaway to Blue Ridge Mountains-West Asheville,Amy,4668967,Ashley,IN,$2429.04,3,1,7,MEDIUM
+17653835,Just West of West Asheville Studio,Amy,4668967,New Limerick,ME,$4867.53,3,5,4,SMALL
+17697321,"""Super Close to Everything,""  Private Studio",Amy,4668967,Chester,VT,$2666.96,4,1,8,LARGE
+17726977,Cozy Private Suite Near Biltmore & Downtown,Shannon,2298450,Aledo,IL,$3112.85,4,5,7,MEDIUM
+17743775,Orchard House,Mike,2991428,Grand Rapids,MI,$1399.42,1,2,5,LARGE
+17780854,Serene Private Bed & Bath for Female Travelers,Mike,2991428,Hormigueros,PR,$506.32,1,3,5,LARGE
+17787933,Urban Oasis in Asheville,Mike,2991428,Williamstown,MA,$355.67,2,4,8,LARGE
+17794306,Beer City Room - Heart of West Asheville,Susan,2074355,Woodstown,NJ,$4008.15,4,2,4,MEDIUM
+17826503,üå≤Charland Chalet üå≤Guesthouse 5 Min to Town & BRP,Lynn,3916089,Waterville,PA,$707.1,1,2,5,MEDIUM
+17861930,Magical large apartment downtown!,Lynn,3916089,Wayzata,MN,$4401.03,2,2,6,SMALL
+17917678,Lovely Private Apt. - Historic Home & Neighborhood,Lynn,3916089,Curlew,IA,$1318.11,3,1,6,MEDIUM
+17935396,Retreat on Town Mountain,Christal,3927823,Bowling Green,VA,$2767.94,3,5,8,LARGE
+18017043,Dragonfly Cottage,JC & Jackson,1116753,Mays,IN,$3032.02,1,1,6,LARGE
+18018230,"Dragonfly Cottage II ,  Cozy Cottage in Downtown",JC & Jackson,1116753,Dexter,KS,$1106.28,1,5,7,MEDIUM
+18022683,The West Asheville Loft,JC & Jackson,1116753,Hillsboro,IA,$4730.52,2,3,8,MEDIUM
+18055958,Mountaintop Hideaway,JC & Jackson,1116753,Faith,SD,$2935.15,1,5,4,LARGE
+18092896,River Arts Comfy Getaway - Long Term (30-90 days),JC & Jackson,1116753,North Brunswick,NJ,$1049.27,4,2,7,MEDIUM
+18117417,Sublime Montford Home - Walk to Downtown - Dante's,Tia,4764055,Amboy,MN,$1618.91,2,2,4,LARGE
+18119864,Sunnyside,Tia,4764055,Humboldt,SD,$2049.91,2,2,4,MEDIUM
+18121899,Casa de Lobos - N. Asheville,Tia,4764055,Mansfield,AR,$3957.93,2,2,5,LARGE
+18122227,Close to Everything in Beautiful Asheville,Kwadwo,5483860,East Amherst,NY,$4030.76,4,3,6,LARGE
+18151750,Gashes Fluss Haus,Kwadwo,5483860,Dixon,IL,$4440.81,1,4,5,MEDIUM
+18178954,Luxury Suite with Blissful Comforts,Kwadwo,5483860,Belden,MS,$867.2,2,3,5,SMALL
+18179308,Mountain View Getaway,Darcy,2765529,Belleville,WI,$3297.23,1,2,5,LARGE
+18264441,Cute Craftsman Asheville Suite,Darcy,2765529,Fort Lauderdale,FL,$2000.94,2,5,8,LARGE
+18308309,"Downtown Inn Asheville, NC #2-King",Darcy,2765529,Lucasville,OH,$1389.58,4,1,8,MEDIUM
+18308656,"Downtown Inn Asheville, NC #3-King",Kate,3962871,Murphy,NC,$997.28,1,4,5,SMALL
+18308869,"Downtown Inn Asheville, NC #4-King",Ken,6074415,Salado,AR,$960.04,1,1,6,MEDIUM
+18308979,"Downtown Inn Asheville, NC #5-King",Ken,6074415,Placitas,NM,$3037.44,3,2,5,MEDIUM
+18309080,"Downtown Inn Asheville, NC #6-King",Ken,6074415,Manati,PR,$2234.44,3,4,8,MEDIUM
+18375617,Cozy Mountain Cottage,Ken,6074415,Minneapolis,MN,$65.18,1,2,4,MEDIUM
+18389884,"Downtown Inn Asheville, NC  #7-King",Ken,6074415,Deadwood,SD,$4048.89,3,1,6,MEDIUM
+18393059,Charming Arts & Crafts home in West Asheville,Rob,3940251,North Waltham,MA,$526.63,4,5,6,MEDIUM
+18404153,"Downtown Inn Asheville, NC #8-Double",Rob,3940251,Hereford,AZ,$692.41,4,4,4,SMALL
+18405483,"Downtown Inn Asheville, NC #9-Double",Rob,3940251,Sarah,MS,$3247.64,3,3,5,SMALL
+18406520,"Downtown Inn Asheville, NC #10-Double",Steve,4114041,Lakewood,OH,$4925.3,4,5,4,MEDIUM
+18422959,The Red Rooster Bungalow,Steve,4114041,Williston,ND,$3929.95,2,2,4,MEDIUM
+18431805,"Modern Suite by New Belgium, River Arts District",Steve,4114041,Cidra,PR,$4710.95,2,2,7,MEDIUM
+18466431,My Green Escape,Angie,3299817,Rowlesburg,WV,$4233.07,2,1,4,SMALL
+18471514,Robin's Nest by Robin!,Erin,3805589,Lock Springs,MO,$1678.58,2,1,5,SMALL
+18473371,West Asheville Bamboo Bungalow near French Broad River,Erin,3805589,Vallecitos,NM,$4510.76,2,1,6,MEDIUM
+18487194,*Squad Bunker* ~ Perf Chill Pad for Groups & Pets!,Erin,3805589,Lake Providence,LA,$930.34,3,5,5,SMALL
+18521819,Convenient + modern spot:  central North Asheville,Erin,3805589,Meadow Bridge,WV,$3163.04,4,4,7,SMALL
+18599205,COZY WALKABLE WEST ASHEVILLE MODERN SUITE,Valerie,2517637,Harrisville,WV,$4926.49,4,4,7,LARGE
+18616393,Central AVL - 2BD/1BA Hideaway - 5min to DT,Yasmin,6801045,Milladore,WI,$2554.0,2,4,7,SMALL
+18627613,Private apartment w/ kitchen and laundry,Yasmin,6801045,Middletown,CA,$3012.37,2,2,7,SMALL
+18716194,Blue Ridge Fire Tower,Yasmin,6801045,Parlier,CA,$1817.24,1,4,4,SMALL
+18721359,The Acorn Guesthouse,Lee,1987569,Lyle,WA,$432.45,2,2,4,SMALL
+18731242,Asheville Luxury Socially Distant Retreat,Lee,1987569,Otway,OH,$3866.57,2,2,4,MEDIUM
+18751432,LOCATION : 2 mi to Downtown/Breweries/restaurants,Lee,1987569,Kalona,IA,$2930.11,2,1,7,MEDIUM
+18754939,Cozy Cool Farmstead Studio!,Lee,1987569,South Seaville,NJ,$1856.48,3,4,4,LARGE
+18776404,North Liberty House,Lee,1987569,Ainsworth,IA,$1985.35,1,1,7,SMALL
+18784621,"Downtown love, downtown life.",Kelsey,4266261,Benton,KY,$4531.54,2,2,6,MEDIUM
+18907430,North Liberty House 2,Kelsey,4266261,Jber,AK,$1148.75,4,4,8,SMALL
+18910863,Magical Mountain Mod Near Downtown,Kelsey,4266261,Clinton,AL,$4812.31,3,1,7,SMALL
+18918238,Asheville Getaway...Fenced in Backyard!,Linda,1724783,Dayton,OH,$966.46,2,5,4,LARGE
+18928361,The Azalea Cabin,Linda,1724783,Hanover,ME,$1955.86,4,3,8,SMALL
+18929549,Off the Beat Inn Path,Linda,1724783,La Crescent,MN,$4803.46,3,3,7,LARGE
+18974593,Asheville Escape minutes to downtown! NEW FIRE PIT,Linda,1724783,Durango,IA,$4410.66,2,2,7,LARGE
+19032051,Chestnut House,B,4241907,Grandin,ND,$1288.96,2,4,8,LARGE
+19050500,West Asheville Hilltop Hideout,Naomi,1560492,Jackson,OH,$2702.68,2,1,5,LARGE
+19066373,West Asheville Yellow Bungalow on Haywood,Naomi,1560492,Chester,SC,$1424.81,2,2,7,LARGE
+19066512,"Entire Asheville Home - Walkable, Monthly Rental!",Naomi,1560492,Belle Valley,OH,$1179.35,2,4,6,MEDIUM
+19077911,Bear Retreat,Naomi,1560492,Windfall,IN,$1702.1,3,4,8,SMALL
+19103146,West Asheville Arts and Craft Bungalow,Florencia,6885158,Alexandria,VA,$2582.43,1,1,8,SMALL
+19110626,Mountain views,Angela With Darin And Ella,7177199,Otwell,IN,$1794.82,1,1,6,LARGE
+19118629,Just Beyond Utopia,Angela With Darin And Ella,7177199,Lacrosse,WA,$1543.51,4,3,6,MEDIUM
+19120555,"River, Mountain Modern close to everything",Gael,6856869,Springdale,AR,$3943.92,2,3,4,SMALL
+19129020,Asheville Cozy Log Cabin Urbane Retreat 90 day +,Gael,6856869,Gary,WV,$2116.02,4,5,6,LARGE
+19135906,Asheville Red Cottage - cheerful cozy city home.,Clara,4204236,San Lorenzo,PR,$481.26,2,1,6,LARGE
+19137905,Quiet Living Space Close to Downtown - West AVL,Lee,2397560,Sugar Grove,PA,$3865.53,1,2,4,SMALL
+19229221,Modern Bohemian Central Loft,Lee,2397560,Sun Valley,CA,$2139.39,2,3,5,MEDIUM
+19262092,Walkable and Tranquil One Bedroom Apartment,Lee,2397560,Kasson,MN,$1583.14,2,3,8,LARGE
+19264539,West Asheville Apartment at Haywood Bungalow,Jakub & Maria,1402093,West Frankfort,IL,$71.21,3,5,7,SMALL
+19273710,"Cozy Country Cottage, Ten Minutes from Downtown!",Jakub & Maria,1402093,Webster,MN,$2401.14,3,1,4,LARGE
+19326768,VERY CLOSE TO DOWNTOWN- Peacock Escape,Betsy,3489777,Atglen,PA,$4980.85,2,1,7,SMALL
+19340532,Asheville Cottages Resort-Immaculate & Luxurious,Betsy,3489777,Effingham,SC,$3013.36,2,1,6,LARGE
+19381523,"Jaw Dropping Views, Minutes to Downtown, Location!",Kara,1886801,Champion,NE,$3034.09,4,1,7,MEDIUM
+19387344,Asheville Forest / Hot Tub Oasis,Kara,1886801,Boylston,MA,$618.25,4,4,5,MEDIUM
+19388286,Hot Tub Heated Bathroom Floors and VERY CLEAN!!!,Kara,1886801,Ponce,PR,$2645.3,4,5,8,LARGE
+19415618,Country Chic Home in South Asheville,Kara,1886801,Tilton,IL,$4239.45,2,5,6,SMALL
+19439841,Cozy Hideaway in heart of Downtown Asheville,Kara,1886801,Los Angeles,CA,$2409.51,4,3,4,MEDIUM
+19453046,"W. Asheville Home, Easy Access to Downtown & R.A.D",Noah,6256658,Blanchard,PA,$4864.83,2,5,4,MEDIUM
+19529697,Spacious Asheville Getaway close to everything,Noah,6256658,Pease,MN,$4176.71,3,4,7,LARGE
+19531546,West Asheville Epicenter - NC Vacation Rental,Celeste,4151434,Northridge,CA,$2484.65,2,1,8,MEDIUM
+19548415,"Private Suite, private entry.",Celeste,4151434,Scales Mound,IL,$4960.58,3,5,4,MEDIUM
+19561946,"Downtown Artist Dream, Walk everywhere!",Suzanne,1633872,West Unity,OH,$2345.31,4,3,4,SMALL
+19608022,North Asheville Storybook Cottage--Dog Friendly!,Suzanne,1633872,Lake Oswego,OR,$1770.47,4,3,8,SMALL
+19609285,Slice of Heaven in Asheville,Suzanne,1633872,Saint Bernice,IN,$2940.24,1,5,6,LARGE
+19620931,Location Location Location!   Downtown Asheville,Theresa,2460651,Fayville,MA,$666.94,1,3,5,MEDIUM
+19700502,Westside Wayside,Theresa,2460651,Vidor,TX,$1281.78,4,4,8,LARGE
+19719866,West Asheville Bungalow,Theresa,2460651,Dayton,OH,$3270.85,3,2,7,MEDIUM
+19742574,Safe & Clean in Artsy WAVL,Theresa,2460651,Caguas,PR,$2786.65,2,4,5,LARGE
+19785945,Artists Woodside Home with Private Entrance,Theresa,2460651,West Haven,CT,$1857.77,4,2,6,MEDIUM
+19787532,Montford  Charmer Close to Downtown Asheville,Pat,5563126,Bradenton,FL,$4691.33,1,2,7,LARGE
+19790687,Artsy Mountain View Loft,Pat,5563126,Hiltons,VA,$4634.52,1,5,5,SMALL
+19809125,Private Simple Guest Suite close to Downtown,Pat,5563126,Northpoint,PA,$3196.51,1,5,5,SMALL
+19811549,Spend your Christmas with Magnolia Farm.,Pat,5563126,Clyman,WI,$2954.09,2,5,8,LARGE
+19870831,Asheville: A Stamp of Approval,Karl,1777105,Ashford,WA,$590.29,4,4,4,LARGE
+19982717,Heavens Little Haven Two,Karl,1777105,Mabank,TX,$1994.7,2,4,7,SMALL
+20008452,Hideaway Cabin in the City!,Karl,1777105,Pittsburgh,PA,$4955.82,3,2,4,SMALL
+20016326,5-star Farmhouse in the City,Karl,1777105,Noxapater,MS,$2224.42,3,3,8,SMALL
+20036903,Fashionable Gem in the Heart of West Asheville,Karl,1777105,Philip,SD,$4585.47,3,5,7,MEDIUM
+20069569,Private Apartment in Quiet Mountain Neighborhood,Steve,7140075,Village Of Nagog Woods,MA,$1349.29,1,5,4,MEDIUM
+20070593,'Le Canard' Arden Home w/Fire Pit - Near Asheville,Steve,7140075,Jb Phh,HI,$95.09,2,1,6,MEDIUM
+20074883,"Guest Suite of New,Modern House 5 min to Downtown",Pat,3655265,Hankamer,TX,$4480.5,1,3,7,LARGE
+20089787,Downtown Asheville walkable retreat,Kim,1557002,New Augusta,MS,$737.14,3,1,8,MEDIUM
+20091731,Holly Cottage,Kim,1557002,Kreamer,PA,$2399.26,3,2,7,LARGE
+20131746,Wentworth Cottage 2 miles from downtwn & Biltmore.,Marc & Fay,6819521,Toa Baja,PR,$66.47,1,1,7,LARGE
+20146236,"‚ú• The White House ‚ú• 9 min to DT A-Ville, Sleeps 8+",Shanti,5415307,Washington,DC,$2673.64,3,2,8,LARGE
+20153545,West Asheville Gem!,Shanti,5415307,Purdin,MO,$4490.08,1,3,5,SMALL
+20153704,"Private Studio Near UNCA, Greenway, RAD & Downtown",Shanti,5415307,Greensburg,IN,$2068.49,4,4,7,LARGE
+20154151,"Montford Oasis, 1 mile from Downtown Grove Arcade!",Shanti,5415307,Brockwell,AR,$2768.59,4,4,5,SMALL
+20174263,Hemlock Hill Hideaway Log Cabin,Eleanor,5295608,Chadds Ford,PA,$3879.43,4,3,5,SMALL
+20174635,Your serene cabin in the woods,Ranse,1609212,Logansport,LA,$2874.96,3,1,8,LARGE
+20192369,Sunporch Suite w/ private entrance (2 Bedrooms),Ranse,1609212,Wascott,WI,$2517.05,2,2,5,MEDIUM
+20208429,Historic Rose Cottage in River Arts District,Ranse,1609212,Sophia,WV,$3200.66,3,1,7,LARGE
+20241154,Charming Mountain View Home Perfect for Social Distancing,Ranse,1609212,Ponce,PR,$1702.46,1,2,8,SMALL
+20255923,Sunrise Perch - High on a mountain & close-in,David,2738537,Somerset,VA,$2249.53,3,5,5,SMALL
+20268605,Eclectic and Stylish Simplicity in a Rustic Setting,David,2738537,Climax,NY,$4914.92,1,3,5,MEDIUM
+20294011,Historic Mill House @ Martel Vlg; 10mins to Dwntwn,David,2738537,Sparks,NV,$4214.24,4,1,6,SMALL
+20309680,Montford Garden Apartment - Walk Downtown!,David,2738537,Mannsville,KY,$4232.74,1,1,5,MEDIUM
+20328686,"Lucky W Ranch House-Great for Gatherings, Close to Downtown",Betsy,3489777,Honokaa,HI,$4040.9,4,3,6,SMALL
+20395878,Private and Spacious South Asheville Oasis,Jonathan,4421969,Sutter Creek,CA,$128.0,1,1,7,MEDIUM
+20408452,"The ""NYC Studio"" in the Airplane House",Jonathan,4421969,Middle River,MD,$3895.49,3,4,4,LARGE
+20435375,Perfect feel - Asheville home base,Jonathan,4421969,Machesney Park,IL,$856.13,4,4,6,MEDIUM
+20439998,Unique urban location in historic Montford (1/4),Jovita,2755822,Hawi,HI,$3979.97,2,4,7,SMALL
+20441967,West AVL Family Funhouse ‚Ä¢ 5mi to AVL ‚Ä¢ Views,Jovita,2755822,Oak Hill,WV,$671.04,2,1,4,LARGE
+20456656,EZ Access 2 the Heart of AVL & Blue Ridge Pkwy.,Shawn And Dave,7800300,Gerlach,NV,$4937.26,3,5,5,MEDIUM
+20462071,Rustic Mountain Cabin close to everything!,Shawn And Dave,7800300,Santa Ana,CA,$732.28,4,5,6,LARGE
+20465164,Local's Bungalow in the Heart of West Asheville,Shawn And Dave,7800300,Cadiz,KY,$1489.17,1,5,8,MEDIUM
+20473937,1907 Craftsman with Kitchenette in Historic Chicken Hill,Shawn And Dave,7800300,Spruce Pine,AL,$3305.1,1,2,5,LARGE
+20504787,PRIVATE & Cozy Guest House-Easy Access to Downtown,Eleanor,5295608,Belmont,OH,$4889.78,1,5,8,MEDIUM
+20515199,"King-sized Bed in Bent Creek, Asheville Cozy Room",Eleanor,5295608,East Hampstead,NH,$1257.52,4,2,5,LARGE
+20527549,Experience spending a night floating in a forest,Eleanor,5295608,Red Bank,NJ,$4683.16,3,2,4,LARGE
+20570236,Spacious Guest Suite/Apt close to downtown fun!,Eleanor,5295608,Encino,CA,$3412.18,1,2,4,SMALL
+20583406,"HayLo in Hip West Asheville: Walk, Bike, Ride!",Suzanne,1633872,Latham,KS,$328.29,2,5,6,MEDIUM
+20624327,Parkway Paradise -1.5 Mi Away - 6 Mi to Downtown,Suzanne,1633872,Gonzales,TX,$3983.52,2,4,4,LARGE
+20624404,Healing & Yoga Home 10min from Dtwn Asheville #I,Suzanne,1633872,Abbeville,GA,$2182.87,4,5,5,LARGE
+20638444,Foxhaven Long Range Mountain Views in Asheville,Josh,6969554,Bay Saint Louis,MS,$1858.4,3,5,7,MEDIUM
+20653416,'Riverview' Home w/Decks on the Asheville Greenway,Josh,6969554,Pontiac,MI,$1822.99,1,1,7,LARGE
+20663042,Private lower level suite,Josh,6969554,Menard,TX,$1525.49,1,5,8,MEDIUM
+20665144,"Perfect Friends/Family Getaway, Min to Everything",Linda,1724783,Shirley,NY,$552.68,2,4,4,LARGE
+20692815,"Walkable West Asheville, entire guest suite.SWEET!",Ken,6074415,Waco,TX,$3628.09,4,3,5,LARGE
+20694871,"Comfortable, quiet South Asheville stay",Ken,6074415,Ketchikan,AK,$4313.78,2,2,6,SMALL
+20695367,West AVL Gem! 7 minutes to Biltmore & great for 4!,Ken,6074415,Sibley,IA,$489.86,3,1,8,MEDIUM
+20697183,Serinity Knoll,Ken,6074415,Fort Collins,CO,$4298.68,4,3,5,MEDIUM
+20697346,Walk 2 Downtown/RAD. Cozy Bungalow,Lindsay,4513918,El Paso,TX,$269.97,4,5,7,SMALL
+20744040,Modern Mountain Retreat in North Asheville,Jakub & Maria,1402093,Dover,MO,$2115.88,4,5,6,LARGE
+20744323,Gorgeous home on the Blue Ridge Parkway,Jakub & Maria,1402093,Howard,KS,$2300.15,4,3,8,LARGE
+20747532,Nana‚Äôs Crafted Cottage,Jakub & Maria,1402093,Davis Wharf,VA,$4990.38,2,1,8,SMALL
+20759062,Grove Park Guest Suite - Walk to the Grove Park,Jakub & Maria,1402093,Viborg,SD,$1240.46,1,5,6,LARGE
+20760789,Asheville Mountain Retreat @ 5 miles from downtown,Jakub & Maria,1402093,Hitchita,OK,$4013.12,2,1,6,LARGE
+20762155,Beautiful Montford Hideaway! Minutes from Downtown,BonPaul,4185538,Ironton,MN,$158.62,2,5,5,LARGE
+20773653,City Home in Private Setting,BonPaul,4185538,Toa Alta,PR,$4754.25,4,2,7,SMALL
+20774579,Om Sweet Om - W. Avl- Solar powered green home!,Elizabeth,1862172,Kamiah,ID,$707.22,2,1,8,LARGE
+20779200,The Asheville Oak,Heather,6713687,Miami,FL,$4764.38,2,1,4,MEDIUM
+20785720,Balcony Cottage in Town--Oasis of Calm,Heather,6713687,Mineral Springs,AR,$3689.72,1,5,6,LARGE
+20801691,Natural Retreat For Two,Heather,6713687,Mc Dowell,KY,$3581.65,4,5,6,SMALL
+20804217,The New HiTop Studio In Hip West Asheville,Steve,7140075,Antwerp,NY,$2371.02,1,5,8,SMALL
+20804347,The Dressmaker's Suite,Steve,7140075,Arctic Village,AK,$2314.93,2,2,5,LARGE
+20815440,"Walk to downtown Asheville, private studio suite",Steve,7140075,Floral,AR,$2242.25,2,2,7,LARGE
+20830901,Appalachian Abode-walk to all W-AVL‚Äôs hot spots,Lee,2397560,Tuckerton,NJ,$164.42,1,5,8,SMALL
+20834615,Newly Renovated Home in Downtown Asheville,Lee,2397560,Slade,KY,$2634.05,2,4,5,LARGE
+20850669,"Cute Cottage w/ Mtn View, Walk to Biltmore Village",Beverly,1492785,Juncos,PR,$4554.57,2,5,8,SMALL
+20855873,Cozy downtown walkable retreat.,Beverly,1492785,Eros,LA,$1839.6,4,5,4,SMALL
+20858987,Asheville mountain views and walk to downtown!,Beverly,1492785,Oglesby,TX,$3382.87,2,5,8,LARGE
+20872849,"At Home in Asheville: Comfort, Location, Amenities",Beverly,1492785,Call,TX,$711.55,3,3,8,LARGE
+20884134,Blue Ridge Haven,Georgia,6801504,Lanett,AL,$1757.97,1,4,6,MEDIUM
+20910666,La Buena Vista,Georgia,6801504,Robinson,ND,$711.19,3,4,5,SMALL
+20915728,Private entrance - 2 rooms with 2 full baths WAVL,Georgia,6801504,Cashmere,WA,$2652.5,3,3,8,SMALL
+20916381,Adorable Asheville Cottage 8 minutes to Downtown,Georgia,6801504,Mount Carmel,PA,$1014.07,1,3,6,MEDIUM
+20928043,Perfect Asheville Getaway!,Ladonna,4816013,Mathews,AL,$3143.01,1,3,8,LARGE
+20990995,‚òÖ Private Guest Suite ‚òÖ | West AVL + River Arts,Susanne,2713423,Helenwood,TN,$4737.28,4,5,7,SMALL
+20994069,Stay in a Charming Suite in an Asheville Bungalow,Susanne,2713423,Duluth,GA,$4204.53,4,2,6,LARGE
+21011400,Refined Home with a River-View Balcony,Susanne,2713423,Siluria,AL,$4368.4,4,4,4,LARGE
+21013638,Cozy Mountain Cottage 2.5 miles to downtown,Susanne,2713423,Birmingham,AL,$4003.9,4,5,7,LARGE
+21023689,Asheville LOCATION & PRIVACY - Dog Friendly,Susanne,2713423,Allen,MD,$848.29,2,3,4,MEDIUM
+21094481,"Charming, Early 1900's Cottage",Anne,1231664,Ponce,PR,$3.3,3,5,7,SMALL
+21104844,Asheville Sweet Spot,Anne,1231664,Port Ludlow,WA,$4785.93,2,5,5,SMALL
+21131816,Beautiful Private Room in Asheville,Anne,1231664,Howes,SD,$586.86,1,1,4,SMALL
+21160267,"CLEAN, MODERN, MINIMAL, QUIET! Great Location!",Christal,3927823,Sweet Water,AL,$3160.32,4,5,6,MEDIUM
+21174524,Quiet home in West Asheville! (private entrance),Christal,3927823,Minot AFB,ND,$1537.65,1,1,5,MEDIUM
+21176027,The Little Red Porch,Blake,5394740,Dayton,TN,$3760.3,2,2,4,LARGE
+21189890,"Meadow Run Falls; Downtown Asheville; River Arts District, HOT TUB & more!",Blake,5394740,Milton,KY,$3752.96,4,2,4,MEDIUM
+21197685,Ardmore House Guest Suite / One mile frm downtown.,Blake,5394740,Wilsons,VA,$2955.67,1,5,8,LARGE
+21203344,"Comfy suite near Sierra Nevada, Asheville,  hiking",Blake,5394740,Fillmore,CA,$2237.98,2,3,7,MEDIUM
+21212588,Walk to Neighborhood Restaurants from a Tranquil Guest Suite,B,4241907,Porter,TX,$4445.62,3,1,8,MEDIUM
+21214062,"Peaceful, Comfortable House in West Asheville",B,4241907,Morgantown,WV,$2550.9,3,3,6,SMALL
+21236709,Perfect place for a quick getaway,B,4241907,Sulphur Rock,AR,$3029.57,4,4,8,LARGE
+21253016,Oasis in the Trees,B,4241907,New Albany,MS,$2966.41,2,4,6,LARGE
+21272098,Perfect Place for a quick getaway 2,B,4241907,Topaz,CA,$4243.72,2,1,6,SMALL
+21278647,"The Snookmore, Mountainside Refuge with a Hot Tub",Emilio And Kate,1287632,Huntingdon Valley,PA,$1894.29,4,5,6,LARGE
+21280708,Studio apartment in mountains of North Asheville,Brandon,6978098,Granbury,TX,$1204.22,1,1,6,SMALL
+21297231,The Shanty~Hot Tub~8 Miles to City of Asheville NC,Brandon,6978098,Brandon,VT,$1457.77,2,3,7,SMALL
+21312568,"The Birdhouse: Close to Biltmore, Downtown. SOLAR!",Georgia,6801504,Vinemont,AL,$551.72,1,3,4,SMALL
+21345127,Happy Hippy Private Suite!7min->D‚Äôtown & B‚Äômore,Georgia,6801504,Lenzburg,IL,$1632.98,1,3,6,SMALL
+21364022,Cozy Craftsman Bungalow in the Blue Ridge Mts,Yasmin,6801045,Addison,IL,$1331.29,4,2,5,LARGE
+21382558,The Snookery ~ Refuge Perched on a Mountain,Yasmin,6801045,Monticello,AR,$1198.64,3,1,4,SMALL
+21383423,Woodsy Spot in the City,Yasmin,6801045,Parmele,NC,$1874.62,2,4,5,SMALL
+21393921,"Historic Montford Bungalow, Walk to Downtown",Yasmin,6801045,South Burlington,VT,$334.24,4,5,8,SMALL
+21396505,Vista View Townhouse - 10 mins to downtown,Yasmin,6801045,Ashkum,IL,$2579.59,2,5,8,MEDIUM
+21399365,"Cozy Basement Apt near
+Airport/AVL/Breweries/Fun!",Sarah,2548858,Waddy,KY,$4196.8,1,5,6,SMALL
+21432436,Minimum 30 day rental in lovely Grove Park,Ralph,5573629,Baltimore,MD,$3858.36,1,5,7,LARGE
+21437451,Town & Tree: Modern Hideaway walk to Downtown,Ralph,5573629,Hayes,SD,$1390.98,3,3,7,MEDIUM
+21449558,Wild Canary Mountainside Retreat/Hidden Nest,April,6619909,Birdsboro,PA,$367.88,4,2,5,SMALL
+21456384,Haven Under the Oaks,April,6619909,Shinnston,WV,$3493.11,2,1,4,SMALL
+21486209,Private East Asheville Retreat,April,6619909,Bayamon,PR,$2434.6,1,3,6,LARGE
+21502620,Sunshine's Daydream in West Asheville,April,6619909,Bishop,GA,$2796.58,2,5,8,LARGE
+21513021,2 Bedroom Condo blocks to Downtown Asheville,Louise And Steve,8090496,Carol Stream,IL,$2155.68,3,2,8,LARGE
+21561017,French Country Guesthouse,Louise And Steve,8090496,Bergman,AR,$1481.28,4,3,6,SMALL
+21566026,The Nature Nook near Asheville NC,Louise And Steve,8090496,Burlington,CT,$657.0,4,4,7,MEDIUM
+21579876,Asheville Mountain Sanctuary (Private 4 Rm Suite),Louise And Steve,8090496,Albany,NY,$2931.97,4,4,4,MEDIUM
+21580160,Rustic Asheville Cabin on 20 Acres w/Swimming Pond,Louise And Steve,8090496,Rosser,TX,$2898.11,4,3,6,SMALL
+21591133,"Cozy & convenient in Asheville, Grove park area",Leland,3129550,Saint George Island,AK,$1932.66,2,5,8,LARGE
+21631995,"New Two Bedroom Dream, Close to Everything with Fireplace.",Leland,3129550,Redfield,AR,$3874.81,4,4,4,MEDIUM
+21682891,"Cozy, Convenient: 3 Bdrm Home, 3 miles to Biltmore",Leland,3129550,Port Orchard,WA,$2038.25,3,3,4,MEDIUM
+21693285,Elegantly Spacious Guest Suite on Elkmont,Leland,3129550,Tafton,PA,$1843.68,4,5,4,MEDIUM
+21709922,Relaxing River Oasis with Pool and Hot Tub,Guy,5126047,Delta,AL,$453.01,2,4,5,SMALL
+21733951,"Immaculate, Traditional Home - S. Asheville 2BRs",Guy,5126047,New River,VA,$1573.53,1,5,7,SMALL
+21748228,Gilbert's Getaway (Extra Clean!),Guy,5126047,Olive Branch,MS,$1.07,4,1,6,MEDIUM
+21784784,West Asheville Get-Away,Guy,5126047,Prince,WV,$4271.34,3,4,5,LARGE
+21798869,Montford Urban Treehouse,Guy,5126047,Gordonsville,VA,$3179.26,3,5,5,MEDIUM
+21829016,The Down Home Doublewide,Garry,5548161,Clayton,TX,$3529.74,1,2,7,SMALL
+21853043,Ideal for couples/solos-COZY & CLOSE TO DOWNTOWN!,Garry,5548161,Humacao,PR,$2748.27,4,3,5,LARGE
+21894298,Pet-Friendly Upper Berne in Asheville!,Garry,5548161,Chelsea,MI,$1556.72,4,5,8,MEDIUM
+21911184,The Cottage at Winghaven‚ÄîA Stunning Woodland Paradise,Ashley,3195501,Cornish,ME,$363.02,1,4,7,SMALL
+21947972,Houz Zen: A Pet Friendly Private Suite,Ashley,3195501,Lady Lake,FL,$1816.44,3,4,6,MEDIUM
+21963653,Mtn Chalet >10 min to downtown Asheville & BRP!,Ashley,3195501,Ravensdale,WA,$3999.78,3,1,4,LARGE
+21978697,One Block North of Downtown AVL!,Ashley,3195501,STW,OK,$4056.63,3,4,4,SMALL
+22030235,Forested Spot in the city. Best of Both Worlds,Ashley,3195501,Annada,MO,$1242.81,4,1,4,MEDIUM
+22043194,1940's Farm House Retreat in North Asheville,Darcy,2765529,Chauncey,GA,$2597.1,1,1,5,LARGE
+22049704,Our Little Getaway,Darcy,2765529,Susanville,CA,$627.95,2,5,4,MEDIUM
+22050248,Top Floor Condo in the Heart of Downtown,Darcy,2765529,Fort Greely,AK,$4259.11,1,4,5,SMALL
+22095619,Comfortable downtown Studio. Walk everywhere.,Darcy,2765529,Los Angeles,CA,$4375.37,1,1,6,LARGE
+22107175,"QUIET, COMFY & CLEAN ~ Near Downtown & UNCA!",Darcy,2765529,Great Neck,NY,$1229.39,1,4,7,MEDIUM
+22114590,Comfortable private room in historic B&B,Steve,1729374,Indian Valley,ID,$4853.85,1,4,5,LARGE
+22119778,Large king suite with private balcony and soaking tub,Steve,1729374,Ellsworth,ME,$1248.75,1,1,8,LARGE
+22147548,Arden / South Asheville guest room,Steve,1729374,Knotts Island,NC,$2112.33,1,2,5,LARGE
+22151438,Mountain Moments Retreats,Hun,3191272,Pierceville,KS,$3956.52,3,1,7,MEDIUM
+22152480,Biltmore Retreat Luxury King Guest Suite,Hun,3191272,Willcox,AZ,$4458.96,3,2,6,LARGE
+22163415,"Amazing Mountain View close to Biltmore, Downtown","Asheville Cottages, Inc.",6396581,Baltimore,MD,$271.31,3,3,7,SMALL
+22224397,Avl Getaway: Beautiful & Spacious 2 Bedroom Suite,Christine,4351103,Muskegon,MI,$4334.0,4,1,5,LARGE
+22275691,Charming Historic Cottage on NE edge of downtown.,Christine,4351103,Leander,TX,$1577.82,1,5,6,MEDIUM
+22306380,Merry Heart Homestay,Christine,4351103,Las Vegas,NV,$1162.55,2,1,5,LARGE
+22308959,Mountain Views & Hot Tub at Reeves Cove Cottage,Christine,4351103,Lyons,IN,$2642.36,3,1,5,SMALL
+22317485,Country Setting - Minutes to Downtown Asheville,Christine,4351103,Mountville,SC,$1738.01,1,3,7,LARGE
+22326909,Beautiful 1 Bedroom Apt. Historic Montford (2/4),Milan,6729944,Stewarts Point,CA,$461.27,2,3,5,MEDIUM
+22360186,Whole House Sublet 30+ Night Stay 10 Mins to AVL,Milan,6729944,Mount Pulaski,IL,$3594.5,4,3,7,MEDIUM
+22408602,The Sanctuary - Across from New Belgium Brewery,Milan,6729944,Hamilton,OH,$2902.13,1,4,8,LARGE
+22437203,Gardenia - Hotel vibe - Minutes Downtown+ Biltmore,Celeste,4305851,Los Molinos,CA,$313.28,1,3,4,LARGE
+22437447,Lavander Hotel Vibe room:  5' Downtown +  Biltmore,Celeste,4305851,Attica,KS,$273.1,3,5,5,MEDIUM
+22461969,Asheville Cottage in Historic Montford 30 Day Min,Celeste,4305851,Quincy,MA,$2048.33,3,5,5,SMALL
+22486185,Tiny Home Nestled Under Large Trees near Downtown Asheville,Mikael,1264831,Gig Harbor,WA,$2350.95,1,3,5,LARGE
+22510926,Aunt Betsy's bedroom & bathroom with private entry,Angela,1080843,Gallipolis,OH,$4338.08,1,2,8,LARGE
+22511514,Just Remodeled 6 mi to Downtown Asheville Sleeps 8,Angela,1080843,Lake Orion,MI,$724.83,3,1,7,SMALL
+22517744,Serenity Cottage‚ù§Ô∏èMtn Bike & Parkway Retreat,Tim,1964026,Lawrenceburg,IN,$3670.34,4,3,6,LARGE
+22530746,"Cozy Convenience: King Beds, 3 miles to Biltmore",Tim,1964026,Teague,TX,$4055.76,1,2,4,SMALL
+22543222,Dogwood Cottage-couples getaway near Biltmore Pk!,Tim,1964026,Mount Carmel,PA,$3347.96,3,1,4,LARGE
+22545170,Stone Cottage-2.5 miles from Biltmore Park!,Tim,1964026,Eden,GA,$4433.26,2,1,6,SMALL
+22546209,Ivy Cottage-2.5 miles to Biltmore Park,John,4263262,Virginia Beach,VA,$4353.1,3,5,4,MEDIUM
+22546650,Azalea Cottage-couples getaway near Biltmore Park!,Emilio And Kate,1287632,Spring Hill,FL,$2651.46,4,1,4,SMALL
+22568931,"West Asheville, The Art House Studio",Michael And Amanda,5124188,Guilford,ME,$1053.93,4,5,5,SMALL
+22589049,Stunning 1902 Cottage! Walk to downtown Asheville!,Michael And Amanda,5124188,Paxico,KS,$4829.62,1,2,6,MEDIUM
+22594761,Newly Renovated Private Lower Lvl Suite in Oakley,Michael And Amanda,5124188,Plattsburgh,NY,$2773.72,2,4,5,LARGE
+22683936,Bright and airy room with tiger oak bed and beautiful bay window,Michael And Amanda,5124188,Madison,NY,$4488.92,1,5,8,SMALL
+22684105,Romantic B&B room with beautiful canopied four poster bed,Reid,6159232,Halltown,MO,$4761.66,1,4,6,LARGE
+22684155,Cozy B&B room with mahogany bed and 2 course breakfast,Reid,6159232,Smiths Creek,MI,$4762.66,4,4,6,MEDIUM
+22701770,"Immaculate, Traditional Home in S. Asheville BR1",Terra,5977598,Tioga,ND,$400.33,3,4,8,SMALL
+22702396,"Immaculate, Traditional Home in S. Asheville BR2",Terra,5977598,Cabo Rojo,PR,$2367.78,4,1,4,SMALL
+22726943,Modern Retreat. Fresh Air. Staycation Bliss.,Terra,5977598,Burnettsville,IN,$4546.08,1,3,8,LARGE
+22740737,W. Asheville Spa and Gameroom Getaway,Terra,5977598,Nevada City,CA,$333.24,1,3,5,MEDIUM
+22773505,"the BEAR DEN‚Äîbeautiful, private, hip pad w/HEPA",Terra,5977598,Glen Allen,VA,$4022.3,4,5,5,SMALL
+22883329,Yellow House in Charming West Asheville,Lee,2652566,San Sebastian,PR,$288.73,3,4,6,LARGE
+22921667,"W Avl tiny home, pet friendly, close to downtown",Lee,2652566,Shawnee Mission,KS,$2861.55,2,2,8,MEDIUM
+22924150,Montford Hideaway - Ten minute walk to downtown.,Lee,2652566,Macfarlan,WV,$2141.5,1,3,8,MEDIUM
+22944749,Family Getaway/Minutes to Downtown,Lee,2652566,Sabana Grande,PR,$1784.08,2,1,8,LARGE
+22950161,Country cottage in the center of it all!,Karen,7176800,Lanesboro,MN,$17.1,3,5,8,MEDIUM
+22968354,The Bluebird Basement Getaway,Karen,7176800,Glencoe,MO,$4597.46,2,1,4,MEDIUM
+22984192,Private modern apt above River Arts.  Walk to town,Karen,7176800,West Harwich,MA,$4034.37,4,1,8,LARGE
+22986709,Upscale AsheV Experience with Discounted Rates,Karen,7176800,San German,PR,$3777.39,3,3,5,SMALL
+23017092,The Falcon (6 bd/4 ba) - Where together is better,Karen,7176800,Gilbert,AR,$1876.25,4,4,8,SMALL
+23025024,"Guest house.  Walk to town, all new, 2nd story",Will,4258780,Wild Horse,CO,$1040.06,1,3,4,MEDIUM
+23068704,Cute Single with Private Bath 1.5 miles to Haywood,Ar,4895639,San Lorenzo,PR,$3267.52,3,2,5,MEDIUM
+23075703,Private River Arts Suite,Ar,4895639,Fremont,IA,$3790.63,4,4,7,SMALL
+23076921,North Asheville Urban Forest,Marta,2192922,Upton,MA,$3788.35,4,2,6,LARGE
+23084647,Cozy Little Farmette Minutes to Downtown Asheville,Marta,2192922,Weesatche,TX,$1010.16,2,1,5,SMALL
+23150406,The Flint Street House downtown Historic Montford,Davyne,3477735,New Cumberland,PA,$4539.73,3,2,7,MEDIUM
+23216051,Live/Work/Walk Everywhere from Drover's Way House,Davyne,3477735,Geyser,MT,$691.01,1,5,5,LARGE
