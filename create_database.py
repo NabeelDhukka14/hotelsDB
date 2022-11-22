@@ -15,7 +15,7 @@ df = pd.read_csv('csv_files/AB_US_2020.csv')
 TOTAL_DB_SIZE = 800
 
 
-# In[2]:
+# In[7]:
 
 
 ### Users
@@ -51,7 +51,11 @@ def randomize_ids(size, id_len):
     ids = []
     su = shortuuid.ShortUUID(alphabet="1234567890")
     for i in range(size):
-        ids.append(su.random(length=id_len))
+        su_id = su.random(length=id_len)
+        while su_id in ids:
+            su_id = su.random(length=id_len)
+    
+        ids.append(su_id)
     return ids
 
 user_id = randomize_ids(TOTAL_DB_SIZE, 7)
