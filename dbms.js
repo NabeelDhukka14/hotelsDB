@@ -149,14 +149,39 @@ app.post('/updateReservation', async function(req,res){
   const start = req.body.start; 
   const end = req.body.end; 
   const status = req.body.status; 
+  const numGuests = req.body.numGuests;
+  let listing = req.body.listingId;
 
-  if(start != undefined || end != undefined){
-    //TODO 
-  }else{
-    
+  if(listing != undefined && status != 'CANCELED'){
+    res.status(400).send("sorry cannot update the property listing for this reservation. To do this, please cancel this reservation and create a new reservation for the new desired property listing.");
+  }
+
+  if(numGuests != undefined){
+    const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
+    if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
+      res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
+    }
   }
 
   const con = await connectToDb();
+  const reservation = await con.query('SELECT * FROM reservations WHERE reservationid=$1;',[resId]);
+  if(reservation.rowCount === 0){res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");}
+
+  const resProps = new Map();
+  resProps.set("start", start === undefined ? reservation[0].startDate : start)
+  resProps.set("end", end === undefined ? reservation[0].endDate : end)
+  resProps.set("status", status === undefined ? reservation[0].status : status)
+  resProps.set("numGuests", numGuests === undefined ? reservation[0].numGuests : numGuests)
+  resProps.set("listingid", reservation[0].listingid)
+  
+  if(start != undefined || end != undefined){
+    //TODO 
+  }else{
+    await con.query('UPDATE reservations SET status=$1, numGuests=$2 WHERE reservationid=$3',[resProps.get("status"),resProps.get("numGuests"),resId])
+  }
+
+  await con.end();
+  res.status(200).send("Successfully updated your reservation. Your reservationId is "+resId);
 
 });
 
@@ -186,7 +211,7 @@ app.post('/makeReservation', async function(req,res){
   if(avail.rowCount >0 ){
     res.status(400).send("Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property");
   }
-  await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"Booked",listing,userId, numGuests]);
+  await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"BOOKED",listing,userId, numGuests]);
   await con.end();
   res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
 });
