@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[30]:
+# In[1]:
 
 
 import pandas as pd
@@ -15,7 +15,7 @@ df = pd.read_csv('csv_files/AB_US_2020.csv')
 TOTAL_DB_SIZE = 800
 
 
-# In[39]:
+# In[2]:
 
 
 ### Users
@@ -71,7 +71,7 @@ print(len(df_users))
 df_users.to_csv('csv_files/USERS.csv', index=False)
 
 
-# In[40]:
+# In[3]:
 
 
 ### Properties
@@ -170,7 +170,7 @@ print(len(df_props))
 df_props.to_csv('csv_files/PROPERTIES.csv', index=False)
 
 
-# In[54]:
+# In[4]:
 
 
 ### Reservations 
@@ -186,22 +186,30 @@ def get_user_info(df_users):
     df_u = df_users.loc[(df_users['userType'] == 'USERS')]
     return df_u
 
-def randomize_status_list(size):
-    s = ['BOOKED', 'CANCELLED', 'OPEN']
-    return randomizer(size, s)
+def randomize_status_list(end_dates):
+    s = ['BOOKED', 'CANCELLED', 'COMPLETED']
+    statuses = []
+    for i in range(len(start_dates)):
+        now = datetime.datetime.now().date()
+        end = datetime.datetime.strptime(end_dates[i], '%x').date()
+        delta = end - now
+        if delta.days < 0:
+            statuses.append(s[rand.randint(1,2)])
+        else:
+            statuses.append(s[rand.randint(0,1)])
+    return statuses
+            
+        
+        
 
-def randomize_start_end_list(size):
+def randomize_start_end_list(min_nights):
     start = []
     end = []
-    for i in range(size):
-        mul = -1
-        sign = rand.randint(0, 1)
-        if sign == 0:
-            mul = 1
-        start_delta = rand.randint(0, 30)
-        end_delta = rand.randint(1, 21)
+    for n in min_nights:
+        start_delta = rand.randint(-30, 30)
+        end_delta = rand.randint(n, 21)
         date_now = datetime.datetime.now()
-        start_date = date_now + datetime.timedelta(weeks=sign*start_delta)
+        start_date = date_now + datetime.timedelta(weeks=start_delta)
         end_date = start_date + datetime.timedelta(days=end_delta)
         start.append(start_date.strftime("%x"))
         end.append(end_date.strftime("%x"))
@@ -215,6 +223,7 @@ def randomize_reserveid_list(size):
     for i in range(size):
         ri.append(su.random(length=9))
     return ri
+
 def randomize_user_id(size, df_u, id_col):
     uids = []
     for i in range(size):
@@ -222,23 +231,31 @@ def randomize_user_id(size, df_u, id_col):
         uids.append(df_u[id_col].iloc[index])
     return uids
 
-def randomize_listings(size, df, id_col):
+def randomize_listings(size, df_props, id_col):
     listing_id = []
     for i in range(size):
         d = rand.randint(1, 5)
-        index = rand.randint(0, len(df) - 1)
+        index = rand.randint(0, len(df_props) - 1)
         while d > 0 and len(listing_id) < size:
-            listing_id.append(df[id_col].iloc[index])
+            listing_id.append(df_props[id_col].iloc[index])
             d -= 1
     return listing_id
 
+def randomize_num_guests(listings, df_props):
+    num_guests = []
+    for l in listings:
+        max_people = df_props.loc[df_props['listingId'] == l]['maxPeople'].values[0]
+        num_guests.append(rand.randint(1, max_people))
+    return num_guests
+        
+
 df_u = get_user_info(df_users)
 reserve_id = randomize_reserveid_list(len(df_props))
-listing_id = randomize_listings(len(df_props), df, 'id')
-start_dates, end_dates = randomize_start_end_list(len(df_props))
-statuses = randomize_status_list(len(df_props))
+listing_id = randomize_listings(len(df_props), df_props, 'listingId')
+start_dates, end_dates = randomize_start_end_list(min_nights)
+statuses = randomize_status_list(end_dates)
 user_id = randomize_user_id(len(df_props), df_u, 'userId')
-num_guests = get_random_nums_list(len(df_props), 0, 8)
+num_guests = randomize_num_guests(listing_id, df_props)
 
 res_dict = {
     'reservationId': reserve_id,
@@ -251,13 +268,12 @@ res_dict = {
 }
 
 df_res = pd.DataFrame(res_dict)
-print(df_res[:10])
-print(len(df_res))
+print(df_res)
+
+print(df_res.loc[df_res['status'] == 'CANCELLED'])
+# temp_df = df_res.join(df_props.set_index('listingId'), how='inner', on='listingId')
+# temp_df = temp_df.loc[temp_df['maxPeople'] < temp_df['numGuests']]
+# print(temp_df[['listingId', 'maxPeople', 'numGuests']])
+
 df_res.to_csv('csv_files/RESERVATIONS.csv', index=False)
-
-
-# In[ ]:
-
-
-
 
