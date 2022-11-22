@@ -139,6 +139,26 @@ app.post('/checkavailability', async function(req, res){
   res.status(200).send(avail.rows);
 });
 
+app.post('/updateReservation', async function(req,res){
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+  }
+
+  const resId = req.body.reservationId;
+  const start = req.body.start; 
+  const end = req.body.end; 
+  const status = req.body.status; 
+
+  if(start != undefined || end != undefined){
+    //TODO 
+  }else{
+    
+  }
+
+  const con = await connectToDb();
+
+});
 
 app.post('/makeReservation', async function(req,res){
   const userId = req.body.userId;
@@ -164,7 +184,7 @@ app.post('/makeReservation', async function(req,res){
   // const avail = await con.query('SELECT * FROM (SELECT p.hostname, p.hostid, p.listingid, p.listingname, p.city, p.numbeds, p.price, p.minimumnights,p.maxpeople,p.roomsize,p.state, r.startDate,r.endDate FROM properties p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid WHERE status=$1 AND endDate>=$2) AS existingRes WHERE listingid=$3;',['BOOKED',start,listing]);
   const avail = await con.query('SELECT * FROM reservations WHERE status=$1 AND listingid=$2 AND endDate<=$3',['BOOKED',listing,start]);
   if(avail.rowCount >0 ){
-    res.status(400).send("Sorry the listing you've requested is already booked for your specified start time.");
+    res.status(400).send("Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property");
   }
   await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"Booked",listing,userId, numGuests]);
   await con.end();
