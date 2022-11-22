@@ -176,9 +176,27 @@ app.post('/updateReservation', async function(req,res){
   
   if(start != undefined || end != undefined){
     //TODO 
-  }else{
-    await con.query('UPDATE reservations SET status=$1, numGuests=$2 WHERE reservationid=$3',[resProps.get("status"),resProps.get("numGuests"),resId])
-  }
+    let d1 = new Date(resProps.get('start'));
+    let d2 = new Date(resProps.get('end'));
+    if(d1.getTime() > d2.getTime()){
+      res.status(400).send("Your Start date cannot be after your End Date");
+    }
+    else{
+      const startandEnd = await con.query('SELECT startDate, endDate FROM reservations WHERE reservationid=$1 AND startDate>=$2 AND endDate<=$3', [resId,start,end]);
+      if(startandEnd.rowCount > 0){
+        await con.end();
+        res.status(400).send({
+          "msg":"You cannot update your reservation for this startDate - endDate range, because of conflicts with existing resrvations. Please select a date range that does not conflict with the ones provided below",
+          "unavailableDates": startandEnd.rows
+        });
+      }
+    }
+
+
+  } 
+  
+  await con.query('UPDATE reservations SET status=$1, numGuests=$2 , startDate=$3, endDate=$4 WHERE reservationid=$5',[resProps.get("status"),resProps.get("numGuests"),resProps.get("start"), resProps.get("end"),resId]);
+  
 
   await con.end();
   res.status(200).send("Successfully updated your reservation. Your reservationId is "+resId);
