@@ -1,8 +1,8 @@
 # Hotels DMBS Project
 
 ## How to run the project
-- To run the postgres db instance simply run the command `docker-compose up -d` 
-- To close the running docker container run the command `docker-compose down` 
+- To run the postgres db instance simply run the command `docker-compose up --build -d` 
+- To close the running docker container run the command `docker-compose down -v` 
 - to open the postgres interactive terminal run the command `docker exec -it hotel-myDB-1 psql -U hello -w hotelsDb`
 
 ## On container start ... 
