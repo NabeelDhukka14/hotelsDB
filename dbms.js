@@ -151,7 +151,7 @@ app.post('/updateReservation', async function(req,res){
   const status = req.body.status; 
   const numGuests = req.body.numGuests;
   let listing = req.body.listingId;
-
+  const con = await connectToDb();
   if(listing != undefined && status != 'CANCELED'){
     res.status(400).send("sorry cannot update the property listing for this reservation. To do this, please cancel this reservation and create a new reservation for the new desired property listing.");
   }
@@ -163,7 +163,6 @@ app.post('/updateReservation', async function(req,res){
     }
   }
 
-  const con = await connectToDb();
   const reservation = await con.query('SELECT * FROM reservations WHERE reservationid=$1;',[resId]);
   if(reservation.rowCount === 0){res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");}
 
@@ -216,7 +215,7 @@ app.post('/makeReservation', async function(req,res){
   let numGuests = req.body.numGuests;
 
 
-  const con = connectToDb();
+  const con = await connectToDb();
   const checkListing = await con.query('SELECT * FROM properties WHERE ListingId=$1;',[listing])
   if(checkListing.rowCount === 0){app.status(404).send("The listing Id you have provided is invalid. No such listing could be found");}
   else if(numGuests > checkListing.rows[0].maxPeople){
