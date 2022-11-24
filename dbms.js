@@ -156,13 +156,6 @@ app.post('/updateReservation', async function(req,res){
     res.status(400).send("sorry cannot update the property listing for this reservation. To do this, please cancel this reservation and create a new reservation for the new desired property listing.");
   }
 
-  if(numGuests != undefined){
-    const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
-    if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
-      res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
-    }
-  }
-
   const reservation = await con.query('SELECT * FROM reservations WHERE reservationid=$1;',[resId]);
   if(reservation.rowCount === 0){res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");}
 
@@ -173,6 +166,20 @@ app.post('/updateReservation', async function(req,res){
   resProps.set("numGuests", numGuests === undefined ? reservation[0].numGuests : numGuests)
   resProps.set("listingid", reservation[0].listingid)
   
+  if(numGuests != undefined){
+    const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
+    if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
+      res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
+    }
+  }
+
+  var timeDiff = date2.getTime() - date1.getTime();
+  var dayDiff = Difference_In_Time / (1000 * 3600 * 24);
+
+  if( dayDiff < checkListing[0].minimumnights){
+    res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
+  }
+
   if(start != undefined || end != undefined){
     //TODO 
     let d1 = new Date(resProps.get('start'));
@@ -214,13 +221,27 @@ app.post('/makeReservation', async function(req,res){
   let resId = uuidv4();
   let numGuests = req.body.numGuests;
 
+  let d1 = new Date(resProps.get('start'));
+  let d2 = new Date(resProps.get('end'));
+
+
 
   const con = await connectToDb();
   const checkListing = await con.query('SELECT * FROM properties WHERE ListingId=$1;',[listing])
   if(checkListing.rowCount === 0){app.status(404).send("The listing Id you have provided is invalid. No such listing could be found");}
-  else if(numGuests > checkListing.rows[0].maxPeople){
+  
+  if(numGuests > checkListing.rows[0].maxPeople){
     res.status(400).send("The selected listing can hold a maximum of "+checkListing.rows[0].maxPeople+" guests. Please update your number of guests");
   }
+
+    var timeDiff = date2.getTime() - date1.getTime();
+    var dayDiff = Difference_In_Time / (1000 * 3600 * 24);
+  
+  if( dayDiff < checkListing[0].minimumnights){
+    res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
+  }
+
+
 
   //TODO: compare against existing reservations to see if this one is valid. Start vs End date. 
   // const avail = await con.query('SELECT * FROM (SELECT p.hostname, p.hostid, p.listingid, p.listingname, p.city, p.numbeds, p.price, p.minimumnights,p.maxpeople,p.roomsize,p.state, r.startDate,r.endDate FROM properties p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid WHERE status=$1 AND endDate>=$2) AS existingRes WHERE listingid=$3;',['BOOKED',start,listing]);
@@ -233,7 +254,25 @@ app.post('/makeReservation', async function(req,res){
   res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
 });
 
+app.post("/getreservations", async function(req,res){
+  const userId = req.body.userId;
 
+  // let start = req.body.startDate;
+  // let end = req.body.endDate; 
+  // let listing = req.body.listingId;
+  // let resId = uuidv4();
+  // let numGuests = req.body.numGuests;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+  }
+  
+  if(userId === undefined){
+    res.status(400).send("Did not recieve a userId. Please submit a userId if you would like to view all your reservations");
+  }
+  const con = await connectToDb();
+  const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1',[userId]);
+  reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations") :res.status(200).send(reservations.rows);
+});
 
 //Properties 
 
