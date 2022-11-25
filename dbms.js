@@ -256,22 +256,58 @@ app.post('/makeReservation', async function(req,res){
 
 app.post("/getreservations", async function(req,res){
   const userId = req.body.userId;
-
+  const start = req.body.startDate;
+  const end = req.body.endDate;
+  const host = req.body.hostId;
   // let start = req.body.startDate;
   // let end = req.body.endDate; 
   // let listing = req.body.listingId;
   // let resId = uuidv4();
   // let numGuests = req.body.numGuests;
-  if(!isLoggedIn(userId)){
-    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
-  }
-  
-  if(userId === undefined){
+  if(userId === undefined && host === undefined){
     res.status(400).send("Did not recieve a userId. Please submit a userId if you would like to view all your reservations");
   }
+
+  if(host != undefined && !isLoggedIn(host)){
+    res.status(401).send("user "+hostId+" is not logged in. Please login before attempting to perform any actions");
+  }else if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+  }
+
+  //user and host are both defined 
+  
   const con = await connectToDb();
-  const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1',[userId]);
-  reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations") :res.status(200).send(reservations.rows);
+  if(end != undefined && start !=undefined){
+    if(host != undefined && userId != undefined){
+      const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostId=$2 AND startDate>=$3 AND endDate<=$4',[userId,host,start,end]);
+      const resText = "As a property host here are all the reservations between "+start+" and "+end+" made by user "+userId;
+      reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end+" made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+    }else if(host != undefined && userId ===undefined){
+      const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1 AND startDate>=$2 AND endDate<=$3',[host,start,end]);
+      const resText = "As a property host, here are the reservations for your properties between "+start+" and "+end;
+      reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+  
+    }else{
+      const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND startDate>=$2 AND endDate<=$3',[userId,start,end]);
+      const resText = "reservations between "+start+" and "+end;
+      reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+    }
+  }else{
+    if(host != undefined && userId != undefined){
+      const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostid=$2',[userId,host]);
+      const resText = "As a property host here are all the reservations for your properties made by user "+userId;
+      reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+    }else if(host != undefined && userId === undefined){
+      const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1',[host]);
+      const resText = "As a property host, here are all the reservations for your properties";
+      reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties") : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+  
+    }else{
+      const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1',[userId]);
+      reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations") :res.status(200).send({"msg": "Here are all of your reservations. To view reservations within a certain date range please provide a Start and End Date"
+      ,"allReservations": reservations.rows});  
+    }
+  }
 });
 
 //Properties 
