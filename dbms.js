@@ -62,6 +62,7 @@ app.post("/signUpUser", async function(req, res){
   console.log("USER TYPE: ", userType);
   if(!validRoles.includes(userType)){
     res.status(400).send("The 'role' you've provided is invalid. Please select either 'user' or 'host' as a role");
+    return;
   }
 
   
@@ -90,6 +91,7 @@ app.post("/signUpUser", async function(req, res){
   await client.end();
   console.log("done removing connection");
   res.status(200).send("succesfully signed you up.Your userId is "+userId+". Use this Id when loggin in.");
+  return;
 });
 
 
@@ -104,10 +106,15 @@ app.post("/loginUser", async function(req, res){
   if(userLookup.rowCount > 0 && userLookup.rows[0].password === pass){
     loggedInUsers.set(userId, true);
     res.status(200).send("Successfully logged in");
+    return;
   }else if(userLookup.rowCount === 0){
     res.status(401).send("UserId does not exist. Please sign up for an account");
+    return;
   }
-  else{res.status(401).send("Unable to log you in. UserID and pass do not match");}
+  else{
+    res.status(401).send("Unable to log you in. UserID and pass do not match");
+    return;
+  }
 
 });
 
@@ -119,6 +126,7 @@ app.get("/getallusers", async function(req,res){
     console.log("ROWS: ", resp.rows);
     await con.end();
     res.status(200).send(resp.rows);
+    return;
 });
 
 //THIS ENDPOINT IS WORK IN PROGRESS
@@ -137,12 +145,14 @@ app.post('/checkavailability', async function(req, res){
   // const avail = await con.query('SELECT * FROM properties;');
   await con.end();
   res.status(200).send(avail.rows);
+  return;
 });
 
 app.post('/updateReservation', async function(req,res){
   const userId = req.body.userId;
   if(!isLoggedIn(userId)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
   }
 
   const resId = req.body.reservationId;
@@ -154,10 +164,14 @@ app.post('/updateReservation', async function(req,res){
   const con = await connectToDb();
   if(listing != undefined && status != 'CANCELED'){
     res.status(400).send("sorry cannot update the property listing for this reservation. To do this, please cancel this reservation and create a new reservation for the new desired property listing.");
+    return;
   }
 
   const reservation = await con.query('SELECT * FROM reservations WHERE reservationid=$1;',[resId]);
-  if(reservation.rowCount === 0){res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");}
+  if(reservation.rowCount === 0){
+    res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");
+    return;
+  }
 
   const resProps = new Map();
   resProps.set("start", start === undefined ? reservation[0].startDate : start)
@@ -170,6 +184,7 @@ app.post('/updateReservation', async function(req,res){
     const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
     if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
       res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
+      return;
     }
   }
 
@@ -181,6 +196,7 @@ app.post('/updateReservation', async function(req,res){
 
   if( dayDiff < checkListing[0].minimumnights){
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
+    return;
   }
 
   if(start != undefined || end != undefined){
@@ -189,6 +205,7 @@ app.post('/updateReservation', async function(req,res){
     let d2 = new Date(resProps.get('end'));
     if(d1.getTime() > d2.getTime()){
       res.status(400).send("Your Start date cannot be after your End Date");
+      return;
     }
     else{
       const startandEnd = await con.query('SELECT startDate, endDate FROM reservations WHERE reservationid=$1 AND startDate>=$2 AND endDate<=$3', [resId,start,end]);
@@ -198,6 +215,7 @@ app.post('/updateReservation', async function(req,res){
           "msg":"You cannot update your reservation for this startDate - endDate range, because of conflicts with existing resrvations. Please select a date range that does not conflict with the ones provided below",
           "unavailableDates": startandEnd.rows
         });
+        return;
       }
     }
 
@@ -209,13 +227,14 @@ app.post('/updateReservation', async function(req,res){
 
   await con.end();
   res.status(200).send("Successfully updated your reservation. Your reservationId is "+resId);
-
+  return;
 });
 
 app.post('/makeReservation', async function(req,res){
   const userId = req.body.userId;
   if(!isLoggedIn(userId)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
   }
 
   let start = req.body.startDate;
@@ -265,7 +284,7 @@ app.post('/makeReservation', async function(req,res){
   }
   console.log("START IS: ",start);
   console.log("END IS: ", end);
-  
+
   await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"BOOKED",listing,userId, numGuests]);
   await con.end();
   res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
@@ -285,12 +304,15 @@ app.post("/getreservations", async function(req,res){
   // let numGuests = req.body.numGuests;
   if(userId === undefined && host === undefined){
     res.status(400).send("Did not recieve a userId. Please submit a userId if you would like to view all your reservations");
+    return;
   }
 
   if(host != undefined && !isLoggedIn(host)){
     res.status(401).send("user "+hostId+" is not logged in. Please login before attempting to perform any actions");
+    return;
   }else if(!isLoggedIn(userId)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
   }
 
   //user and host are both defined 
@@ -301,30 +323,34 @@ app.post("/getreservations", async function(req,res){
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostId=$2 AND startDate>=$3 AND endDate<=$4',[userId,host,start,end]);
       const resText = "As a property host here are all the reservations between "+start+" and "+end+" made by user "+userId;
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end+" made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+      return;
     }else if(host != undefined && userId ===undefined){
       const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1 AND startDate>=$2 AND endDate<=$3',[host,start,end]);
       const resText = "As a property host, here are the reservations for your properties between "+start+" and "+end;
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
-  
+      return;
     }else{
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND startDate>=$2 AND endDate<=$3',[userId,start,end]);
       const resText = "reservations between "+start+" and "+end;
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+      return;
     }
   }else{
     if(host != undefined && userId != undefined){
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostid=$2',[userId,host]);
       const resText = "As a property host here are all the reservations for your properties made by user "+userId;
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+      return;
     }else if(host != undefined && userId === undefined){
       const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1',[host]);
       const resText = "As a property host, here are all the reservations for your properties";
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties") : res.status(200).send({"msg":resText,"reservations":reservations.rows});
-  
+      return;
     }else{
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1',[userId]);
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations") :res.status(200).send({"msg": "Here are all of your reservations. To view reservations within a certain date range please provide a Start and End Date"
       ,"allReservations": reservations.rows});  
+      return;
     }
   }
 });
