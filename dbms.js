@@ -121,6 +121,31 @@ app.get("/getallusers", async function(req,res){
     res.status(200).send(resp.rows);
 });
 
+app.get("/getTotalBookedDays/:listingId", async function(req, res) {
+  const con = await connectToDb();
+  const reservations = await con.query('SELECT * FROM reservations WHERE listingId = $1;', [req.params.listingId]);
+  if (reservations.rows.length == 0) {
+    res.status(404).send('listingId: ' + req.params.listingId + ' does not have a reservation.')
+  }
+
+  var totalBookedDays = 0
+  for (let i = 0; i < reservations.rows.length; i++) {
+    let startDate = new Date(reservations.rows[i].startdate);
+    let endDate = new Date(reservations.rows[i].enddate);
+    console.log("Start Date: " + reservations.rows[i].startdate);
+    console.log("End Date: " + endDate);
+    var timeDiff = endDate.getTime() - startDate.getTime();
+    totalBookedDays += timeDiff / (1000 * 3600 * 24);
+
+    console.log("Days: ", totalBookedDays);
+  }  
+
+
+  console.log("ROWS: ", reservations.rows);
+  await con.end();
+  res.status(200).send(totalBookedDays.toString());
+});
+
 //THIS ENDPOINT IS WORK IN PROGRESS
 app.post('/checkavailability', async function(req, res){
   const userId = req.body.userId;
