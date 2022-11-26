@@ -129,24 +129,49 @@ app.get("/getallusers", async function(req,res){
     return;
 });
 
+app.get("/getTotalBookedDays/:listingId", async function(req, res) {
+  const con = await connectToDb();
+  const reservations = await con.query('SELECT * FROM reservations WHERE listingId = $1;', [req.params.listingId]);
+  if (reservations.rows.length == 0) {
+    res.status(404).send('listingId: ' + req.params.listingId + ' does not have a reservation.')
+  }
+
+  var totalBookedDays = 0
+  for (let i = 0; i < reservations.rows.length; i++) {
+    let startDate = new Date(reservations.rows[i].startdate);
+    let endDate = new Date(reservations.rows[i].enddate);
+    console.log("Start Date: " + reservations.rows[i].startdate);
+    console.log("End Date: " + endDate);
+    var timeDiff = endDate.getTime() - startDate.getTime();
+    totalBookedDays += timeDiff / (1000 * 3600 * 24);
+
+    console.log("Days: ", totalBookedDays);
+  }  
+
+
+  console.log("ROWS: ", reservations.rows);
+  await con.end();
+  res.status(200).send(totalBookedDays.toString());
+});
+
 //THIS ENDPOINT IS WORK IN PROGRESS
-app.post('/checkavailability', async function(req, res){
-  const userId = req.body.userId;
-  // if(!isLoggedIn(userId)){
-  //   res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
-  // }
+app.get('/checkAvailability', async function(req,res){
 
   let start = req.body.startDate;
   let end = req.body.endDate; 
 
   const con = await connectToDb();
-  const avail = await con.query('SELECT * FROM (SELECT p.hostname, p.hostid, p.listingid, p.listingname, p.city, p.numbeds, p.price, p.minimumnights,p.maxpeople,p.roomsize,p.state, r.startDate,r.endDate FROM properties p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid WHERE status=$1 AND endDate>=$2) AS existingRes WHERE listingid=$3;',['BOOKED',start,listingId]);
-  // p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid
-  // const avail = await con.query('SELECT * FROM properties;');
+  const avail = await con.query("Select * from properties where listingid IN (SELECT properties.listingid FROM properties WHERE listingid NOT IN(SELECT listingid FROM reservations) Union Select listingid from reservations where status!=$1 AND endDate<=$2)",['BOOKED',start]);
+  if(avail.rowCount === 0){app.status(404).send("No properties available for the selected period");}
   await con.end();
+<<<<<<< HEAD
   res.status(200).send(avail.rows);
   return;
+=======
+  res.status(400).send(avail.rows);
+>>>>>>> a70885e4a868d46b7bfb360300560be4acf4788e
 });
+
 
 app.post('/updateReservation', async function(req,res){
   const userId = req.body.userId;
