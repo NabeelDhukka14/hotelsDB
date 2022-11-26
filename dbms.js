@@ -164,12 +164,8 @@ app.get('/checkAvailability', async function(req,res){
   const avail = await con.query("Select * from properties where listingid IN (SELECT properties.listingid FROM properties WHERE listingid NOT IN(SELECT listingid FROM reservations) Union Select listingid from reservations where status!=$1 AND endDate<=$2)",['BOOKED',start]);
   if(avail.rowCount === 0){app.status(404).send("No properties available for the selected period");}
   await con.end();
-<<<<<<< HEAD
   res.status(200).send(avail.rows);
   return;
-=======
-  res.status(400).send(avail.rows);
->>>>>>> a70885e4a868d46b7bfb360300560be4acf4788e
 });
 
 
@@ -380,6 +376,54 @@ app.post("/getreservations", async function(req,res){
   }
 });
 
+app.post("/createListing", async function(req,res){
+
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  const con = await connectToDb();
+  //get user type
+  const founduser = con.query('SELECT * FROM users WHERE userid=$1',[userId]);
+  if(founduser.rowCount === 0){
+    res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+    return;
+  }
+
+  if(founduser.rows[0].usertype !== 'HOST' || founduser.rows[0].usertype !== 'ADMIN'){
+    res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
+    return; 
+  }
+
+  let propMap = new Map();
+  
+  propMap.set("hostname" , founduser.rows[0].name);
+  propMap.set("hostid", founduser.rows[0].userid);
+  propMap.set("listingid", uuidv4());
+  propMap.set("listingname" ,req.body.listingname); 
+  propMap.set("city", req.body.city);
+  propMap.set("numbeds", req.body.numbeds);
+  propMap.set("price", req.body.price);
+  propMap.set("minimumnights", req.body.minimumnights); 
+  propMap.set("maxpeople", req.body.maxpeople );
+  propMap.set("state", req.body.state);
+  propMap.set("roomSize", req.body.roomsize);
+
+  const missinVals = [];
+  propMap.keys.forEach(element => {
+    if(propMap[element] === undefined){
+      missinVals.push(element);
+    }
+  });
+  if(missinVals.length > 0){
+    res.status(400).send({"msg":"The following fields are required to perform this action. Please re-submit and provide these values for creating a new listing", "missingValues" : missinVals});
+  }
+
+  con.query('INSERT into properties(hostname,hostid, listingid,listingname, city, numbeds,price, minimumnights, maxpeople,state, roomsize) VALUES();',[propMap['hostname'],propMap['hostid'],propMap['listingid'],propMap['listingname'],propMap['city'],propMap['numbeds'],propMap['price'],propMap['minimumnights'],propMap['maxpeople'],propMap['state'],propMap['roomsize']] );
+});
+
 //Properties 
 
 // hostname 
@@ -391,7 +435,7 @@ app.post("/getreservations", async function(req,res){
 // price 
 // Minimum_nights 
 // maxPeople 
-//  state 
+// state  
 // roomSize 
 
 
