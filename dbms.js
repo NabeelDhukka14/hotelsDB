@@ -173,8 +173,11 @@ app.post('/updateReservation', async function(req,res){
     }
   }
 
+  let date1 = new Date(resProps.get('start'));
+  let date2 = new Date(resProps.get('end'));
+
   var timeDiff = date2.getTime() - date1.getTime();
-  var dayDiff = Difference_In_Time / (1000 * 3600 * 24);
+  var dayDiff = timeDiff / (1000 * 3600 * 24);
 
   if( dayDiff < checkListing[0].minimumnights){
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
@@ -221,8 +224,14 @@ app.post('/makeReservation', async function(req,res){
   let resId = uuidv4();
   let numGuests = req.body.numGuests;
 
-  let d1 = new Date(resProps.get('start'));
-  let d2 = new Date(resProps.get('end'));
+  if(start === undefined || end === undefined){
+    res.status(400).send("Start and End Date of your reservation are required. Please re-submit request by adding a startDate and endDate in the format yyyy-mm-dd");
+    return;
+
+  }
+
+  let d1 = new Date(start);
+  let d2 = new Date(end);
 
 
 
@@ -232,26 +241,36 @@ app.post('/makeReservation', async function(req,res){
   
   if(numGuests > checkListing.rows[0].maxPeople){
     res.status(400).send("The selected listing can hold a maximum of "+checkListing.rows[0].maxPeople+" guests. Please update your number of guests");
+    return;
+
   }
 
-    var timeDiff = date2.getTime() - date1.getTime();
-    var dayDiff = Difference_In_Time / (1000 * 3600 * 24);
-  
-  if( dayDiff < checkListing[0].minimumnights){
+    var timeDiff = d2.getTime() - d1.getTime();
+    var dayDiff = timeDiff / (1000 * 3600 * 24);
+  console.log("DAY DIFF IS: ", dayDiff);
+  if( dayDiff < checkListing.rows[0].minimumnights){
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
+    return;
   }
 
 
 
   //TODO: compare against existing reservations to see if this one is valid. Start vs End date. 
   // const avail = await con.query('SELECT * FROM (SELECT p.hostname, p.hostid, p.listingid, p.listingname, p.city, p.numbeds, p.price, p.minimumnights,p.maxpeople,p.roomsize,p.state, r.startDate,r.endDate FROM properties p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid WHERE status=$1 AND endDate>=$2) AS existingRes WHERE listingid=$3;',['BOOKED',start,listing]);
-  const avail = await con.query('SELECT * FROM reservations WHERE status=$1 AND listingid=$2 AND endDate<=$3',['BOOKED',listing,start]);
-  if(avail.rowCount >0 ){
+  const avail = await con.query('SELECT * FROM reservations WHERE status=$1 AND listingid=$2 AND startDate>=$3 AND endDate<=$4',['BOOKED',listing,start,start]);
+  if(avail.rowCount > 0 ){
     res.status(400).send("Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property");
+    return;
+
   }
+  console.log("START IS: ",start);
+  console.log("END IS: ", end);
+  
   await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"BOOKED",listing,userId, numGuests]);
   await con.end();
   res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
+  return;
+
 });
 
 app.post("/getreservations", async function(req,res){
