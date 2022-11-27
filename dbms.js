@@ -527,6 +527,59 @@ app.delete("/deleteListing", async function(req,res){
   return;
 });
 
+app.post("/averageNightsPerReservation",async function(req,res){
+
+  const userId = req.body.userId;
+  const hostid = req.body.hostid;
+
+  if(!isLoggedIn(userId)){  
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  const con = await connectToDb();
+  //get user type
+  const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
+  if(founduser.rowCount === 0){
+    res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+    return;
+  }
+
+
+  if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
+    return; 
+  }else if(founduser.rows[0].usertype === 'ADMIN' && hostid === undefined){
+    res.status(400).send("The logged in user is a data base admin, and therefore a hostid must also be provided to find the average nights per reservation for that property host");
+    return; 
+  }
+
+  const reshost = hostid != undefined ? hostid : userId;
+  const allres = await con.query("select * from (select hostid, userid, startDate, endDate, reservationid, status, r.listingid, numguests FROM properties p INNER JOIN reservations r ON p.listingid=r.listingid) as resjoin WHERE hostid=$1;",[reshost]);
+  const totalRes = allres.rowCount;
+  const totalrows = allres.rows;
+  let totalnights = 0;
+  let i = 0;
+
+  for(i; i < totalRes; i++){
+
+    let date1 = new Date(totalrows[i].startdate);
+    let date2 = new Date(totalrows[i].enddate);
+
+
+    var timeDiff = date2.getTime() - date1.getTime();
+    var dayDiff = timeDiff / (1000 * 3600 * 24);
+
+    totalnights+=dayDiff;
+  };
+
+  let avgnights = (totalnights/totalRes).toFixed(2);
+  await con.end();
+  res.status(200).send({"msg":"The average nights reserved for all properties owned by property host "+reshost+" are given below","avgNights": avgnights});
+  return
+
+
+});
 //Properties 
 
 // hostname 
