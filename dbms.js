@@ -482,6 +482,51 @@ app.post("/createListing", async function(req,res){
   return;
 });
 
+app.delete("/deleteListing", async function(req,res){
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  const listid = req.body.listingid;
+  if(listid === undefined){
+    res.status(400).send("It is required to submit a listingid, in order to delete that specific listing.");
+    return;
+  }
+
+  const con = await connectToDb();
+  //get user type
+  const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
+  if(founduser.rowCount === 0){
+    res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+    return;
+  }
+
+  if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
+    return; 
+  }
+
+  const foundListing = await con.query("SELECT * FROM properties WHERE listingid=$1",[listid]);
+  if(foundListing.rowCount === 0){
+    res.status(404).send("Could not find any listing with the provided listingid. Please re-submit with a new listingid");
+    return; 
+  }
+
+
+  if(founduser.rows[0].usertype != "ADMIN" && foundListing.rows[0].hostid != userId){
+    res.status(401).send("Property listing "+listid+" does not belong to property host ");
+    return; 
+  }
+
+
+  await con.query("DELETE FROM properties WHERE listingid=$1 ",[listid])
+  await con.end();
+  res.status(200).send("Listing with listing id "+listid+" has been successfully deleted");
+  return;
+});
+
 //Properties 
 
 // hostname 
