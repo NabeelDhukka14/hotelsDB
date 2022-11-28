@@ -527,7 +527,7 @@ app.delete("/deleteListing", async function(req,res){
   return;
 });
 
-app.post("/averageNightsPerReservation",async function(req,res){
+app.post("/propertyHostStats",async function(req,res){
 
   const userId = req.body.userId;
   const hostid = req.body.hostid;
@@ -555,27 +555,57 @@ app.post("/averageNightsPerReservation",async function(req,res){
   }
 
   const reshost = hostid != undefined ? hostid : userId;
-  const allres = await con.query("select * from (select hostid, userid, startDate, endDate, reservationid, status, r.listingid, numguests FROM properties p INNER JOIN reservations r ON p.listingid=r.listingid) as resjoin WHERE hostid=$1;",[reshost]);
+  const allres = await con.query("select * from (select hostid, userid, price, startDate, endDate, reservationid, status, r.listingid, numguests FROM properties p INNER JOIN reservations r ON p.listingid=r.listingid) as resjoin WHERE hostid=$1;",[reshost]);
   const totalRes = allres.rowCount;
   const totalrows = allres.rows;
   let totalnights = 0;
   let i = 0;
+  let totalPrice = 0.0;
+  let totalGuests = 0;
+  const statusMap = new Map();
+  statusMap.set("BOOKED",0);
+  statusMap.set("CLOSED",0);
+  statusMap.set("CANCELLED",0);
 
   for(i; i < totalRes; i++){
-
+    //DAYS STAYED
     let date1 = new Date(totalrows[i].startdate);
     let date2 = new Date(totalrows[i].enddate);
-
 
     var timeDiff = date2.getTime() - date1.getTime();
     var dayDiff = timeDiff / (1000 * 3600 * 24);
 
     totalnights+=dayDiff;
-  };
 
+    //Percent Cancelled
+    const statCount = statusMap.get(totalrows[i].status);
+    statusMap.set(totalrows[i].status, statCount+1);
+    
+    //Total Earned
+    console.log("PRICE: ", Number(totalrows[i].price.replace(/[^0-9.-]+/g,"")));
+    let earnedForRes =parseFloat((Number(totalrows[i].price.replace(/[^0-9.-]+/g,"")) * dayDiff).toFixed(2));
+    console.log("RES PRICE: ", typeof(earnedForRes));
+    totalPrice += earnedForRes;
+    console.log("TOTAL PRICE: ", typeof(totalPrice));
+
+    //Avg guests
+    totalGuests+= totalrows[i].numguests;
+  };
+  console.log("MAP: ", statusMap);
   let avgnights = (totalnights/totalRes).toFixed(2);
+  let percentCancelled = (statusMap.get("CANCELLED")/totalRes).toFixed(2);
+  let avgGuests = (totalGuests/totalRes).toFixed(2);
+  let avgPrice = parseFloat((totalPrice/totalRes).toFixed(2));
   await con.end();
-  res.status(200).send({"msg":"The average nights reserved for all properties owned by property host "+reshost+" are given below","avgNights": avgnights});
+  res.status(200).send({
+    "msg":"The average nights reserved for all properties owned by property host "+reshost+" are given below",
+    "avgDaysStayed": avgnights,
+    "cancelledReservationPercentage": percentCancelled,
+    "totalPriceEarned": totalPrice,
+    "avgPricePerReservation": avgPrice,
+    "avgGuests": avgGuests, 
+    
+  });
   return
 
 
@@ -605,4 +635,6 @@ app.post("/averageNightsPerReservation",async function(req,res){
 // userId 
 // numGuests
 
+
+//Avg Days, %Cancelled, Total Price Earned, Avg Guests
 
