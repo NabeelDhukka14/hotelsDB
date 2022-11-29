@@ -7,7 +7,7 @@ const { Client } = require("pg")
 let loggedInUsers = new Map();
 let validRoles = ['user', 'host', 'admin'];
 
-port = 8080;
+port = 5000;
 
 app.use(bodyParser.json());
 
@@ -166,8 +166,13 @@ app.get("/getTotalBookedDays/:listingId", async function(req, res) {
   res.status(200).send(totalBookedDays.toString());
 });
 
-//THIS ENDPOINT IS WORK IN PROGRESS
+
 app.get('/checkAvailability', async function(req,res){
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
 
   let start = req.body.startDate;
   let end = req.body.endDate; 
@@ -177,6 +182,46 @@ app.get('/checkAvailability', async function(req,res){
   if(avail.rowCount === 0){app.status(404).send("No properties available for the selected period");}
   await con.end();
   res.status(200).send(avail.rows);
+  return;
+});
+
+app.get('/filterProperties', async function(req,res){
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  let query = "SELECT * FROM properties WHERE";
+
+  let propMap = new Map();
+  propMap.set("listingid", req.body.listingid);
+  propMap.set("listingname" ,req.body.listingname); 
+  propMap.set("city", req.body.city);
+  propMap.set("state", req.body.state);
+  propMap.set("price", req.body.price);
+  propMap.set("numbeds", req.body.numbeds);
+  propMap.set("minimumnights", req.body.minimumnights); 
+  propMap.set("maxpeople", req.body.maxpeople );
+  propMap.set("roomsize", req.body.roomsize);
+
+  const con = await connectToDb();
+
+  for(let [key, value] of propMap){
+    if(value !=undefined){
+      query += " "+key+ " = '"+value+"' AND";
+    }    
+  } 
+
+  query = query.slice(0, -4);
+  query += ";"
+  const filterProperties = await con.query(query);
+  if(filterProperties.rowCount === 0){
+    res.status(404).send("No properties found");
+    return;
+  }  
+  await con.end();
+  res.status(200).send(filterProperties.rows);
   return;
 });
 
