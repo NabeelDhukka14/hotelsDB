@@ -7,7 +7,7 @@ const { Client } = require("pg")
 let loggedInUsers = new Map();
 let validRoles = ['user', 'host', 'admin'];
 
-port = 8080;
+port = 5000;
 
 app.use(bodyParser.json());
 

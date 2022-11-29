@@ -8,6 +8,6 @@ RUN npm install
 #copy source code into docker container
 COPY . /usr/src/app/
 #define which port will be used by REST API 
-EXPOSE 8080
+EXPOSE 5000
 #run this command to start server
 CMD ["node", "dbms.js"]
