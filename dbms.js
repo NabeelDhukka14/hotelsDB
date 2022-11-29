@@ -15,8 +15,8 @@ app.listen(port);
 
 console.log('Hotel RestWrapper API started on port:  ' + port);
 
-const isLoggedIn = (userId) => {
-  if(!loggedInUsers.has(userId)){
+const isLoggedIn = (userId, sessionGUID) => {
+  if(!loggedInUsers.has(userId) && loggedInUsers.get(userId)===sessionGUID){
     return false;
   }else{
     return true;
@@ -104,8 +104,9 @@ app.post("/loginUser", async function(req, res){
   console.log("userLookup: ", userLookup);
 
   if(userLookup.rowCount > 0 && userLookup.rows[0].password === pass){
-    loggedInUsers.set(userId, true);
-    res.status(200).send("Successfully logged in");
+    let sessionid = uuidv4();
+    loggedInUsers.set(userId, sessionid);
+    res.status(200).send({"msg":"Successfully logged in","sessionGUID":sessionid});
     return;
   }else if(userLookup.rowCount === 0){
     res.status(401).send("UserId does not exist. Please sign up for an account");
@@ -120,6 +121,12 @@ app.post("/loginUser", async function(req, res){
 
 app.get("/getallusers", async function(req,res){
     
+    const userId = req.body.userId;
+    if(!isLoggedIn(userId,req.params.sessionGuid)){
+      res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+      return;
+    }
+
     const con = await connectToDb();
     const resp = await con.query('SELECT * FROM users;');
     await con.end();
@@ -130,6 +137,11 @@ app.get("/getallusers", async function(req,res){
 });
 
 app.get("/getTotalBookedDays/:listingId", async function(req, res) {
+  const userId = req.body.userId;
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
+    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
   const con = await connectToDb();
   const reservations = await con.query('SELECT * FROM reservations WHERE listingId = $1;', [req.params.listingId]);
   if (reservations.rows.length == 0) {
@@ -171,7 +183,7 @@ app.get('/checkAvailability', async function(req,res){
 
 app.post('/updateReservation', async function(req,res){
   const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -253,7 +265,7 @@ app.post('/updateReservation', async function(req,res){
 
 app.post('/makeReservation', async function(req,res){
   const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -295,8 +307,6 @@ app.post('/makeReservation', async function(req,res){
 
 
 
-  //TODO: compare against existing reservations to see if this one is valid. Start vs End date. 
-  // const avail = await con.query('SELECT * FROM (SELECT p.hostname, p.hostid, p.listingid, p.listingname, p.city, p.numbeds, p.price, p.minimumnights,p.maxpeople,p.roomsize,p.state, r.startDate,r.endDate FROM properties p LEFT OUTER JOIN reservations r ON p.listingid = r.listingid WHERE status=$1 AND endDate>=$2) AS existingRes WHERE listingid=$3;',['BOOKED',start,listing]);
   const avail = await con.query('SELECT * FROM reservations WHERE status=$1 AND listingid=$2 AND startDate>=$3 AND endDate<=$4',['BOOKED',listing,start,start]);
   if(avail.rowCount > 0 ){
     res.status(400).send("Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property");
@@ -328,10 +338,10 @@ app.post("/getreservations", async function(req,res){
     return;
   }
 
-  if(host != undefined && !isLoggedIn(host)){
+  if(host != undefined && !isLoggedIn(host,req.params.sessionGuid)){
     res.status(401).send("user "+hostId+" is not logged in. Please login before attempting to perform any actions");
     return;
-  }else if(!isLoggedIn(userId)){
+  }else if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -379,7 +389,7 @@ app.post("/getreservations", async function(req,res){
 app.post("/updateListing", async function(req,res){
 
   const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -429,7 +439,7 @@ app.post("/updateListing", async function(req,res){
 app.post("/createListing", async function(req,res){
 
   const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -482,9 +492,9 @@ app.post("/createListing", async function(req,res){
   return;
 });
 
-app.delete("/deleteListing", async function(req,res){
+app.delete("/deleteListing/", async function(req,res){
   const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -531,8 +541,8 @@ app.post("/propertyHostStats",async function(req,res){
 
   const userId = req.body.userId;
   const hostid = req.body.hostid;
-
-  if(!isLoggedIn(userId)){  
+  console.log("req.params -------> ",req.params);
+  if(!isLoggedIn(userId,req.params.sessionGuid)){  
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
