@@ -262,7 +262,7 @@ app.post('/checkAvailability/:userId/:sessionGuid', async function(req,res){
   let end = req.body.endDate; 
 
   const con = await connectToDb();
-  const avail = await con.query("Select * from properties where listingid IN (SELECT properties.listingid FROM properties WHERE listingid NOT IN(SELECT listingid FROM reservations) Union Select listingid from reservations where status!=$1 AND endDate<=$2)",['BOOKED',start]);
+  const avail = await con.query("Select * from properties where listingid IN (SELECT properties.listingid FROM properties WHERE listingid NOT IN(SELECT listingid FROM reservations) Union Select listingid from reservations where status!=$1 AND startDate=$2 AND endDate<=$3)",['BOOKED',start]);
   if(avail.rowCount === 0){app.status(404).send("No properties available for the selected period");}
   await con.end();
   res.status(200).send(avail.rows);
@@ -438,9 +438,9 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
 
 
 
-  const avail = await con.query('SELECT * FROM reservations WHERE status=$1 AND listingid=$2 AND startDate>=$3 AND endDate<=$4',['BOOKED',listing,start,start]);
-  if(avail.rowCount > 0 ){
-    res.status(400).send("Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property");
+  const unavail = await con.query('SELECT startDate, endDate FROM reservations WHERE status=$1 AND listingid=$2 AND endDate>$3 AND startDate<$4',['BOOKED',listing,start,end]);
+  if(unavail.rowCount > 0 ){
+    res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","alreadyBookedDates":unavail.rows});
     return;
 
   }
