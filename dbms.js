@@ -238,36 +238,31 @@ app.get("/getTotalBookedDays/:userId/:sessionGuid/:listingId", async function(re
 });
 
 
-app.post('/checkAvailability/:userId/:sessionGuid', async function(req,res){
-  const userId = req.params.userId;
-  if(!isLoggedIn(userId,req.params.sessionGuid)){
-    res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
-    return;
-  }
-
-  let start = req.body.startDate;
-  let end = req.body.endDate; 
-
-  const con = await connectToDb();
-  const avail = await con.query("Select * from properties where listingid IN (SELECT properties.listingid FROM properties WHERE listingid NOT IN(SELECT listingid FROM reservations) Union Select listingid from reservations where status!=$1 AND startDate=$2 AND endDate<=$3)",['BOOKED',start]);
-  if(avail.rowCount === 0){app.status(404).send("No properties available for the selected period");}
-  await con.end();
-  res.status(200).send(avail.rows);
-  return;
-});
-
-app.get('/filterProperties/:userId/:sessionGuid', async function(req,res){
+app.post('/filterProperties/:userId/:sessionGuid', async function(req,res){
   const userId = req.params.userId;
   if(!isLoggedIn(userId, req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
 
-  let query = "SELECT * FROM properties WHERE";
+  const start = req.body.startDate;
+  const end = req.body.endDate; 
 
+  if( start === undefined || end === undefined){
+    res.status(400).send("startDate and endDate are required fields, in order for us to show you all availble listings during your trip time range. Please re-submit with these values included");
+    return;
+  }
+
+
+  let availPropQuery = "Select * from properties where listingid NOT IN(Select listingid from reservations where status=$1 AND endDate>$2 AND startDate<$3)"
+  let query = "SELECT * FROM ("+availPropQuery+") as foo WHERE";
+ 
+  
   let propMap = new Map();
   propMap.set("listingid", req.body.listingid);
   propMap.set("listingname" ,req.body.listingname); 
+  propMap.set("hostname", req.body.hostname);
+  propMap.set("hostid", req.body.hostid);
   propMap.set("city", req.body.city);
   propMap.set("state", req.body.state);
   propMap.set("price", req.body.price);
@@ -280,13 +275,24 @@ app.get('/filterProperties/:userId/:sessionGuid', async function(req,res){
 
   for(let [key, value] of propMap){
     if(value !=undefined){
-      query += " "+key+ " = '"+value+"' AND";
+      if (key === "price") {
+        query += " foo."+key+ " <= '"+value+"' AND";
+      }else{
+        query += " foo."+key+ " = '"+value+"' AND";
+      }
     }    
   } 
-
-  query = query.slice(0, -4);
+  const pattern = /AND$/
+  if(pattern.test(query)){
+    query = query.slice(0, -4);
+  }else{
+    query = query.slice(0, -6);
+  }
+  
   query += ";"
-  const filterProperties = await con.query(query);
+  console.log('QUERY -----> ', query);
+
+  const filterProperties = await con.query(query,['BOOKED',start,end]);
   if(filterProperties.rowCount === 0){
     res.status(404).send("No properties found");
     return;
