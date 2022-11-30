@@ -6,6 +6,11 @@ const { Client } = require("pg")
 
 let loggedInUsers = new Map();
 let validRoles = ['USER', 'HOST', 'ADMIN'];
+let idType = new Map();
+idType.set("LISTING","6");
+idType.set("USER","7");
+idType.set("RESERVATION","9");
+
 
 port = 5000;
 
@@ -24,14 +29,48 @@ const isLoggedIn = (userId, sessionGUID) => {
 
 }
 
+const makeNum = (digits) =>{
 
-const genUserId = () => {
-  let digits = 7;
   let id = '';
+  let isFirst = true;
+
   while(digits > 0){
-    let rand = Math.floor((Math.random()*10)+1);
-    id = id + (rand === 0 ? rand+1:rand);
+    let rand = Math.floor((Math.random()*10));
+    id = id + (rand === 0 && isFirst ? rand+1:rand);
     digits -= 1;
+    isFirst = false;
+  }
+
+  return id; 
+}
+
+//db connection must be active to use this method 
+const genId = async (dbClient,type) => {
+
+  let digits =7;
+  if(idType.has(type)){
+    digits = idType.get(type.toUpperCase());
+  }
+
+
+  let idQuery = new Map();
+  idQuery.set("LISTING",'SELECT * FROM properties WHERE listingid=$1');
+  idQuery.set("USER",'SELECT * FROM users WHERE userid=$1');
+  idQuery.set("RESERVATION",'SELECT * FROM reservations WHERE reservationid=$1');
+
+  const queryByIdType = idQuery.get(type.toUpperCase());
+
+  let id = makeNum(digits);
+
+  let isMatchingID = true;
+  while(isMatchingID){
+    let idLookup = await dbClient.query(queryByIdType,[id]);
+    if(idLookup.rowCount === 0){
+      isMatchingID = false;
+    }else{
+      id = makeNum(digits);
+    }
+
   }
 
   console.log("ID IS : ", id);
@@ -68,22 +107,23 @@ app.post("/signUpUser", async function(req, res){
   
   const client = await connectToDb();
   console.log("connected to db");
-  let userId = genUserId();
+  let userId = await genId(client,'USER');
 
-  let isMatchingID = true;
-  while(isMatchingID){
-    let userLookup = await client.query('SELECT * FROM users WHERE name=$1',[userId]);
-    if(userLookup.rowCount === 0){
-      isMatchingID = false;
-    }
-    userId = genUserId();
+  // let isMatchingID = true;
+  // while(isMatchingID){
+  //   let userLookup = await client.query('SELECT * FROM users WHERE userid=$1',[userId]);
+  //   if(userLookup.rowCount === 0){
+  //     isMatchingID = false;
+  //   }else{
+  //     userId = genId('USER');
+  //   }
 
-  }
+  // }
 
  
 
   console.log("UUID MADE: ",userId);
-  let query = 'INSERT INTO users(userId, userType, name, password) VALUES($1,$2,$3,$4);';
+  let query = 'INSERT INTO users(userid, usertype, name, password) VALUES($1,$2,$3,$4);';
   let values = [userId, userType, name, pass];
   console.log('BEGINNIGN QUERY');
   await client.query(query,values);  
@@ -149,6 +189,35 @@ app.get("/getallusers/:userId/:sessionGuid", async function(req,res){
     res.status(200).send(resp.rows);
     return;
 
+});
+
+app.delete("/deleteUser/:userId", async function(req, res) {
+
+  const userId = req.params.userId;
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user " + userId + " is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  const con = await connectToDb();
+  const isAdmin = await con.query('SELECT * FROM users WHERE userid = $1 AND userType = ADMIN');
+  const existingUser = await con.query('SELECT * FROM users WHERE userid = $1', [req.params.userId]);
+
+  if(existingUser.rows.length == 0) {
+    await con.end();
+    res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+    return;
+  }
+  if(existingUser.rows[0].usertype !== 'ADMIN'){
+    res.status(400).send("Only database Admins can view all users.");
+    return; 
+  }
+
+  const deletedUser = await con.query('DELETE FROM users WHERE userid = $1', [req.params.userId]);
+  await con.end();
+
+  console.log('ROWS: ', existingUser.rows);
+  res.status(200).send("User " + req.params.userId + " deleted.");
 });
 
 app.get("/getTotalBookedDays/:userId/:sessionGuid/:listingId", async function(req, res) {
@@ -333,8 +402,9 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
   let start = req.body.startDate;
   let end = req.body.endDate; 
   let listing = req.body.listingId;
-  let resId = uuidv4();
   let numGuests = req.body.numGuests;
+
+  
 
   if(start === undefined || end === undefined){
     res.status(400).send("Start and End Date of your reservation are required. Please re-submit request by adding a startDate and endDate in the format yyyy-mm-dd");
@@ -348,6 +418,7 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
 
 
   const con = await connectToDb();
+  let resId = await genId(con, 'RESERVATION');
   const checkListing = await con.query('SELECT * FROM properties WHERE ListingId=$1;',[listing])
   if(checkListing.rowCount === 0){app.status(404).send("The listing Id you have provided is invalid. No such listing could be found");}
   
@@ -375,11 +446,20 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
   }
   console.log("START IS: ",start);
   console.log("END IS: ", end);
-
+  try{
+  await con.query('BEGIN');
   await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"BOOKED",listing,userId, numGuests]);
-  await con.end();
+  await con.query('COMMIT');
   res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
-  return;
+  return;  
+  }catch(e){
+    await client.query('ROLLBACK')
+    throw e
+  }finally{
+    await con.end();
+  }
+  
+  
 
 });
 
@@ -388,11 +468,7 @@ app.post("/getreservations/:userId/:sessionGuid", async function(req,res){
   const start = req.body.startDate;
   const end = req.body.endDate;
   const host = req.body.hostId;
-  // let start = req.body.startDate;
-  // let end = req.body.endDate; 
-  // let listing = req.body.listingId;
-  // let resId = uuidv4();
-  // let numGuests = req.body.numGuests;
+
   if(userId === undefined && host === undefined){
     res.status(400).send("Did not recieve a userId. Please submit a userId if you would like to view all your reservations");
     return;
@@ -517,7 +593,9 @@ app.post("/createListing/:userId/:sessionGuid", async function(req,res){
     res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
     return; 
   }
-  let listingid = uuidv4();
+
+  let listingid = await genId(con,"LISTING");
+
   let propMap = new Map();
   console.log("HOSTNAME : ",  founduser.rows[0].name);
   console.log("hostid: ", founduser.rows[0].userid);
