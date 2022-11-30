@@ -108,24 +108,11 @@ app.post("/signUpUser", async function(req, res){
   const client = await connectToDb();
   console.log("connected to db");
   let userId = await genId(client,'USER');
-
-  // let isMatchingID = true;
-  // while(isMatchingID){
-  //   let userLookup = await client.query('SELECT * FROM users WHERE userid=$1',[userId]);
-  //   if(userLookup.rowCount === 0){
-  //     isMatchingID = false;
-  //   }else{
-  //     userId = genId('USER');
-  //   }
-
-  // }
-
  
 
   console.log("UUID MADE: ",userId);
   let query = 'INSERT INTO users(userid, usertype, name, password) VALUES($1,$2,$3,$4);';
   let values = [userId, userType, name, pass];
-  console.log('BEGINNIGN QUERY');
   await client.query(query,values);  
 
   await client.end();
@@ -383,12 +370,20 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
 
   } 
   
-  await con.query('UPDATE reservations SET status=$1, numGuests=$2 , startDate=$3, endDate=$4 WHERE reservationid=$5',[resProps.get("status"),resProps.get("numGuests"),resProps.get("start"), resProps.get("end"),resId]);
-  
+  try{
+    await con.query('BEGIN');
+    await con.query('UPDATE reservations SET status=$1, numGuests=$2 , startDate=$3, endDate=$4 WHERE reservationid=$5',[resProps.get("status"),resProps.get("numGuests"),resProps.get("start"), resProps.get("end"),resId]);
+    await con.query('COMMIT');
 
-  await con.end();
+  }catch(e){
+    await con.query('ROLLBACK')
+  }finally{
+    await con.end();
+  }
+
   res.status(200).send("Successfully updated your reservation. Your reservationId is "+resId);
   return;
+  
 });
 
 app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
@@ -449,8 +444,7 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
   await con.query('BEGIN');
   await con.query('INSERT INTO reservations(reservationId, startDate, endDate, status, listingId, userid, numGuests) VALUES($1,$2,$3,$4,$5,$6,$7)',[resId,start,end,"BOOKED",listing,userId, numGuests]);
   await con.query('COMMIT');
-  res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
-  return;  
+  
   }catch(e){
     await client.query('ROLLBACK')
     throw e
@@ -458,7 +452,8 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
     await con.end();
   }
   
-  
+  res.status(200).send("Successfully created your reservation. Your reservationId is "+resId);
+  return;  
 
 });
 
@@ -565,8 +560,18 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
   propMap.set("state", req.body.state === undefined ? currListing.rows[0].state :  req.body.state);
   propMap.set("roomsize", req.body.roomsize === undefined ? currListing.rows[0].roomsize :  req.body.roomsize);
 
-  await con.query('UPDATE properties SET listingname=$1, city=$2 , numbeds=$3, price=$4 , minimumnights=$5, maxpeople=$6, state=$7, roomsize=$8 WHERE listingid=$9',[propMap.get("listingname"),propMap.get("city"),propMap.get("numbeds"), propMap.get("price"),propMap.get('minimumnights'), propMap.get('maxpeople'), propMap.get('state'), propMap.get('roomsize'), listid]);
-  await con.end();
+
+  try{
+    await con.query('BEGIN');
+    await con.query('UPDATE properties SET listingname=$1, city=$2 , numbeds=$3, price=$4 , minimumnights=$5, maxpeople=$6, state=$7, roomsize=$8 WHERE listingid=$9',[propMap.get("listingname"),propMap.get("city"),propMap.get("numbeds"), propMap.get("price"),propMap.get('minimumnights'), propMap.get('maxpeople'), propMap.get('state'), propMap.get('roomsize'), listid]);
+    await con.query('COMMIT');
+  }catch(e){
+    await client.query('ROLLBACK')
+    throw e
+  }finally{
+    await con.end();
+  }
+  
   res.status(200).send("Your updates have been made successfully for  listingid: "+listid);
   return; 
 
@@ -624,8 +629,16 @@ app.post("/createListing/:userId/:sessionGuid", async function(req,res){
     res.status(400).send({"msg":"The following fields are required to perform this action. Please re-submit and provide these values for creating a new listing", "missingValues" : missinVals});
     return;
   }
-
-  await con.query('INSERT into properties(hostname,hostid, listingid,listingname, city, numbeds,price, minimumnights, maxpeople,state, roomsize) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);',[propMap.get('hostname'),propMap.get('hostid'),propMap.get('listingid'),propMap.get('listingname'),propMap.get('city'),propMap.get('numbeds'),propMap.get('price'),propMap.get('minimumnights'),propMap.get('maxpeople'),propMap.get('state'),propMap.get('roomsize')] );
+  try{
+    await con.query('BEGIN');
+    await con.query('INSERT into properties(hostname,hostid, listingid,listingname, city, numbeds,price, minimumnights, maxpeople,state, roomsize) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);',[propMap.get('hostname'),propMap.get('hostid'),propMap.get('listingid'),propMap.get('listingname'),propMap.get('city'),propMap.get('numbeds'),propMap.get('price'),propMap.get('minimumnights'),propMap.get('maxpeople'),propMap.get('state'),propMap.get('roomsize')] );
+    await con.query('COMMIT');
+  }catch(e){
+    await client.query('ROLLBACK')
+    throw e
+  }finally{
+    await con.end();
+  }
   res.status(200).send("Your new listing has been created with the listing id "+propMap.get('listingid'));
   return;
 });
