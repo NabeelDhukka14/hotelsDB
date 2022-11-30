@@ -95,8 +95,8 @@ app.post("/signUpUser", async function(req, res){
 });
 
 
-app.post("/loginUser", async function(req, res){
-  let userId = req.body.userId;
+app.post("/loginUser/:userId", async function(req, res){
+  let userId = req.params.userId;
   let pass = req.body.password;
 
   const client = await connectToDb();
@@ -119,25 +119,40 @@ app.post("/loginUser", async function(req, res){
 
 });
 
-app.get("/getallusers", async function(req,res){
+app.get("/getallusers/:userId/:sessionGuid", async function(req,res){
     
-    const userId = req.body.userId;
+    const userId = req.params.userId;
+    console.log("USER: ",userId);
+    console.log("sessionGuid: ",req.params.sessionGuid);
+
     if(!isLoggedIn(userId,req.params.sessionGuid)){
       res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
       return;
     }
 
     const con = await connectToDb();
+
+    const currUser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
+    if(currUser.rowCount === 0){
+      res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+      return;
+    }
+    if(currUser.rows[0].usertype !== 'ADMIN'){
+      res.status(400).send("Only database Admins can view all users.");
+      return; 
+    }
+
     const resp = await con.query('SELECT * FROM users;');
     await con.end();
     console.log("ROWS: ", resp.rows);
     await con.end();
     res.status(200).send(resp.rows);
     return;
+
 });
 
-app.get("/getTotalBookedDays/:listingId", async function(req, res) {
-  const userId = req.body.userId;
+app.get("/getTotalBookedDays/:userId/:sessionGuid/:listingId", async function(req, res) {
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -167,9 +182,9 @@ app.get("/getTotalBookedDays/:listingId", async function(req, res) {
 });
 
 
-app.get('/checkAvailability', async function(req,res){
-  const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+app.post('/checkAvailability/:userId/:sessionGuid', async function(req,res){
+  const userId = req.params.userId;
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -185,9 +200,9 @@ app.get('/checkAvailability', async function(req,res){
   return;
 });
 
-app.get('/filterProperties', async function(req,res){
-  const userId = req.body.userId;
-  if(!isLoggedIn(userId)){
+app.get('/filterProperties/:userId/:sessionGuid', async function(req,res){
+  const userId = req.params.userId;
+  if(!isLoggedIn(userId, req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -226,8 +241,8 @@ app.get('/filterProperties', async function(req,res){
 });
 
 
-app.post('/updateReservation', async function(req,res){
-  const userId = req.body.userId;
+app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -308,8 +323,8 @@ app.post('/updateReservation', async function(req,res){
   return;
 });
 
-app.post('/makeReservation', async function(req,res){
-  const userId = req.body.userId;
+app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -368,8 +383,8 @@ app.post('/makeReservation', async function(req,res){
 
 });
 
-app.post("/getreservations", async function(req,res){
-  const userId = req.body.userId;
+app.post("/getreservations/:userId/:sessionGuid", async function(req,res){
+  const userId = req.params.userId;
   const start = req.body.startDate;
   const end = req.body.endDate;
   const host = req.body.hostId;
@@ -431,9 +446,9 @@ app.post("/getreservations", async function(req,res){
   }
 });
 
-app.post("/updateListing", async function(req,res){
+app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
 
-  const userId = req.body.userId;
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -445,6 +460,7 @@ app.post("/updateListing", async function(req,res){
     res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
     return;
   }
+
   const listid = req.body.listingid;
   if(listid === undefined){
     res.status(400).send("You must provide the listingid for the property listing you wish to update");
@@ -481,9 +497,9 @@ app.post("/updateListing", async function(req,res){
 
 });
 
-app.post("/createListing", async function(req,res){
+app.post("/createListing/:userId/:sessionGuid", async function(req,res){
 
-  const userId = req.body.userId;
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -537,8 +553,8 @@ app.post("/createListing", async function(req,res){
   return;
 });
 
-app.delete("/deleteListing/", async function(req,res){
-  const userId = req.body.userId;
+app.delete("/deleteListing/:userId/:sessionGuid", async function(req,res){
+  const userId = req.params.userId;
   if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -582,9 +598,9 @@ app.delete("/deleteListing/", async function(req,res){
   return;
 });
 
-app.post("/propertyHostStats",async function(req,res){
+app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
 
-  const userId = req.body.userId;
+  const userId = req.params.userId;
   const hostid = req.body.hostid;
   console.log("req.params -------> ",req.params);
   if(!isLoggedIn(userId,req.params.sessionGuid)){  
