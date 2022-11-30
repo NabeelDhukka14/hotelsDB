@@ -378,7 +378,7 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
         }
         return;
       }
-    }
+    
 
 
   } 
