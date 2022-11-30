@@ -370,13 +370,12 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
       return;
     }
     else{
-      const startandEnd = await con.query('SELECT startDate, endDate FROM reservations WHERE reservationid=$1 AND startDate>=$2 AND endDate<=$3', [resId,start,end]);
-      if(startandEnd.rowCount > 0){
-        await con.end();
-        res.status(400).send({
-          "msg":"You cannot update your reservation for this startDate - endDate range, because of conflicts with existing resrvations. Please select a date range that does not conflict with the ones provided below",
-          "unavailableDates": startandEnd.rows
-        });
+        const unavail = await con.query('SELECT startDate, endDate FROM reservations WHERE status=$1 AND listingid=$2 AND endDate>$3 AND startDate<$4',['BOOKED',resProps.get("listingid"),resProps.get("start"),resProps.get("end")]);
+        if(unavail.rowCount > 0 ){
+          res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","unavailableDates":unavail.rows});
+          return;
+
+        }
         return;
       }
     }
@@ -440,7 +439,7 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
 
   const unavail = await con.query('SELECT startDate, endDate FROM reservations WHERE status=$1 AND listingid=$2 AND endDate>$3 AND startDate<$4',['BOOKED',listing,start,end]);
   if(unavail.rowCount > 0 ){
-    res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","alreadyBookedDates":unavail.rows});
+    res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","unavailableDates":unavail.rows});
     return;
 
   }
