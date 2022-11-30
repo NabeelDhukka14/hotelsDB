@@ -701,16 +701,32 @@ app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
   }else if(founduser.rows[0].usertype === 'ADMIN' && hostid === undefined){
     res.status(400).send("The logged in user is a data base admin, and therefore a hostid must also be provided to find the average nights per reservation for that property host");
     return; 
+  }else if(founduser.rows[0].usertype === 'ADMIN' && hostid != undefined){
+    const founduser = await con.query('SELECT * FROM users WHERE userid=$1 AND userType=$2',[hostid,'HOST']);
+    if(founduser.rowCount === 0){
+      res.status(404).send("There is no host found by the hostId "+hostid+". Please submit a different hostId");
+      return;
+    }
+
   }
 
+
   const reshost = hostid != undefined ? hostid : userId;
+  console.log("HOST ID: ", reshost);
   const allres = await con.query("select * from (select hostid, userid, price, startDate, endDate, reservationid, status, r.listingid, numguests FROM properties p INNER JOIN reservations r ON p.listingid=r.listingid) as resjoin WHERE hostid=$1;",[reshost]);
   const totalRes = allres.rowCount;
   const totalrows = allres.rows;
+
+  if(totalRes === 0){
+    res.status(404).send("There are no reservations for this host, and therefore not stats to provide");
+    return;
+  }
+
   let totalnights = 0;
   let i = 0;
   let totalPrice = 0.0;
   let totalGuests = 0;
+
   const statusMap = new Map();
   statusMap.set("BOOKED",0);
   statusMap.set("CLOSED",0);
