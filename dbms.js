@@ -5,7 +5,7 @@ const app = express();
 const { Client } = require("pg")
 
 let loggedInUsers = new Map();
-let validRoles = ['user', 'host', 'admin'];
+let validRoles = ['USER', 'HOST', 'ADMIN'];
 
 port = 5000;
 
@@ -60,7 +60,7 @@ app.post("/signUpUser", async function(req, res){
  
 
   console.log("USER TYPE: ", userType);
-  if(!validRoles.includes(userType)){
+  if(!validRoles.includes(userType.toUpperCase())){
     res.status(400).send("The 'role' you've provided is invalid. Please select either 'user' or 'host' as a role");
     return;
   }
