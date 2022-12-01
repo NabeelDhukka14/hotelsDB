@@ -268,7 +268,7 @@ app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
 
   await con.query('UPDATE users SET usertype=$1, name=$2 , password=$3 WHERE userid=$4',[updatemap.get("usertype"),updatemap.get("name"),updatemap.get("password"),userToBeUpdated]);
   await con.end();
-  res.status(200).send({"msg": "Successfully made your updates for user"+userToBeUpdated});
+  res.status(200).send({"msg": "Successfully made your updates for user "+userToBeUpdated});
   return;
 
 });
