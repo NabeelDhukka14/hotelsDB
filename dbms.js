@@ -417,19 +417,20 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
       res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
       return;
     }
+    
+    let date1 = new Date(resProps.get('start'));
+    let date2 = new Date(resProps.get('end'));
+  
+    var timeDiff = date2.getTime() - date1.getTime();
+    var dayDiff = timeDiff / (1000 * 3600 * 24);
+  
+    if( dayDiff < listingRow.rows[0].minimumnights){
+      await con.end();
+      res.status(400).send("The selected listing requires a minimum stay of "+listingRow.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
+      return;
+    }
   }
 
-  let date1 = new Date(resProps.get('start'));
-  let date2 = new Date(resProps.get('end'));
-
-  var timeDiff = date2.getTime() - date1.getTime();
-  var dayDiff = timeDiff / (1000 * 3600 * 24);
-
-  if( dayDiff < checkListing.rows[0].minimumnights){
-    await con.end();
-    res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
-    return;
-  }
 
   if(start != undefined || end != undefined){
     //TODO 
