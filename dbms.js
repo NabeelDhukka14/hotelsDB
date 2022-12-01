@@ -252,7 +252,7 @@ app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
   }
 
   const useridnum = req.body.userid;
-  const usertype = req.body.usertype;
+  const usertype = req.body.usertype.toUpperCase();
   const name = req.body.name; 
   const password = req.body.password;
 
@@ -262,7 +262,7 @@ app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
     return;
   }
   let updatemap = new Map();
-  updatemap.set('usertype', usertype === undefined ? existingUser.rows[0].usertype : usertype.toUpperCase());
+  updatemap.set('usertype', usertype === undefined ? existingUser.rows[0].usertype : usertype);
   updatemap.set('name', name === undefined ? existingUser.rows[0].name : name);
   updatemap.set('password', password === undefined ? existingUser.rows[0].password : password);
 
