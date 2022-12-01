@@ -133,13 +133,18 @@ app.post("/loginUser/:userId", async function(req, res){
   if(userLookup.rowCount > 0 && userLookup.rows[0].password === pass){
     let sessionid = uuidv4();
     loggedInUsers.set(userId, sessionid);
+    await client.end();
+
     res.status(200).send({"msg":"Successfully logged in","sessionGUID":sessionid});
     return;
   }else if(userLookup.rowCount === 0){
+    await client.end();
+
     res.status(401).send("UserId does not exist. Please sign up for an account");
     return;
   }
   else{
+    await client.end();
     res.status(401).send("Unable to log you in. UserID and pass do not match");
     return;
   }
@@ -161,17 +166,17 @@ app.get("/getallusers/:userId/:sessionGuid", async function(req,res){
 
     const currUser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
     if(currUser.rowCount === 0){
+      await con.end();
       res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
       return;
     }
     if(currUser.rows[0].usertype !== 'ADMIN'){
+      await con.end();
       res.status(400).send("Only database Admins can view all users.");
       return; 
     }
 
     const resp = await con.query('SELECT * FROM users;');
-    await con.end();
-    console.log("ROWS: ", resp.rows);
     await con.end();
     res.status(200).send(resp.rows);
     return;
@@ -181,30 +186,91 @@ app.get("/getallusers/:userId/:sessionGuid", async function(req,res){
 app.delete("/deleteUser/:userId", async function(req, res) {
 
   const userId = req.params.userId;
+  const userToBeDeleted = req.body.userToDelete;
+
   if(!isLoggedIn(userId)){
     res.status(401).send("user " + userId + " is not logged in. Please login before attempting to perform any actions");
     return;
   }
 
   const con = await connectToDb();
-  const isAdmin = await con.query('SELECT * FROM users WHERE userid = $1 AND userType = ADMIN');
-  const existingUser = await con.query('SELECT * FROM users WHERE userid = $1', [req.params.userId]);
-
-  if(existingUser.rows.length == 0) {
+  const isAdmin = await con.query('SELECT * FROM users WHERE userid=$1 AND usertype=$2',[userId,'ADMIN']);
+  if(isAdmin.rowCount === 0){
     await con.end();
-    res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
+    res.status(401).send({"msg":"Only database admins can perform this action"});
+    return;
+  }else if(userToBeDeleted === undefined){
+    await con.end();
+    res.status(401).send({"msg":"As an database admin you must provide which user is to be updated via sending a userToDelete property with the individual\'s userid"});
     return;
   }
-  if(existingUser.rows[0].usertype !== 'ADMIN'){
-    res.status(400).send("Only database Admins can view all users.");
-    return; 
+
+  const existingUser = await con.query('SELECT * FROM users WHERE userid=$1', [userToBeDeleted]);
+
+  if(existingUser.rows.length === 0) {
+    await con.end();
+    res.status(404).send("There is no user found by the userId "+userToBeDeleted+". Please submit a different userId");
+    return;
   }
 
-  const deletedUser = await con.query('DELETE FROM users WHERE userid = $1', [req.params.userId]);
+  const deletedUser = await con.query('DELETE FROM users WHERE userid = $1', [userToBeDeleted]);
   await con.end();
+  res.status(200).send({"msg": "Successfully deleted user "+userToBeDeleted});
+  return;
+});
 
-  console.log('ROWS: ', existingUser.rows);
-  res.status(200).send("User " + req.params.userId + " deleted.");
+
+app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
+
+  const userId = req.params.userId;
+  const userToBeUpdated = req.body.userToUpdate;
+
+  if(!isLoggedIn(userId)){
+    res.status(401).send("user " + userId + " is not logged in. Please login before attempting to perform any actions");
+    return;
+  }
+
+  const con = await connectToDb();
+  const isAdmin = await con.query('SELECT * FROM users WHERE userid = $1 AND usertype=$2',[userId,'ADMIN']);
+
+  if(isAdmin.rowCount === 0){
+    await con.end();
+    res.status(401).send({"msg":"Only database admins can perform this action"});
+    return;
+  }else if(userToBeUpdated === undefined){
+    await con.end();
+    res.status(401).send({"msg":"As an database admin you must provide which user is to be updated via sending a userToUpdate property with the individual\'s userid"});
+    return;
+  }
+
+  const existingUser = await con.query('SELECT * FROM users WHERE userid=$1', [userToBeUpdated]);
+
+  if(existingUser.rows.length === 0) {
+    await con.end();
+    res.status(404).send("There is no user found by the userId "+userToBeUpdated+". Please submit or login as a different userId");
+    return;
+  }
+
+  const useridnum = req.body.userid;
+  const usertype = req.body.usertype;
+  const name = req.body.name; 
+  const password = req.body.password;
+
+  if(useridnum != undefined){
+    await con.end();
+    res.status(400).send("The userid field cannot be updated. Please resubmit your updates without this field provided in the body of your request");
+    return;
+  }
+  let updatemap = new Map();
+  updatemap.set('usertype', usertype === undefined ? existingUser.rows[0].usertype : usertype);
+  updatemap.set('name', name === undefined ? existingUser.rows[0].name : name);
+  updatemap.set('password', password === undefined ? existingUser.rows[0].password : password);
+
+  await con.query('UPDATE users SET usertype=$1, name=$2 , password=$3 WHERE userid=$4',[updatemap.get("usertype"),updatemap.get("name"),updatemap.get("password"),userToBeUpdated]);
+  await con.end();
+  res.status(200).send({"msg": "Successfully made your updates for user"+userToBeUpdated});
+  return;
+
 });
 
 app.get("/getTotalBookedDays/:userId/:sessionGuid/:listingId", async function(req, res) {
@@ -216,6 +282,7 @@ app.get("/getTotalBookedDays/:userId/:sessionGuid/:listingId", async function(re
   const con = await connectToDb();
   const reservations = await con.query('SELECT * FROM reservations WHERE listingId = $1;', [req.params.listingId]);
   if (reservations.rows.length == 0) {
+    await con.end();
     res.status(404).send('listingId: ' + req.params.listingId + ' does not have a reservation.')
   }
 
@@ -294,6 +361,7 @@ app.post('/filterProperties/:userId/:sessionGuid', async function(req,res){
 
   const filterProperties = await con.query(query,['BOOKED',start,end]);
   if(filterProperties.rowCount === 0){
+    await con.end();
     res.status(404).send("No properties found");
     return;
   }  
@@ -318,12 +386,14 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   let listing = req.body.listingId;
   const con = await connectToDb();
   if(listing != undefined && status != 'CANCELED'){
+    await con.end();
     res.status(400).send("sorry cannot update the property listing for this reservation. To do this, please cancel this reservation and create a new reservation for the new desired property listing.");
     return;
   }
 
   const reservation = await con.query('SELECT * FROM reservations WHERE reservationid=$1;',[resId]);
   if(reservation.rowCount === 0){
+    await con.end();
     res.status(404).send("Could not find reservation with the provided reservation Id. Please provide a different resrvation Id");
     return;
   }
@@ -338,6 +408,7 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   if(numGuests != undefined){
     const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
     if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
+      await con.end();
       res.status(400).send("The number of Guests you have requested exeeds the amount of guests this property listing can host. Cannot update this reservation to these specifications");
       return;
     }
@@ -350,6 +421,7 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   var dayDiff = timeDiff / (1000 * 3600 * 24);
 
   if( dayDiff < checkListing[0].minimumnights){
+    await con.end();
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
     return;
   }
@@ -359,17 +431,18 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
     let d1 = new Date(resProps.get('start'));
     let d2 = new Date(resProps.get('end'));
     if(d1.getTime() > d2.getTime()){
+      await con.end();
       res.status(400).send("Your Start date cannot be after your End Date");
       return;
     }
     else{
         const unavail = await con.query('SELECT startDate, endDate FROM reservations WHERE status=$1 AND listingid=$2 AND endDate>$3 AND startDate<$4',['BOOKED',resProps.get("listingid"),resProps.get("start"),resProps.get("end")]);
         if(unavail.rowCount > 0 ){
+          await con.end();
           res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","unavailableDates":unavail.rows});
           return;
 
         }
-        return;
       }
     
 
@@ -420,9 +493,14 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
   const con = await connectToDb();
   let resId = await genId(con, 'RESERVATION');
   const checkListing = await con.query('SELECT * FROM properties WHERE ListingId=$1;',[listing])
-  if(checkListing.rowCount === 0){app.status(404).send("The listing Id you have provided is invalid. No such listing could be found");}
+  if(checkListing.rowCount === 0){
+    await con.end();
+    res.status(404).send("The listing Id you have provided is invalid. No such listing could be found");
+    return;
+  }
   
   if(numGuests > checkListing.rows[0].maxPeople){
+    await con.end();
     res.status(400).send("The selected listing can hold a maximum of "+checkListing.rows[0].maxPeople+" guests. Please update your number of guests");
     return;
 
@@ -432,6 +510,7 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
     var dayDiff = timeDiff / (1000 * 3600 * 24);
   console.log("DAY DIFF IS: ", dayDiff);
   if( dayDiff < checkListing.rows[0].minimumnights){
+    await con.end();
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
     return;
   }
@@ -440,6 +519,7 @@ app.post('/makeReservation/:userId/:sessionGuid', async function(req,res){
 
   const unavail = await con.query('SELECT startDate, endDate FROM reservations WHERE status=$1 AND listingid=$2 AND endDate>$3 AND startDate<$4',['BOOKED',listing,start,end]);
   if(unavail.rowCount > 0 ){
+    await con.end();
     res.status(400).send({"msg":"Sorry the listing you've requested is already booked for your specified start time. Please update your start date or select a different property","unavailableDates":unavail.rows});
     return;
 
@@ -490,16 +570,19 @@ app.post("/getreservations/:userId/:sessionGuid", async function(req,res){
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostId=$2 AND startDate>=$3 AND endDate<=$4',[userId,host,start,end]);
       const resText = "As a property host here are all the reservations between "+start+" and "+end+" made by user "+userId;
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end+" made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+      await con.end();
       return;
     }else if(host != undefined && userId ===undefined){
       const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1 AND startDate>=$2 AND endDate<=$3',[host,start,end]);
       const resText = "As a property host, here are the reservations for your properties between "+start+" and "+end;
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+      await con.end();
       return;
     }else{
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND startDate>=$2 AND endDate<=$3',[userId,start,end]);
       const resText = "reservations between "+start+" and "+end;
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations between "+start+" and "+end) : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+      await con.end();
       return;
     }
   }else{
@@ -507,16 +590,19 @@ app.post("/getreservations/:userId/:sessionGuid", async function(req,res){
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1 AND hostid=$2',[userId,host]);
       const resText = "As a property host here are all the reservations for your properties made by user "+userId;
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties made by user "+userId) : res.status(200).send({"msg":resText,"reservations":reservations.rows});  
+      await con.end();
       return;
     }else if(host != undefined && userId === undefined){
       const reservations = await con.query('SELECT * FROM reservations WHERE hostid=$1',[host]);
       const resText = "As a property host, here are all the reservations for your properties";
       reservations.rowCount === 0 ? res.status(200).send("As a property host, you do not have any reservations for your properties") : res.status(200).send({"msg":resText,"reservations":reservations.rows});
+      await con.end();
       return;
     }else{
       const reservations = await con.query('SELECT * FROM reservations WHERE userid=$1',[userId]);
       reservations.rowCount === 0 ? res.status(200).send("You do not have any reservations") :res.status(200).send({"msg": "Here are all of your reservations. To view reservations within a certain date range please provide a Start and End Date"
       ,"allReservations": reservations.rows});  
+      await con.end();
       return;
     }
   }
@@ -533,17 +619,20 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
   //get user type
   const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
   if(founduser.rowCount === 0){
+    await con.end();
     res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
     return;
   }
 
   const listid = req.body.listingid;
   if(listid === undefined){
+    await con.end();
     res.status(400).send("You must provide the listingid for the property listing you wish to update");
     return;
   }
 
   if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    await con.end();
     res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
     return; 
   }
@@ -552,6 +641,7 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
   const currListing = await con.query("SELECT * FROM properties WHERE listingId=$1 ",[listid]);
   
   if(currListing.rowCount === 0){
+    await con.end();
     res.status(404).send("Could not find any property listings with the provided listingid: "+listid+". Please try again by submitting a new listingid");
     return; 
   }
@@ -595,11 +685,13 @@ app.post("/createListing/:userId/:sessionGuid", async function(req,res){
   //get user type
   const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
   if(founduser.rowCount === 0){
+    await con.end();
     res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
     return;
   }
 
   if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    await con.end();
     res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
     return; 
   }
@@ -632,6 +724,7 @@ app.post("/createListing/:userId/:sessionGuid", async function(req,res){
   }
 
   if(missinVals.length > 0){
+    await con.end();
     res.status(400).send({"msg":"The following fields are required to perform this action. Please re-submit and provide these values for creating a new listing", "missingValues" : missinVals});
     return;
   }
@@ -666,23 +759,27 @@ app.delete("/deleteListing/:userId/:sessionGuid", async function(req,res){
   //get user type
   const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
   if(founduser.rowCount === 0){
+    await con.end();
     res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
     return;
   }
 
   if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    await con.end();
     res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
     return; 
   }
 
   const foundListing = await con.query("SELECT * FROM properties WHERE listingid=$1",[listid]);
   if(foundListing.rowCount === 0){
+    await con.end();
     res.status(404).send("Could not find any listing with the provided listingid. Please re-submit with a new listingid");
     return; 
   }
 
 
   if(founduser.rows[0].usertype != "ADMIN" && foundListing.rows[0].hostid != userId){
+    await con.end();
     res.status(401).send("Property listing "+listid+" does not belong to property host ");
     return; 
   }
@@ -698,7 +795,6 @@ app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
 
   const userId = req.params.userId;
   const hostid = req.body.hostid;
-  console.log("req.params -------> ",req.params);
   if(!isLoggedIn(userId,req.params.sessionGuid)){  
     res.status(401).send("user "+userId+" is not logged in. Please login before attempting to perform any actions");
     return;
@@ -708,20 +804,24 @@ app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
   //get user type
   const founduser = await con.query('SELECT * FROM users WHERE userid=$1',[userId]);
   if(founduser.rowCount === 0){
+    await con.end();
     res.status(404).send("There is no user found by the userId "+userId+". Please submit a different userId");
     return;
   }
 
 
   if(founduser.rows[0].usertype !== 'HOST' && founduser.rows[0].usertype !== 'ADMIN'){
+    await con.end();
     res.status(400).send("Only property hosts and database Admins can create new listings. Either login as a user of one of those userTypes, or update your account to a HOST userType to perform this action");
     return; 
   }else if(founduser.rows[0].usertype === 'ADMIN' && hostid === undefined){
+    await con.end();
     res.status(400).send("The logged in user is a data base admin, and therefore a hostid must also be provided to find the average nights per reservation for that property host");
     return; 
   }else if(founduser.rows[0].usertype === 'ADMIN' && hostid != undefined){
     const founduser = await con.query('SELECT * FROM users WHERE userid=$1 AND userType=$2',[hostid,'HOST']);
     if(founduser.rowCount === 0){
+      await con.end();
       res.status(404).send("There is no host found by the hostId "+hostid+". Please submit a different hostId");
       return;
     }
@@ -736,6 +836,7 @@ app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
   const totalrows = allres.rows;
 
   if(totalRes === 0){
+    await con.end();
     res.status(404).send("There are no reservations for this host, and therefore not stats to provide");
     return;
   }
@@ -789,7 +890,7 @@ app.post("/propertyHostStats/:userId/:sessionGuid",async function(req,res){
     "avgGuests": avgGuests, 
     
   });
-  return
+  return;
 
 
 });
