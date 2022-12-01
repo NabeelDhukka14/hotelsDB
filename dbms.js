@@ -383,12 +383,12 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
     return;
   }
 
-  const resId = req.body.reservationId;
+  const resId = req.body.reservationid;
   const start = req.body.start; 
   const end = req.body.end; 
   const status = req.body.status; 
-  const numGuests = req.body.numGuests;
-  let listing = req.body.listingId;
+  const numGuests = req.body.numguests;
+  let listing = req.body.listingid;
   const con = await connectToDb();
   if(listing != undefined && status != 'CANCELED'){
     await con.end();
@@ -404,10 +404,10 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   }
 
   const resProps = new Map();
-  resProps.set("start", start === undefined ? reservation[0].startDate : start)
-  resProps.set("end", end === undefined ? reservation[0].endDate : end)
-  resProps.set("status", status === undefined ? reservation[0].status : status)
-  resProps.set("numGuests", numGuests === undefined ? reservation[0].numGuests : numGuests)
+  resProps.set("start", start === undefined ? reservation.rows[0].startDate : start)
+  resProps.set("end", end === undefined ? reservation.rows[0].endDate : end)
+  resProps.set("status", status === undefined ? reservation.rows[0].status : status)
+  resProps.set("numGuests", numGuests === undefined ? reservation.rows[0].numGuests : numGuests)
   resProps.set("listingid", reservation[0].listingid)
   
   if(numGuests != undefined){
