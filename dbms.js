@@ -5,7 +5,7 @@ const app = express();
 const { Client } = require("pg")
 
 let loggedInUsers = new Map();
-let validRoles = ['USER', 'HOST', 'ADMIN'];
+let validRoles = ['USER', 'HOST'];
 let idType = new Map();
 idType.set("LISTING","6");
 idType.set("USER","7");
