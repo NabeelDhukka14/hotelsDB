@@ -21,10 +21,10 @@ app.listen(port);
 console.log('Hotel RestWrapper API started on port:  ' + port);
 
 const isLoggedIn = (userId, sessionGUID) => {
-  if(!loggedInUsers.has(userId) && loggedInUsers.get(userId)===sessionGUID){
-    return false;
-  }else{
+  if(loggedInUsers.has(userId) && loggedInUsers.get(userId)===sessionGUID){
     return true;
+  }else{
+    return false;
   }
 
 }
