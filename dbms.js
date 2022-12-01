@@ -188,7 +188,7 @@ app.delete("/deleteUser/:userId/:sessionGuid", async function(req, res) {
   const userId = req.params.userId;
   const userToBeDeleted = req.body.userToDelete;
 
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user " + userId + " is not logged in. Please login before attempting to perform any actions");
     return;
   }
@@ -225,7 +225,7 @@ app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
   const userId = req.params.userId;
   const userToBeUpdated = req.body.userToUpdate;
 
-  if(!isLoggedIn(userId)){
+  if(!isLoggedIn(userId,req.params.sessionGuid)){
     res.status(401).send("user " + userId + " is not logged in. Please login before attempting to perform any actions");
     return;
   }
