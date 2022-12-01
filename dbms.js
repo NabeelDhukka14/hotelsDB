@@ -678,7 +678,7 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
     await con.end();
   }
   
-  updatedLocation ? res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid}) : res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid+" Due to your changes to city and/or state, we have cancelled any active reservations to ensure our customers to not lodge in an unanticipated location. affected reservations are listed below", "cancelledReservations": existingReservations.rows});
+  !updatedLocation ? res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid}) : res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid+" Due to your changes to city and/or state, we have cancelled any active reservations to ensure our customers to not lodge in an unanticipated location. affected reservations are listed below", "cancelledReservations": existingReservations.rows});
   return; 
   
 
