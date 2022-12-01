@@ -404,12 +404,21 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   }
 
   const resProps = new Map();
-  resProps.set("start", start === undefined ? reservation.rows[0].startDate : start)
-  resProps.set("end", end === undefined ? reservation.rows[0].endDate : end)
+  resProps.set("start", start === undefined ? reservation.rows[0].startdate : start)
+  resProps.set("end", end === undefined ? reservation.rows[0].enddate : end)
   resProps.set("status", status === undefined ? reservation.rows[0].status : status)
-  resProps.set("numGuests", numGuests === undefined ? reservation.rows[0].numGuests : numGuests)
+  resProps.set("numGuests", numGuests === undefined ? reservation.rows[0].numguests : numGuests)
   resProps.set("listingid", reservation.rows[0].listingid)
   
+  console.log("RES START: ", resProps.get('start'));
+  console.log("RES END: ", resProps.get('end'));
+  console.log("RES numGuests: ", resProps.get('numGuests'));
+
+  console.log("BODY START: ", start);
+  console.log("BODY END: ", end);
+  console.log("BODY numGuests: ", numGuests);
+
+
   if(numGuests != undefined){
     const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
     if(listingRow.rowCount > 0 && listingRow.rows[0].maxPeople < numGuests){
