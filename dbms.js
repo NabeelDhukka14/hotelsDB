@@ -93,7 +93,7 @@ const connectToDb = async () => {
 
 app.post("/signUpUser", async function(req, res){
 
- let userType = req.body.userType;
+ let userType = req.body.userType.toUpperCase();
  let name = req.body.name;
  let pass = req.body.password;
  
@@ -262,9 +262,14 @@ app.post("/updateUser/:userId/:sessionGuid/", async function(req, res){
     return;
   }
   let updatemap = new Map();
-  updatemap.set('usertype', usertype === undefined ? existingUser.rows[0].usertype : usertype);
+  updatemap.set('usertype', usertype === undefined ? existingUser.rows[0].usertype : usertype.toUpperCase());
   updatemap.set('name', name === undefined ? existingUser.rows[0].name : name);
   updatemap.set('password', password === undefined ? existingUser.rows[0].password : password);
+
+  if(!validRoles.includes(updatemap.get('usertype'))){
+    res.status(400).send("The 'role' you've provided is invalid. Please select either 'user' or 'host' as a role");
+    return;
+  }
 
   await con.query('UPDATE users SET usertype=$1, name=$2 , password=$3 WHERE userid=$4',[updatemap.get("usertype"),updatemap.get("name"),updatemap.get("password"),userToBeUpdated]);
   await con.end();
