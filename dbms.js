@@ -425,7 +425,7 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   var timeDiff = date2.getTime() - date1.getTime();
   var dayDiff = timeDiff / (1000 * 3600 * 24);
 
-  if( dayDiff < checkListing[0].minimumnights){
+  if( dayDiff < checkListing.rows[0].minimumnights){
     await con.end();
     res.status(400).send("The selected listing requires a minimum stay of "+checkListing.rows[0].minimumnights+" nights . Please update the start and/or end of your stay to accomodate the minimum required nights");
     return;
