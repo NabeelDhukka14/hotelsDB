@@ -584,7 +584,7 @@ app.post("/getreservations/:userId/:sessionGuid", async function(req,res){
 
   if(founduser.rows[0].usertype === 'ADMIN' && req.body.userid != undefined){
     userId = req.body.userid;
-  }else if(founduser.rows[0].usertype != 'ADMIN' && req.body.userid != undefined){
+  }else if(founduser.rows[0].usertype != 'ADMIN' && req.body.userid != undefined && req.body.userid != req.params.userId){
     await con.end();
     res.status(400).send("Only DB admins can look up reservations for other userIds. Please remove userid from your request body, or login as a db admin");
     return;
