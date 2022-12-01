@@ -656,9 +656,20 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
   propMap.set("state", req.body.state === undefined ? currListing.rows[0].state :  req.body.state);
   propMap.set("roomsize", req.body.roomsize === undefined ? currListing.rows[0].roomsize :  req.body.roomsize);
 
+  let updatedLocation = (currListing.rows[0].city != propMap.get('city')) || (currListing.rows[0].state != propMap.get('state'));
+  
+  let existingReservations;
+  if(updatedLocation){
+     existingReservations = await con.query("SELECT reservationid FROM reservations WHERE listingid=$1", [listid])
+  }
 
   try{
     await con.query('BEGIN');
+    
+    if(updatedLocation){
+      await con.query("UPDATE reservations SET status=$1 WHERE listingid=$2", ['CANCELLED',listid])
+    }
+
     await con.query('UPDATE properties SET listingname=$1, city=$2 , numbeds=$3, price=$4 , minimumnights=$5, maxpeople=$6, state=$7, roomsize=$8 WHERE listingid=$9',[propMap.get("listingname"),propMap.get("city"),propMap.get("numbeds"), propMap.get("price"),propMap.get('minimumnights'), propMap.get('maxpeople'), propMap.get('state'), propMap.get('roomsize'), listid]);
     await con.query('COMMIT');
   }catch(e){
@@ -668,8 +679,9 @@ app.post("/updateListing/:userId/:sessionGuid", async function(req,res){
     await con.end();
   }
   
-  res.status(200).send("Your updates have been made successfully for  listingid: "+listid);
+  updatedLocation ? res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid}) : res.status(200).send({"msg":"Your updates have been made successfully for  listingid: "+listid+" Due to your changes to city and/or state, we have cancelled any active reservations to ensure our customers to not lodge in an unanticipated location. affected reservations are listed below", "cancelledReservations": existingReservations.rows});
   return; 
+  
 
 });
 
