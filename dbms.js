@@ -408,7 +408,7 @@ app.post('/updateReservation/:userId/:sessionGuid', async function(req,res){
   resProps.set("end", end === undefined ? reservation.rows[0].endDate : end)
   resProps.set("status", status === undefined ? reservation.rows[0].status : status)
   resProps.set("numGuests", numGuests === undefined ? reservation.rows[0].numGuests : numGuests)
-  resProps.set("listingid", reservation[0].listingid)
+  resProps.set("listingid", reservation.rows[0].listingid)
   
   if(numGuests != undefined){
     const listingRow = await con.query('SELECT * FROM properties WHERE listingid=$1',[resProps.get("listingid")]);
