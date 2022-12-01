@@ -1,0 +1,1214 @@
+{
+	"info": {
+		"_postman_id": "e30db9de-30fc-433b-a0da-89b5a765807e",
+		"name": "DBMS Hotels DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getallUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{awsHost}}/getallusers/:userid/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"getallusers",
+						":userid",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userid",
+							"value": "{{admin}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{adminSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userToDelete\":\"4848830\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/deleteUser/:userid/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"deleteUser",
+						":userid",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userid",
+							"value": "{{admin}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{adminSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser - Host Failure",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userToDelete\":\"6225054\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/deleteUser/:userid/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"deleteUser",
+						":userid",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userid",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userToUpdate\":\"6638879\",\n    \"name\":\"Squidward\",\n    \"password\":\"ClarinetBlower\",\n    \"usertype\":\"host\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/updateUser/:userid/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"updateUser",
+						":userid",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userid",
+							"value": "{{admin}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{adminSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser - Login Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"notRealPassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/loginUser/:userId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"loginUser",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signUpUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sponegbob\",\r\n    \"password\":\"GaryPoo\",\r\n    \"userType\" : \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/signUpUser",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"signUpUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get total booked days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"3748343\",\r\n    \"password\":\"d64ma74\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/getTotalBookedDays/:userId/:sessionGuid/:listingId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"getTotalBookedDays",
+						":userId",
+						":sessionGuid",
+						":listingId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{userSessionGuid}}"
+						},
+						{
+							"key": "listingId",
+							"value": "18918238"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startdate\":\"2022-12-19\",\r\n    \"enddate\":\"2023-01-07\",\r\n    \"reservationid\":\"313950524\",\r\n    \"numguests\": \"3\",\r\n    \"status\": \"CANCELLED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/updateReservation/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"updateReservation",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "make reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startDate\":\"2020-10-01\",\r\n    \"endDate\" : \"2020-10-07\",\r\n    \"numGuests\": \"4\",\r\n    \"listingId\": \"38585\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/makeReservation/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"makeReservation",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get  all reservations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startdate\": \"2022-11-07\",\n    \"enddate\": \"2022-11-18\",\n    \"userid\":\"3652785\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/getreservations/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"getreservations",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterProperties - Dates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\":\"2022/02/02\",\n    \"endDate\":\"2022/03/02\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/filterProperties/:userId/:sessionId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"filterProperties",
+						":userId",
+						":sessionId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionId",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterProperties - Price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\":\"2022/02/02\",\n    \"endDate\":\"2022/03/02\",\n    \"state\": \"OK\",\n    \"price\": \"1000.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/filterProperties/:userId/:sessionId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"filterProperties",
+						":userId",
+						":sessionId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionId",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterProperties - State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\":\"2022/02/02\",\n    \"endDate\":\"2022/03/02\",\n    \"state\": \"OK\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/filterProperties/:userId/:sessionId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"filterProperties",
+						":userId",
+						":sessionId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionId",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterProperties - CityState",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\":\"2022/02/02\",\n    \"endDate\":\"2022/03/02\",\n    \"state\": \"OK\",\n    \"city\": \"Ponca City\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/filterProperties/:userId/:sessionId",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"filterProperties",
+						":userId",
+						":sessionId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionId",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateListing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listingid\": \"11925721\", \n    \"listingname\" : \"Test House2\",\n    \"city\" : \"Houston\",\n    \"numbeds\" : \"3\",\n    \"price\" : 400.25,\n    \"minimumnights\" : \"2\",\n    \"maxpeople\": \"5\",\n    \"state\": \"Tx\",\n    \"roomsize\" : \"LARGE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/updateListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"updateListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateListing - User Fails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listingid\": \"972402\", \n    \"listingname\" : \"Test House2\",\n    \"city\" : \"Houston\",\n    \"numbeds\" : \"3\",\n    \"price\" : 400.25,\n    \"minimumnights\" : \"2\",\n    \"maxpeople\": \"5\",\n    \"state\": \"Tx\",\n    \"roomsize\" : \"LARGE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/updateListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"updateListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{user}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{userSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createListing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"6298222\",\n    \"listingname\" : \"Test House\",\n    \"city\" : \"San Antonio\",\n    \"numbeds\" : \"3\",\n    \"price\" : 400.25,\n    \"minimumnights\" : \"2\",\n    \"maxpeople\": \"5\",\n    \"state\": \"Tx\",\n    \"roomsize\" : \"LARGE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/createListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"createListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteListing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listingid\" : \"7995120\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/deleteListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"deleteListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteListing - Host fails not in listing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listingid\" : \"108061\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/deleteListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"deleteListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteListing - Admin Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listingid\" : \"108061\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/deleteListing/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"deleteListing",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{admin}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{adminSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Property Host Stats",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"hostid\": \"5372768\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{awsHost}}/propertyHostStats/:userId/:sessionGuid",
+					"host": [
+						"{{awsHost}}"
+					],
+					"path": [
+						"propertyHostStats",
+						":userId",
+						":sessionGuid"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "{{host}}"
+						},
+						{
+							"key": "sessionGuid",
+							"value": "{{hostSessionGuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const host = pm.collectionVariables.get(\"host\");",
+					"const hostPass = pm.collectionVariables.get(\"hostPass\");",
+					"const user = pm.collectionVariables.get(\"user\");",
+					"const userPass = pm.collectionVariables.get(\"userPass\");",
+					"const admin = pm.collectionVariables.get(\"admin\");",
+					"const adminPass = pm.collectionVariables.get(\"adminPass\");",
+					"",
+					"const hostOptions = {",
+					"  url:  'http://ec2-44-202-50-217.compute-1.amazonaws.com/loginUser/'+host, ",
+					"  method: 'POST',",
+					"  header: { 'content-type': 'application/json' },",
+					"  body: {",
+					"    mode: \"raw\",",
+					"    disabled: false, ",
+					"    ",
+					"    raw: JSON.stringify({\"password\": hostPass})",
+					"    }",
+					"};",
+					"",
+					"pm.sendRequest(hostOptions, function (err, res) {",
+					"  console.log(res.json().sessionGUID);",
+					"  pm.collectionVariables.set(\"hostSessionGuid\", res.json().sessionGUID);",
+					"});",
+					"",
+					"const userOptions = {",
+					"  url:  'http://ec2-44-202-50-217.compute-1.amazonaws.com/loginUser/'+user, ",
+					"  method: 'POST',",
+					"  header: { 'content-type': 'application/json' },",
+					"  body: {",
+					"    mode: \"raw\",",
+					"    disabled: false, ",
+					"    ",
+					"    raw: JSON.stringify({\"password\": userPass})",
+					"    }",
+					"};",
+					"",
+					"pm.sendRequest(userOptions, function (err, res) {",
+					"  console.log(res.json().sessionGUID);",
+					"  pm.collectionVariables.set(\"userSessionGuid\", res.json().sessionGUID);",
+					"});",
+					"",
+					"const adminOptions = {",
+					"  url:  'http://ec2-44-202-50-217.compute-1.amazonaws.com/loginUser/'+admin, ",
+					"  method: 'POST',",
+					"  header: { 'content-type': 'application/json' },",
+					"  body: {",
+					"    mode: \"raw\",",
+					"    disabled: false, ",
+					"    ",
+					"    raw: JSON.stringify({\"password\": adminPass})",
+					"    }",
+					"};",
+					"",
+					"pm.sendRequest(adminOptions, function (err, res) {",
+					"  console.log(res.json().sessionGUID);",
+					"  pm.collectionVariables.set(\"adminSessionGuid\", res.json().sessionGUID);",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostSessionGuid",
+			"value": ""
+		},
+		{
+			"key": "user",
+			"value": "3652785",
+			"type": "default"
+		},
+		{
+			"key": "host",
+			"value": "5378466",
+			"type": "default"
+		},
+		{
+			"key": "admin",
+			"value": "4823696",
+			"type": "default"
+		},
+		{
+			"key": "userPass",
+			"value": "71lnmx8",
+			"type": "default"
+		},
+		{
+			"key": "hostPass",
+			"value": "5t0r3",
+			"type": "default"
+		},
+		{
+			"key": "adminPass",
+			"value": "1Ak7aegkho",
+			"type": "default"
+		},
+		{
+			"key": "userSessionGuid",
+			"value": ""
+		},
+		{
+			"key": "adminSessionGuid",
+			"value": ""
+		},
+		{
+			"key": "awsHost",
+			"value": "http://ec2-44-202-50-217.compute-1.amazonaws.com",
+			"type": "default"
+		}
+	]
+}
