@@ -183,7 +183,7 @@ app.get("/getallusers/:userId/:sessionGuid", async function(req,res){
 
 });
 
-app.delete("/deleteUser/:userId", async function(req, res) {
+app.delete("/deleteUser/:userId/:sessionGuid", async function(req, res) {
 
   const userId = req.params.userId;
   const userToBeDeleted = req.body.userToDelete;
